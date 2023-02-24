@@ -144,6 +144,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c54496eb9796348bfc9df54596f9dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10
+  maxAmountOfJumps: 2
+  jumpheight: 1.5
+  weight: 0.5
+  gravity: -9.8
+  knockDownSpeed: 30
+  slideSpeedMultiplier: 1.5
+  powerSlideSpeedMultiplier: 2
 --- !u!1 &2295637357876080500
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +179,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2295637357876080500}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.6, z: -10}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -203,7 +211,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
