@@ -28,6 +28,7 @@ public class PlayerMotor : MonoBehaviour
     // Crouch
     private bool isCrouching = false;
     private bool lerpCrouch;
+    private float crouchTimer;
 
     // Slide
     private bool isSliding = false;
@@ -50,6 +51,26 @@ public class PlayerMotor : MonoBehaviour
     void Update()
     {
         RaycastHit hitInfo; // Used to store info about raycast hit
+
+        #region Lerp Crouch
+        if (lerpCrouch)
+        {
+            crouchTimer += Time.deltaTime;
+            float p = crouchTimer / 1;
+            p *= p;
+
+            if (isCrouching)
+                characterController.height = Mathf.Lerp(characterController.height, 1, p);
+            else
+                characterController.height = Mathf.Lerp(characterController.height, 2, p);
+
+            if (p > 1)
+            {
+                lerpCrouch = false;
+                crouchTimer = 0f;
+            }
+        }
+        #endregion
     }
 
     public void ProcessMove(Vector2 input)
@@ -72,9 +93,7 @@ public class PlayerMotor : MonoBehaviour
     public void Jump()
     {
         if (amountOfJumps != maxAmountOfJumps && characterController.isGrounded)
-        {
             amountOfJumps = maxAmountOfJumps;
-        }
 
         if (amountOfJumps > 0)
         {
@@ -82,5 +101,11 @@ public class PlayerMotor : MonoBehaviour
 
             amountOfJumps--;
         }
+    }
+    public void crouch()
+    {
+        isCrouching = !isCrouching;
+        lerpCrouch = true;
+        crouchTimer = 0;
     }
 }
