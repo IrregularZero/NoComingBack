@@ -49,11 +49,7 @@ public class PlayerMotor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(playerVelocity);
         RaycastHit hitInfo; // Used to store info about raycast hit
-
-        if (characterController.isGrounded && amountOfJumps < maxAmountOfJumps)
-            amountOfJumps = maxAmountOfJumps;
     }
 
     public void ProcessMove(Vector2 input)
@@ -75,10 +71,13 @@ public class PlayerMotor : MonoBehaviour
     }
     public void Jump()
     {
-        Debug.Log(1);
+        if (amountOfJumps != maxAmountOfJumps && characterController.isGrounded)
+        {
+            amountOfJumps = maxAmountOfJumps;
+        }
+
         if (amountOfJumps > 0)
         {
-            Debug.Log(2);
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
 
             amountOfJumps--;

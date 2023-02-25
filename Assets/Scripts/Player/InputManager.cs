@@ -5,6 +5,7 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     private PlayerMotor player;
+    private PlayerLook look;
     private PlayerInputs inputs;
 
     private void OnEnable()
@@ -19,6 +20,7 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         player = GetComponent<PlayerMotor>();
+        look = GetComponent<PlayerLook>();
         inputs = new PlayerInputs();
 
         inputs.OnFoot.Jump.performed += ctx => player.Jump();
@@ -27,5 +29,9 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         player.ProcessMove(inputs.OnFoot.Movement.ReadValue<Vector2>());
+    }
+    private void LateUpdate()
+    {
+        look.processLook(inputs.OnFoot.Look.ReadValue<Vector2>());
     }
 }
