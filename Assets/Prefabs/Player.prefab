@@ -167,7 +167,7 @@ MonoBehaviour:
   jumpHeight: 1.5
   weight: 0.5
   gravity: -9.8
-  knockDownSpeed: 30
+  knockDownSpeedMultyplier: 20
   slideSpeedMultiplier: 1.75
   powerSlideSpeedMultiplier: 2
 --- !u!114 &517570716

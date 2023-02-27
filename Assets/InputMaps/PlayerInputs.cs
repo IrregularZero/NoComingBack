@@ -55,6 +55,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""KnockDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""a8aca297-a051-40a9-8992-eda6dd025cb0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=0.25,pressPoint=0.3)"",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""CrouchHold"",
                     ""type"": ""Button"",
                     ""id"": ""df773509-3251-4b54-9123-402d6f47c4e1"",
@@ -216,6 +225,28 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""action"": ""CrouchHold"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""26ed5e96-6545-4606-87e7-4d222e2405f9"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KnockDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d238d9a5-9a5d-44a1-aad9-824071c0015d"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KnockDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -227,6 +258,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_OnFoot_Look = m_OnFoot.FindAction("Look", throwIfNotFound: true);
         m_OnFoot_Movement = m_OnFoot.FindAction("Movement", throwIfNotFound: true);
         m_OnFoot_Jump = m_OnFoot.FindAction("Jump", throwIfNotFound: true);
+        m_OnFoot_KnockDown = m_OnFoot.FindAction("KnockDown", throwIfNotFound: true);
         m_OnFoot_CrouchHold = m_OnFoot.FindAction("CrouchHold", throwIfNotFound: true);
         m_OnFoot_Slide = m_OnFoot.FindAction("Slide", throwIfNotFound: true);
     }
@@ -291,6 +323,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Look;
     private readonly InputAction m_OnFoot_Movement;
     private readonly InputAction m_OnFoot_Jump;
+    private readonly InputAction m_OnFoot_KnockDown;
     private readonly InputAction m_OnFoot_CrouchHold;
     private readonly InputAction m_OnFoot_Slide;
     public struct OnFootActions
@@ -300,6 +333,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_OnFoot_Look;
         public InputAction @Movement => m_Wrapper.m_OnFoot_Movement;
         public InputAction @Jump => m_Wrapper.m_OnFoot_Jump;
+        public InputAction @KnockDown => m_Wrapper.m_OnFoot_KnockDown;
         public InputAction @CrouchHold => m_Wrapper.m_OnFoot_CrouchHold;
         public InputAction @Slide => m_Wrapper.m_OnFoot_Slide;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
@@ -320,6 +354,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnJump;
+                @KnockDown.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnKnockDown;
+                @KnockDown.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnKnockDown;
+                @KnockDown.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnKnockDown;
                 @CrouchHold.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnCrouchHold;
                 @CrouchHold.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnCrouchHold;
                 @CrouchHold.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnCrouchHold;
@@ -339,6 +376,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @KnockDown.started += instance.OnKnockDown;
+                @KnockDown.performed += instance.OnKnockDown;
+                @KnockDown.canceled += instance.OnKnockDown;
                 @CrouchHold.started += instance.OnCrouchHold;
                 @CrouchHold.performed += instance.OnCrouchHold;
                 @CrouchHold.canceled += instance.OnCrouchHold;
@@ -354,6 +394,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnKnockDown(InputAction.CallbackContext context);
         void OnCrouchHold(InputAction.CallbackContext context);
         void OnSlide(InputAction.CallbackContext context);
     }

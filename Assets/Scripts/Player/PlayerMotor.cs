@@ -22,8 +22,9 @@ public class PlayerMotor : MonoBehaviour
     private float weight = 0.5f;
     [SerializeField]
     private float gravity = -9.8f;
+    private bool isKnockingDown = false;
     [SerializeField]
-    private float knockDownSpeed = 30f;
+    private float knockDownSpeedMultyplier = 5f;
 
     // Crouch
     private bool isCrouching = false;
@@ -73,9 +74,7 @@ public class PlayerMotor : MonoBehaviour
         #endregion
         #region Is Powerslidable?
         // If player is power sliding he deals damage to an enemy on collision
-
-        Ray powerSlideRay = new Ray(transform.position, transform.up * -1);
-        if (Physics.Raycast(powerSlideRay, 1.5f, 1))
+        if (characterController.isGrounded)
         {
             Debug.Log(1);
             isPowerSliding = true;
@@ -84,6 +83,12 @@ public class PlayerMotor : MonoBehaviour
         {
             Debug.Log(2);
             isPowerSliding = false;
+        }
+        #endregion
+        #region Can drop down further?
+        if (characterController.isGrounded)
+        {
+            isKnockingDown = false;
         }
         #endregion
     }
@@ -98,7 +103,7 @@ public class PlayerMotor : MonoBehaviour
         else
             characterController.Move(slideDirection * speed * (slideSpeedMultiplier * (isPowerSliding ? powerSlideSpeedMultiplier : 1)) * Time.deltaTime);
 
-        playerVelocity.y += (gravity + weight * -1) * Time.deltaTime;
+        playerVelocity.y += (gravity + weight * -1) * (isKnockingDown?knockDownSpeedMultyplier: 1) * Time.deltaTime;
         // Adding gravity
         if (characterController.isGrounded && playerVelocity.y < 0)
             playerVelocity.y = -2f;
@@ -117,7 +122,14 @@ public class PlayerMotor : MonoBehaviour
             amountOfJumps--;
         }
     }
-    public void crouch()
+    public void KnockDown()
+    {
+        if (!isKnockingDown && !characterController.isGrounded && amountOfJumps <= 0)
+        {
+            isKnockingDown = true;
+        }
+    }
+    public void Crouch()
     {
         isCrouching = !isCrouching;
         lerpCrouch = true;
@@ -128,11 +140,11 @@ public class PlayerMotor : MonoBehaviour
             isSliding = !isSliding;
         }
     }
-    public void slide()
+    public void Slide()
     {
         isSliding = !isSliding;
         slideDirection = transform.forward;
 
-        crouch();
+        Crouch();
     }
 }

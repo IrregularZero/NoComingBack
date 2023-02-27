@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "KnockDown",
+                    "type": "Button",
+                    "id": "a8aca297-a051-40a9-8992-eda6dd025cb0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=0.25,pressPoint=0.3)",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "CrouchHold",
                     "type": "Button",
                     "id": "df773509-3251-4b54-9123-402d6f47c4e1",
@@ -192,6 +201,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "CrouchHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "26ed5e96-6545-4606-87e7-4d222e2405f9",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KnockDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d238d9a5-9a5d-44a1-aad9-824071c0015d",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KnockDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
