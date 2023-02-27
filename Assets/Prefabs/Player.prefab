@@ -170,6 +170,9 @@ MonoBehaviour:
   knockDownSpeedMultyplier: 20
   slideSpeedMultiplier: 1.75
   powerSlideSpeedMultiplier: 2
+  knockDownEffect: {fileID: 0}
+  slideEffects: {fileID: 0}
+  powerSlideEffects: {fileID: 0}
 --- !u!114 &517570716
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -40,6 +40,14 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField]
     private float powerSlideSpeedMultiplier = 2f;
 
+    // Effects
+    [SerializeField]
+    private GameObject knockDownEffect;
+    [SerializeField]
+    private GameObject slideEffects;
+    [SerializeField]
+    private GameObject powerSlideEffects;
+
 
     // Start is called before the first frame update
     void Start()
@@ -91,6 +99,10 @@ public class PlayerMotor : MonoBehaviour
             isKnockingDown = false;
         }
         #endregion
+
+
+        slideEffects.SetActive(isPowerSliding ? false : isSliding);
+        powerSlideEffects.SetActive(isPowerSliding && isCrouching);
     }
 
     public void ProcessMove(Vector2 input)
@@ -142,6 +154,7 @@ public class PlayerMotor : MonoBehaviour
     }
     public void Slide()
     {
+
         isSliding = !isSliding;
         slideDirection = transform.forward;
 
