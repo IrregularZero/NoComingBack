@@ -24,7 +24,9 @@ public class InputManager : MonoBehaviour
         inputs = new PlayerInputs();
 
         inputs.OnFoot.Jump.performed += ctx => player.Jump();
-        inputs.OnFoot.Crouch.performed += ctx => player.crouch();
+        inputs.OnFoot.CrouchHold.started += ctx => player.crouch();
+        inputs.OnFoot.CrouchHold.canceled += ctx => player.crouch();
+        inputs.OnFoot.Slide.performed += ctx => player.slide();
     }
 
     private void Update()

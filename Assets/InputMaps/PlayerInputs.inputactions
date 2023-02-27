@@ -33,9 +33,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Crouch",
+                    "name": "CrouchHold",
                     "type": "Button",
-                    "id": "34c4a6c0-193b-4ab3-b9da-1b97114c8d1d",
+                    "id": "df773509-3251-4b54-9123-402d6f47c4e1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Slide",
+                    "type": "Button",
+                    "id": "39dc8722-e7ba-40ea-abdc-f2dfd8a017c5",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -133,39 +142,6 @@
                 },
                 {
                     "name": "",
-                    "id": "74ac4309-8401-40d9-8a69-72c84b11550d",
-                    "path": "<Keyboard>/leftCtrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Crouch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5fb915da-c2d7-477e-b074-f2c38dc17d2b",
-                    "path": "<Keyboard>/c",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Crouch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4ad6e57c-34b8-43a6-81e6-0677df998753",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Crouch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "c4ea4d79-fcc5-4767-8602-3ac2fe468126",
                     "path": "<Mouse>/delta",
                     "interactions": "",
@@ -183,6 +159,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29d789bf-6183-4bd6-9ca5-d5048e77e82f",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "17b44ee4-db01-459f-98fc-de065fd1d558",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CrouchHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ad6e57c-34b8-43a6-81e6-0677df998753",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CrouchHold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

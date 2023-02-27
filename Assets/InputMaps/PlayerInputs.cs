@@ -55,9 +55,18 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Crouch"",
+                    ""name"": ""CrouchHold"",
                     ""type"": ""Button"",
-                    ""id"": ""34c4a6c0-193b-4ab3-b9da-1b97114c8d1d"",
+                    ""id"": ""df773509-3251-4b54-9123-402d6f47c4e1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Slide"",
+                    ""type"": ""Button"",
+                    ""id"": ""39dc8722-e7ba-40ea-abdc-f2dfd8a017c5"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -155,39 +164,6 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""74ac4309-8401-40d9-8a69-72c84b11550d"",
-                    ""path"": ""<Keyboard>/leftCtrl"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Crouch"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5fb915da-c2d7-477e-b074-f2c38dc17d2b"",
-                    ""path"": ""<Keyboard>/c"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Crouch"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4ad6e57c-34b8-43a6-81e6-0677df998753"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Crouch"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""c4ea4d79-fcc5-4767-8602-3ac2fe468126"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
@@ -207,6 +183,39 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""29d789bf-6183-4bd6-9ca5-d5048e77e82f"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Slide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""17b44ee4-db01-459f-98fc-de065fd1d558"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CrouchHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4ad6e57c-34b8-43a6-81e6-0677df998753"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CrouchHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -218,7 +227,8 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_OnFoot_Look = m_OnFoot.FindAction("Look", throwIfNotFound: true);
         m_OnFoot_Movement = m_OnFoot.FindAction("Movement", throwIfNotFound: true);
         m_OnFoot_Jump = m_OnFoot.FindAction("Jump", throwIfNotFound: true);
-        m_OnFoot_Crouch = m_OnFoot.FindAction("Crouch", throwIfNotFound: true);
+        m_OnFoot_CrouchHold = m_OnFoot.FindAction("CrouchHold", throwIfNotFound: true);
+        m_OnFoot_Slide = m_OnFoot.FindAction("Slide", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -281,7 +291,8 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Look;
     private readonly InputAction m_OnFoot_Movement;
     private readonly InputAction m_OnFoot_Jump;
-    private readonly InputAction m_OnFoot_Crouch;
+    private readonly InputAction m_OnFoot_CrouchHold;
+    private readonly InputAction m_OnFoot_Slide;
     public struct OnFootActions
     {
         private @PlayerInputs m_Wrapper;
@@ -289,7 +300,8 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_OnFoot_Look;
         public InputAction @Movement => m_Wrapper.m_OnFoot_Movement;
         public InputAction @Jump => m_Wrapper.m_OnFoot_Jump;
-        public InputAction @Crouch => m_Wrapper.m_OnFoot_Crouch;
+        public InputAction @CrouchHold => m_Wrapper.m_OnFoot_CrouchHold;
+        public InputAction @Slide => m_Wrapper.m_OnFoot_Slide;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -308,9 +320,12 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnJump;
-                @Crouch.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnCrouch;
-                @Crouch.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnCrouch;
-                @Crouch.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnCrouch;
+                @CrouchHold.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnCrouchHold;
+                @CrouchHold.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnCrouchHold;
+                @CrouchHold.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnCrouchHold;
+                @Slide.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnSlide;
+                @Slide.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnSlide;
+                @Slide.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnSlide;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -324,9 +339,12 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @Crouch.started += instance.OnCrouch;
-                @Crouch.performed += instance.OnCrouch;
-                @Crouch.canceled += instance.OnCrouch;
+                @CrouchHold.started += instance.OnCrouchHold;
+                @CrouchHold.performed += instance.OnCrouchHold;
+                @CrouchHold.canceled += instance.OnCrouchHold;
+                @Slide.started += instance.OnSlide;
+                @Slide.performed += instance.OnSlide;
+                @Slide.canceled += instance.OnSlide;
             }
         }
     }
@@ -336,6 +354,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnCrouch(InputAction.CallbackContext context);
+        void OnCrouchHold(InputAction.CallbackContext context);
+        void OnSlide(InputAction.CallbackContext context);
     }
 }

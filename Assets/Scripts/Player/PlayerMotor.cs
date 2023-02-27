@@ -71,6 +71,21 @@ public class PlayerMotor : MonoBehaviour
             }
         }
         #endregion
+        #region Is Powerslidable?
+        // If player is power sliding he deals damage to an enemy on collision
+
+        Ray powerSlideRay = new Ray(transform.position, transform.up * -1);
+        if (Physics.Raycast(powerSlideRay, 1.5f, 1))
+        {
+            Debug.Log(1);
+            isPowerSliding = true;
+        }
+        else
+        {
+            Debug.Log(2);
+            isPowerSliding = false;
+        }
+        #endregion
     }
 
     public void ProcessMove(Vector2 input)
@@ -107,5 +122,17 @@ public class PlayerMotor : MonoBehaviour
         isCrouching = !isCrouching;
         lerpCrouch = true;
         crouchTimer = 0;
+
+        if (isSliding && !isCrouching)
+        {
+            isSliding = !isSliding;
+        }
+    }
+    public void slide()
+    {
+        isSliding = !isSliding;
+        slideDirection = transform.forward;
+
+        crouch();
     }
 }
