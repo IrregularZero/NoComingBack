@@ -100,7 +100,7 @@ public class PlayerMotor : MonoBehaviour
         }
         #endregion
 
-
+        knockDownEffect.SetActive(isKnockingDown);
         slideEffects.SetActive(isPowerSliding ? false : isSliding);
         powerSlideEffects.SetActive(isPowerSliding && isCrouching);
     }
