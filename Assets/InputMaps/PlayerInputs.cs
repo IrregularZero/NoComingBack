@@ -249,6 +249,54 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Test"",
+            ""id"": ""363ed694-4268-491b-877b-d28a0119076f"",
+            ""actions"": [
+                {
+                    ""name"": ""HealPlayer"",
+                    ""type"": ""Button"",
+                    ""id"": ""3cb5cadb-401e-49fd-9e54-31a1461fda21"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DamagePlayer"",
+                    ""type"": ""Button"",
+                    ""id"": ""bd246ac7-4e23-4bc7-a06a-ef7389a9e4fa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""8ca23e64-8eb4-450c-8054-072f8ff13d7a"",
+                    ""path"": ""<Keyboard>/numpadMinus"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DamagePlayer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""60a59836-f083-4465-bdd5-2ddd652a68fb"",
+                    ""path"": ""<Keyboard>/numpadPlus"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HealPlayer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -261,6 +309,10 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_OnFoot_KnockDown = m_OnFoot.FindAction("KnockDown", throwIfNotFound: true);
         m_OnFoot_CrouchHold = m_OnFoot.FindAction("CrouchHold", throwIfNotFound: true);
         m_OnFoot_Slide = m_OnFoot.FindAction("Slide", throwIfNotFound: true);
+        // Test
+        m_Test = asset.FindActionMap("Test", throwIfNotFound: true);
+        m_Test_HealPlayer = m_Test.FindAction("HealPlayer", throwIfNotFound: true);
+        m_Test_DamagePlayer = m_Test.FindAction("DamagePlayer", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -389,6 +441,47 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         }
     }
     public OnFootActions @OnFoot => new OnFootActions(this);
+
+    // Test
+    private readonly InputActionMap m_Test;
+    private ITestActions m_TestActionsCallbackInterface;
+    private readonly InputAction m_Test_HealPlayer;
+    private readonly InputAction m_Test_DamagePlayer;
+    public struct TestActions
+    {
+        private @PlayerInputs m_Wrapper;
+        public TestActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @HealPlayer => m_Wrapper.m_Test_HealPlayer;
+        public InputAction @DamagePlayer => m_Wrapper.m_Test_DamagePlayer;
+        public InputActionMap Get() { return m_Wrapper.m_Test; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TestActions set) { return set.Get(); }
+        public void SetCallbacks(ITestActions instance)
+        {
+            if (m_Wrapper.m_TestActionsCallbackInterface != null)
+            {
+                @HealPlayer.started -= m_Wrapper.m_TestActionsCallbackInterface.OnHealPlayer;
+                @HealPlayer.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnHealPlayer;
+                @HealPlayer.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnHealPlayer;
+                @DamagePlayer.started -= m_Wrapper.m_TestActionsCallbackInterface.OnDamagePlayer;
+                @DamagePlayer.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnDamagePlayer;
+                @DamagePlayer.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnDamagePlayer;
+            }
+            m_Wrapper.m_TestActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @HealPlayer.started += instance.OnHealPlayer;
+                @HealPlayer.performed += instance.OnHealPlayer;
+                @HealPlayer.canceled += instance.OnHealPlayer;
+                @DamagePlayer.started += instance.OnDamagePlayer;
+                @DamagePlayer.performed += instance.OnDamagePlayer;
+                @DamagePlayer.canceled += instance.OnDamagePlayer;
+            }
+        }
+    }
+    public TestActions @Test => new TestActions(this);
     public interface IOnFootActions
     {
         void OnLook(InputAction.CallbackContext context);
@@ -397,5 +490,10 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnKnockDown(InputAction.CallbackContext context);
         void OnCrouchHold(InputAction.CallbackContext context);
         void OnSlide(InputAction.CallbackContext context);
+    }
+    public interface ITestActions
+    {
+        void OnHealPlayer(InputAction.CallbackContext context);
+        void OnDamagePlayer(InputAction.CallbackContext context);
     }
 }

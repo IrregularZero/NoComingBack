@@ -84,12 +84,10 @@ public class PlayerMotor : MonoBehaviour
         // If player is power sliding he deals damage to an enemy on collision
         if (characterController.isGrounded)
         {
-            Debug.Log(1);
             isPowerSliding = true;
         }
         else
         {
-            Debug.Log(2);
             isPowerSliding = false;
         }
         #endregion

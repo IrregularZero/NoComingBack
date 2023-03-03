@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2295637357332607938}
   - component: {fileID: 2295637357332607939}
   - component: {fileID: 517570716}
+  - component: {fileID: 2295637358170978997}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -188,6 +189,24 @@ MonoBehaviour:
   cam: {fileID: 2295637357876080506}
   xSensitivity: 15
   ySensitivity: 15
+--- !u!114 &2295637358170978997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2295637357332607964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f26b71ba1d9e9044a8daf588662c67c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 100
+  damageResist: 1
+  useUI: 1
+  frontHealthBar: {fileID: 0}
+  backHealthBar: {fileID: 0}
 --- !u!1 &2295637357876080500
 GameObject:
   m_ObjectHideFlags: 0

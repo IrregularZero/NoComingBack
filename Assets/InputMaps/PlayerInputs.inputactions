@@ -227,6 +227,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Test",
+            "id": "363ed694-4268-491b-877b-d28a0119076f",
+            "actions": [
+                {
+                    "name": "HealPlayer",
+                    "type": "Button",
+                    "id": "3cb5cadb-401e-49fd-9e54-31a1461fda21",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DamagePlayer",
+                    "type": "Button",
+                    "id": "bd246ac7-4e23-4bc7-a06a-ef7389a9e4fa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8ca23e64-8eb4-450c-8054-072f8ff13d7a",
+                    "path": "<Keyboard>/numpadMinus",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DamagePlayer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "60a59836-f083-4465-bdd5-2ddd652a68fb",
+                    "path": "<Keyboard>/numpadPlus",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HealPlayer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
