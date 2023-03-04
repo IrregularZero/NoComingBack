@@ -26,6 +26,9 @@ public class VitalitySystem : MonoBehaviour
     [SerializeField]
     private Image backHealthBar; // Shows change in player's health
 
+    [SerializeField]
+    private GameObject DeathScreen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +42,8 @@ public class VitalitySystem : MonoBehaviour
 
         if (useUI)
             UpdateHealthUI();
+
+        Death(health <= 0);
     }
 
     public void UpdateHealthUI()
@@ -80,5 +85,15 @@ public class VitalitySystem : MonoBehaviour
     {
         health += healAmount * healingBonus;
         lerpTimer = 0f;
+    }
+
+    public void Death(bool isDead)
+    {
+        DeathScreen.SetActive(isDead);
+
+        if (isDead)
+        {
+            // Here statistics should be updated
+        }
     }
 }
