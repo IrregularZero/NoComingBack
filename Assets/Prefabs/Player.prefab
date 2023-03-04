@@ -204,6 +204,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 100
   damageResist: 1
+  healingBonus: 1
   useUI: 1
   frontHealthBar: {fileID: 0}
   backHealthBar: {fileID: 0}
