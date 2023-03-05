@@ -14,6 +14,7 @@ public class VitalitySystem : MonoBehaviour
     private float health;
     [SerializeField]
     private float maxHealth = 100;
+
     [SerializeField]
     private float damageResist = 1; // Multiplier to decrease incoming damage
     [SerializeField]
@@ -35,7 +36,74 @@ public class VitalitySystem : MonoBehaviour
     [SerializeField]
     private Image healthChangeEffects;
     [SerializeField]
-    private float alphaDecrement = 0.0125f;
+    private float alphaDecrement = 0.45f;
+
+    #region Properties
+    public float Health 
+    {
+        get
+        {
+            return health;
+        }
+        set
+        {
+            if (value >= 0 && value <= maxHealth)
+            {
+                health = value;
+            }
+        }
+    }
+    public float MaxHealth 
+    {
+        get
+        {
+            return maxHealth;
+        }
+        set
+        {
+            if (value > 0)
+            {
+                maxHealth = value;
+            }
+        }
+    }
+    public float DamageResist 
+    {
+        get
+        {
+            return damageResist;
+        }
+        set
+        {
+            if (value > 0 && value <= 1)
+            {
+                damageResist = value;
+            }
+        }
+    }
+    public float HealingBonus 
+    {
+        get
+        {
+            return healingBonus;
+        }
+        set
+        {
+            healingBonus = value;
+        }
+    }
+    public bool UseUI 
+    {
+        get
+        {
+            return useUI;
+        }
+        set
+        {
+            useUI = value;
+        }
+    }
+    #endregion
 
     // Start is called before the first frame update
     void Start()
