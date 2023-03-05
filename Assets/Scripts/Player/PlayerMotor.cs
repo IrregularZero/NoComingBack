@@ -54,6 +54,10 @@ public class PlayerMotor : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         playerVelocity = Vector3.zero;
+
+        // Locking cursor in place and making it invisible
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
