@@ -2,7 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class VitalitySystem : MonoBehaviour
@@ -29,6 +32,11 @@ public class VitalitySystem : MonoBehaviour
     [SerializeField]
     private GameObject DeathScreen;
 
+    [SerializeField]
+    private Image healthChangeEffects;
+    [SerializeField]
+    private float alphaDecrement = 0.0125f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +52,9 @@ public class VitalitySystem : MonoBehaviour
             UpdateHealthUI();
 
         Death(health <= 0);
+
+        if (healthChangeEffects.color.a - alphaDecrement * Time.deltaTime >= 0)
+            healthChangeEffects.color = new Color(healthChangeEffects.color.r, healthChangeEffects.color.g, healthChangeEffects.color.b, healthChangeEffects.color.a - alphaDecrement * Time.deltaTime);
     }
 
     public void UpdateHealthUI()
@@ -78,11 +89,17 @@ public class VitalitySystem : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (useUI)
+            healthChangeEffects.color = new Color(1, 0, 0, 0.4f);
+
         health -= damage * damageResist;
         lerpTimer = 0;
     }
     public void RestoreHealth(float healAmount)
     {
+        if (useUI)
+            healthChangeEffects.color = new Color(0, 1, 0, 0.4f);
+
         health += healAmount * healingBonus;
         lerpTimer = 0f;
     }

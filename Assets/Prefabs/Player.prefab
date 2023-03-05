@@ -208,6 +208,9 @@ MonoBehaviour:
   useUI: 1
   frontHealthBar: {fileID: 0}
   backHealthBar: {fileID: 0}
+  DeathScreen: {fileID: 0}
+  healthChangeEffects: {fileID: 0}
+  alphaDecrement: 0.45
 --- !u!1 &2295637357876080500
 GameObject:
   m_ObjectHideFlags: 0
