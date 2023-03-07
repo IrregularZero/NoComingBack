@@ -11,6 +11,7 @@ public abstract class GunSystem : MonoBehaviour
     protected int magazine;
     protected int ammoInStorage;
     protected float reloadSpeed;
+    protected bool isReloading;
     protected int critChance;
     protected float critMult;
 
@@ -151,17 +152,29 @@ public abstract class GunSystem : MonoBehaviour
     #endregion
 
     #region Methods
-    public abstract void Fire();
-    public abstract void SpecialFire();
+    public void Fire()
+    {
+        // Cannot be fired while reloading
+        if (isReloading)
+            return;
+    }
+    public void SpecialFire()
+    {
+        // Cannot be fired while reloading
+        if (isReloading)
+            return;
+    }
     public IEnumerator Reload()
     {
         if (ammoInStorage > 0)
         {
             // play anim
 
+            isReloading = true;
             yield return new WaitForSeconds(reloadSpeed);
 
             magazine = Mathf.Clamp(ammoInStorage - maxMagazine, 0, maxMagazine);
+            isReloading = false;
         }
     }
     public void Overview()

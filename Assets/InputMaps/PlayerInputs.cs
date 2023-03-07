@@ -249,6 +249,94 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Gun"",
+            ""id"": ""56a2bb1f-f5e1-4808-9edc-863db5075cdc"",
+            ""actions"": [
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""898ee14d-704e-4d11-9b2e-fb5a4cced3d8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpecialFire"",
+                    ""type"": ""Button"",
+                    ""id"": ""0ece401c-14ef-4ad9-9481-6a6263e3ac0d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""0cb91ce4-dfdc-4660-b4a0-5c6515351637"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Overview"",
+                    ""type"": ""Button"",
+                    ""id"": ""bd9c045b-1e57-4b86-8462-3984f9fe058a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""86edc249-389f-4dce-97bb-fa0f7fb69f6a"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dfdd92ec-0bdf-4019-bc63-3aae8772b305"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0a3d4d5b-9130-42cf-be03-1390f9869814"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpecialFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""81e5a9c7-dbe7-4ec3-a674-e43d3e8d9403"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Overview"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -261,6 +349,12 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_OnFoot_KnockDown = m_OnFoot.FindAction("KnockDown", throwIfNotFound: true);
         m_OnFoot_CrouchHold = m_OnFoot.FindAction("CrouchHold", throwIfNotFound: true);
         m_OnFoot_Slide = m_OnFoot.FindAction("Slide", throwIfNotFound: true);
+        // Gun
+        m_Gun = asset.FindActionMap("Gun", throwIfNotFound: true);
+        m_Gun_Fire = m_Gun.FindAction("Fire", throwIfNotFound: true);
+        m_Gun_SpecialFire = m_Gun.FindAction("SpecialFire", throwIfNotFound: true);
+        m_Gun_Reload = m_Gun.FindAction("Reload", throwIfNotFound: true);
+        m_Gun_Overview = m_Gun.FindAction("Overview", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -389,6 +483,63 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         }
     }
     public OnFootActions @OnFoot => new OnFootActions(this);
+
+    // Gun
+    private readonly InputActionMap m_Gun;
+    private IGunActions m_GunActionsCallbackInterface;
+    private readonly InputAction m_Gun_Fire;
+    private readonly InputAction m_Gun_SpecialFire;
+    private readonly InputAction m_Gun_Reload;
+    private readonly InputAction m_Gun_Overview;
+    public struct GunActions
+    {
+        private @PlayerInputs m_Wrapper;
+        public GunActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Fire => m_Wrapper.m_Gun_Fire;
+        public InputAction @SpecialFire => m_Wrapper.m_Gun_SpecialFire;
+        public InputAction @Reload => m_Wrapper.m_Gun_Reload;
+        public InputAction @Overview => m_Wrapper.m_Gun_Overview;
+        public InputActionMap Get() { return m_Wrapper.m_Gun; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GunActions set) { return set.Get(); }
+        public void SetCallbacks(IGunActions instance)
+        {
+            if (m_Wrapper.m_GunActionsCallbackInterface != null)
+            {
+                @Fire.started -= m_Wrapper.m_GunActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_GunActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_GunActionsCallbackInterface.OnFire;
+                @SpecialFire.started -= m_Wrapper.m_GunActionsCallbackInterface.OnSpecialFire;
+                @SpecialFire.performed -= m_Wrapper.m_GunActionsCallbackInterface.OnSpecialFire;
+                @SpecialFire.canceled -= m_Wrapper.m_GunActionsCallbackInterface.OnSpecialFire;
+                @Reload.started -= m_Wrapper.m_GunActionsCallbackInterface.OnReload;
+                @Reload.performed -= m_Wrapper.m_GunActionsCallbackInterface.OnReload;
+                @Reload.canceled -= m_Wrapper.m_GunActionsCallbackInterface.OnReload;
+                @Overview.started -= m_Wrapper.m_GunActionsCallbackInterface.OnOverview;
+                @Overview.performed -= m_Wrapper.m_GunActionsCallbackInterface.OnOverview;
+                @Overview.canceled -= m_Wrapper.m_GunActionsCallbackInterface.OnOverview;
+            }
+            m_Wrapper.m_GunActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
+                @SpecialFire.started += instance.OnSpecialFire;
+                @SpecialFire.performed += instance.OnSpecialFire;
+                @SpecialFire.canceled += instance.OnSpecialFire;
+                @Reload.started += instance.OnReload;
+                @Reload.performed += instance.OnReload;
+                @Reload.canceled += instance.OnReload;
+                @Overview.started += instance.OnOverview;
+                @Overview.performed += instance.OnOverview;
+                @Overview.canceled += instance.OnOverview;
+            }
+        }
+    }
+    public GunActions @Gun => new GunActions(this);
     public interface IOnFootActions
     {
         void OnLook(InputAction.CallbackContext context);
@@ -397,5 +548,12 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnKnockDown(InputAction.CallbackContext context);
         void OnCrouchHold(InputAction.CallbackContext context);
         void OnSlide(InputAction.CallbackContext context);
+    }
+    public interface IGunActions
+    {
+        void OnFire(InputAction.CallbackContext context);
+        void OnSpecialFire(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
+        void OnOverview(InputAction.CallbackContext context);
     }
 }
