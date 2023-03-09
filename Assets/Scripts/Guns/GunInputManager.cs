@@ -6,7 +6,7 @@ public class GunInputManager : MonoBehaviour
 {
     [SerializeField]
     private GunSystem gunSystem;
-    private PlayerInputs.GunActions gunActions;
+    private PlayerInputs gunActions;
 
     private void OnEnable()
     {
@@ -19,11 +19,11 @@ public class GunInputManager : MonoBehaviour
 
     private void Awake()
     {
-        gunActions = new PlayerInputs.GunActions();
+        gunActions = new PlayerInputs();
         
-        gunActions.Fire.performed += ctx => gunSystem.Fire();
-        gunActions.SpecialFire.performed += ctx => gunSystem.SpecialFire();
-        gunActions.Reload.performed += ctx => StartCoroutine(gunSystem.Reload());
-        gunActions.Overview.performed += ctx => gunSystem.Overview();
+        gunActions.Gun.Fire.performed += ctx => gunSystem.Fire();
+        gunActions.Gun.SpecialFire.performed += ctx => gunSystem.SpecialFire();
+        gunActions.Gun.Reload.performed += ctx => StartCoroutine(gunSystem.Reload());
+        gunActions.Gun.Overview.performed += ctx => gunSystem.Overview();
     }
 }

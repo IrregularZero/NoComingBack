@@ -63,7 +63,6 @@ public class PlayerMotor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit hitInfo; // Used to store info about raycast hit
 
         #region Lerp Crouch
         if (lerpCrouch)

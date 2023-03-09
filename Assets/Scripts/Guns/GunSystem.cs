@@ -1,29 +1,48 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public abstract class GunSystem : MonoBehaviour
 {
-    protected float damage;
-    protected float fireRate;
-    protected float accuracy;
-    protected int maxMagazine;
-    protected int magazine;
-    protected int ammoInStorage;
-    protected float reloadSpeed;
+    [SerializeField]
+    protected float damage = -1f;
+    [SerializeField]
+    protected float timeBetweenShots = -1f;
+    protected float recoveryAfterShot;
+    [SerializeField]
+    protected float accuracy = -1f;
+    [SerializeField]
+    protected int maxMagazine = -1;
+    [SerializeField]
+    protected int magazine = -1;
+    [SerializeField]
+    protected int ammoInStorage = -1;
+    [SerializeField]
+    protected float reloadSpeed = -1f;
     protected bool isReloading;
+    [SerializeField]
     protected int critChance;
+    [SerializeField]
     protected float critMult;
 
+    [SerializeField]
     protected Vector3 barell;
+    [SerializeField]
     protected Transform cameraTransform;
 
+    [SerializeField]
     protected Animator animator;
+    [SerializeField]
+    protected GameObject shotEffects;
+    protected float maxShotEffectsDuration = 0.1f;
+    protected float shotEffectsDuration;
 
     public GunSystem()
     {
         damage = -1;
-        fireRate = -1;
+        timeBetweenShots = -1;
         accuracy = -1;
         maxMagazine = -1;
         magazine = maxMagazine;
@@ -34,10 +53,10 @@ public abstract class GunSystem : MonoBehaviour
 
         barell = Vector3.zero;
     }
-    public GunSystem(float damage, float fireRate, float accuracy, int maxMagazine, int magazine, int ammoInStorage, float reloadSpeed, int critChance, float critMult, Vector3 barell, Transform cameraTransform)
+    public GunSystem(float damage, float timeBetweenShots, float accuracy, int maxMagazine, int magazine, int ammoInStorage, float reloadSpeed, int critChance, float critMult, Vector3 barell, Transform cameraTransform)
     {
         this.damage = damage;
-        this.fireRate = fireRate;
+        this.timeBetweenShots = timeBetweenShots;
         this.accuracy = accuracy;
         this.maxMagazine = maxMagazine;
         this.magazine = magazine;
@@ -65,17 +84,17 @@ public abstract class GunSystem : MonoBehaviour
             }
         }
     }
-    public float FireRate 
+    public float TimeBetweenShots 
     {
         get
         {
-            return fireRate;
+            return timeBetweenShots;
         } 
         set
         {
             if (value >= 0)
             {
-                fireRate = value;
+                timeBetweenShots = value;
             }
         }
     }
@@ -152,19 +171,37 @@ public abstract class GunSystem : MonoBehaviour
     #endregion
 
     #region Methods
-    public void Fire()
+    protected virtual void Update()
+    {
+        recoveryAfterShot -= Time.deltaTime;
+
+        if (shotEffects.activeSelf)
+        {
+            shotEffectsDuration -= Time.deltaTime;
+            if (shotEffectsDuration <= 0)
+                shotEffects.SetActive(false);
+        }
+    }
+
+    public virtual void Fire()
+    {
+        // Cannot be fired while reloading
+        if (isReloading)
+            return;
+        if (recoveryAfterShot > 0)
+            return;
+
+        shotEffects.SetActive(true);
+        recoveryAfterShot = TimeBetweenShots;
+        shotEffectsDuration = maxShotEffectsDuration;
+    }
+    public virtual void SpecialFire()
     {
         // Cannot be fired while reloading
         if (isReloading)
             return;
     }
-    public void SpecialFire()
-    {
-        // Cannot be fired while reloading
-        if (isReloading)
-            return;
-    }
-    public IEnumerator Reload()
+    public virtual IEnumerator Reload()
     {
         if (ammoInStorage > 0)
         {
@@ -177,7 +214,7 @@ public abstract class GunSystem : MonoBehaviour
             isReloading = false;
         }
     }
-    public void Overview()
+    public virtual void Overview()
     {
         // stop previous anim
         // play anim
