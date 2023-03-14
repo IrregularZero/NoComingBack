@@ -32,7 +32,6 @@ public class TestGun : GunSystem
 
     public override void Fire()
     {
-        Debug.Log("Fired");
         base.Fire();
 
         Ray shot = new Ray(cameraTransform.position, cameraTransform.forward);
@@ -42,10 +41,8 @@ public class TestGun : GunSystem
         {
             if (hitObject.collider.tag == "Enemy")
             {
-                hitObject.collider.GetComponent<VitalitySystem>().TakeDamage(damage);
-                Debug.Log("Enemy got hit!");
+                hitObject.collider.GetComponent<VitalitySystem>().TakeDamage(damage * Random.Range(1, 101) >= critChance ? critMult : 1);
             }
-            Debug.Log("Enviroment got hit....");
         }
     }
 
