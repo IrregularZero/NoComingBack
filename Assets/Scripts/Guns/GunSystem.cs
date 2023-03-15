@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 [Serializable]
@@ -17,6 +18,8 @@ public abstract class GunSystem : MonoBehaviour
     protected int maxMagazine = -1;
     [SerializeField]
     protected int magazine = -1;
+    [SerializeField]
+    protected const int maxAmmoInStorage = 1000;
     [SerializeField]
     protected int ammoInStorage = -1;
     [SerializeField]
@@ -38,6 +41,9 @@ public abstract class GunSystem : MonoBehaviour
     protected GameObject shotEffects;
     protected float maxShotEffectsDuration = 0.1f;
     protected float shotEffectsDuration;
+
+    [SerializeField]
+    protected TextMeshProUGUI ammoMeter;
 
     public GunSystem()
     {
@@ -181,26 +187,20 @@ public abstract class GunSystem : MonoBehaviour
             if (shotEffectsDuration <= 0)
                 shotEffects.SetActive(false);
         }
+
+        UpdateInterface();
     }
 
     public virtual void Fire()
     {
-        // Cannot be fired while reloading
-        if (isReloading)
-            return;
-        if (recoveryAfterShot > 0)
-            return;
 
         shotEffects.SetActive(true);
         recoveryAfterShot = TimeBetweenShots;
         shotEffectsDuration = maxShotEffectsDuration;
+
+        magazine--;
     }
-    public virtual void SpecialFire()
-    {
-        // Cannot be fired while reloading
-        if (isReloading)
-            return;
-    }
+    public abstract void SpecialFire();
     public virtual IEnumerator Reload()
     {
         if (ammoInStorage > 0)
@@ -210,7 +210,11 @@ public abstract class GunSystem : MonoBehaviour
             isReloading = true;
             yield return new WaitForSeconds(reloadSpeed);
 
-            magazine = Mathf.Clamp(ammoInStorage - maxMagazine, 0, maxMagazine);
+            int magazineLeftovers = maxMagazine - magazine;
+
+            magazine = Mathf.Clamp(maxMagazine - Mathf.Clamp(ammoInStorage - magazineLeftovers, maxMagazine * -1, 0), 0, maxMagazine);
+            ammoInStorage = Mathf.Clamp(ammoInStorage - magazineLeftovers, 0, maxAmmoInStorage);
+
             isReloading = false;
         }
     }
@@ -218,6 +222,11 @@ public abstract class GunSystem : MonoBehaviour
     {
         // stop previous anim
         // play anim
+    }
+
+    public virtual void UpdateInterface()
+    {
+        ammoMeter.text = $"{magazine} | {ammoInStorage}";
     }
     #endregion
 }

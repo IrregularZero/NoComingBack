@@ -32,6 +32,17 @@ public class TestGun : GunSystem
 
     public override void Fire()
     {
+        // Cannot be fired while reloading
+        if (isReloading)
+            return;
+        else if (recoveryAfterShot > 0)
+            return;
+        else if (magazine <= 0)
+        {
+            StartCoroutine(Reload());
+            return;
+        }
+
         base.Fire();
 
         Ray shot = new Ray(cameraTransform.position, cameraTransform.forward);
@@ -48,7 +59,9 @@ public class TestGun : GunSystem
 
     public override void SpecialFire()
     {
-        base.SpecialFire();
+        // Cannot be fired while reloading
+        if (isReloading)
+            return;
 
         if (!activatedSpecial)
         {
