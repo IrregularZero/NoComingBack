@@ -24,6 +24,6 @@ public class GunInputManager : MonoBehaviour
         gunActions.Gun.Fire.performed += ctx => gunSystem.Fire();
         gunActions.Gun.SpecialFire.performed += ctx => gunSystem.SpecialFire();
         gunActions.Gun.Reload.performed += ctx => StartCoroutine(gunSystem.Reload());
-        gunActions.Gun.Overview.performed += ctx => gunSystem.Overview();
+        gunActions.Gun.Overview.performed += ctx => StartCoroutine(gunSystem.Overview());
     }
 }

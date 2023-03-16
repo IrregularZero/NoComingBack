@@ -8,34 +8,36 @@ using UnityEngine;
 public abstract class GunSystem : MonoBehaviour
 {
     [SerializeField]
-    protected float damage = -1f;
+    protected float damage;
     [SerializeField]
-    protected float timeBetweenShots = -1f;
+    protected float timeBetweenShots;
     protected float recoveryAfterShot;
     [SerializeField]
-    protected float accuracy = -1f;
+    protected float accuracy;
     [SerializeField]
-    protected int maxMagazine = -1;
+    protected int maxMagazine;
     [SerializeField]
-    protected int magazine = -1;
+    protected int magazine;
     [SerializeField]
-    protected const int maxAmmoInStorage = 1000;
+    protected const int maxAmmoInStorage = 500;
     [SerializeField]
-    protected int ammoInStorage = -1;
+    protected int ammoInStorage;
     [SerializeField]
-    protected float reloadSpeed = -1f;
+    protected float reloadSpeed;
     protected bool isReloading;
     [SerializeField]
     protected int critChance;
     [SerializeField]
     protected float critMult;
+    [SerializeField]
+    protected float overviewDuration;
+    protected float fireAnimationDur;
 
     [SerializeField]
     protected Vector3 barell;
     [SerializeField]
     protected Transform cameraTransform;
 
-    [SerializeField]
     protected Animator animator;
     [SerializeField]
     protected GameObject shotEffects;
@@ -174,9 +176,27 @@ public abstract class GunSystem : MonoBehaviour
             }
         }
     }
+    public float OverviewDuration 
+    {
+        get
+        {
+            return overviewDuration;
+        }
+        set
+        {
+            if (value > 0)
+            {
+                overviewDuration = value;
+            }
+        }
+    }
     #endregion
 
     #region Methods
+    protected virtual void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     protected virtual void Update()
     {
         recoveryAfterShot -= Time.deltaTime;
@@ -188,24 +208,36 @@ public abstract class GunSystem : MonoBehaviour
                 shotEffects.SetActive(false);
         }
 
+        if (fireAnimationDur > 0)
+        {
+            fireAnimationDur -= Time.deltaTime;
+        }
+        else
+        {
+            animator.SetBool("IsFiring", false);
+        }
+
         UpdateInterface();
     }
 
     public virtual void Fire()
     {
+        animator.SetBool("IsFiring", true);
 
         shotEffects.SetActive(true);
         recoveryAfterShot = TimeBetweenShots;
         shotEffectsDuration = maxShotEffectsDuration;
 
         magazine--;
+
+        fireAnimationDur = timeBetweenShots;
     }
     public abstract void SpecialFire();
     public virtual IEnumerator Reload()
     {
         if (ammoInStorage > 0)
         {
-            // play anim
+            animator.SetBool("IsReloading", true);
 
             isReloading = true;
             yield return new WaitForSeconds(reloadSpeed);
@@ -216,14 +248,15 @@ public abstract class GunSystem : MonoBehaviour
             ammoInStorage = Mathf.Clamp(ammoInStorage - magazineLeftovers, 0, maxAmmoInStorage);
 
             isReloading = false;
+            animator.SetBool("IsReloading", false);
         }
     }
-    public virtual void Overview()
+    public virtual IEnumerator Overview()
     {
-        // stop previous anim
-        // play anim
+        animator.SetBool("IsOverviewing", true);
+        yield return new WaitForSeconds(overviewDuration);
+        animator.SetBool("IsOverviewing", false);
     }
-
     public virtual void UpdateInterface()
     {
         ammoMeter.text = $"{magazine} | {ammoInStorage}";

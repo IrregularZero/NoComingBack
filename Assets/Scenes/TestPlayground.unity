@@ -21590,7 +21590,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &2295637357993544199
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -21785,10 +21785,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2295637358602404751}
     m_Modifications:
-    - target: {fileID: 1072759747, guid: a8dc88ac697254d42840117984623877, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: f83b3858924c9dd4a8357aafd63f56af, type: 2}
     - target: {fileID: 3866138995471074360, guid: a8dc88ac697254d42840117984623877,
         type: 3}
       propertyPath: cameraTransform

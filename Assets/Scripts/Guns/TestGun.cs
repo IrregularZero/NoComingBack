@@ -13,6 +13,10 @@ public class TestGun : GunSystem
     private int maxSpecialShotsLeft = 2;
     private int specialShotsLeft;
 
+    protected override void Start()
+    {
+        base.Start();
+    }
     protected override void Update()
     {
         base.Update();
