@@ -5698,11 +5698,11 @@ MonoBehaviour:
   accuracy: 1
   maxMagazine: 5
   magazine: 5
-  ammoInStorage: 10
+  ammoInStorage: 250
   reloadSpeed: 1
   critChance: 50
   critMult: 2
-  overviewDuration: 0
+  overviewDuration: 2.5
   barell: {x: 0, y: 0.235, z: 0.887}
   cameraTransform: {fileID: 0}
   shotEffects: {fileID: 3866138995392665206}
