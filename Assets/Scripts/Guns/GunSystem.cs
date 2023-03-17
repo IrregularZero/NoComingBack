@@ -235,7 +235,7 @@ public abstract class GunSystem : MonoBehaviour
     public abstract void SpecialFire();
     public virtual IEnumerator Reload()
     {
-        if (ammoInStorage > 0)
+        if (ammoInStorage > 0 && magazine < maxMagazine)
         {
             animator.SetBool("IsReloading", true);
 
