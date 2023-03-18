@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EventItemSystem : MonoBehaviour
 {
+    [SerializeField]
     protected string areaTag;
     protected bool eventActive;
 
@@ -14,16 +15,16 @@ public class EventItemSystem : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    protected virtual void OnCollisionEnter(Collision collision)
+    protected void OnTriggerEnter(Collider other)
     {
-        if (collision.collider.tag == areaTag)
+        if (other.tag == areaTag)
         {
             Event(true);
         }
     }
-    protected void OnCollisionExit(Collision collision)
+    protected void OnTriggerExit(Collider other)
     {
-        if (collision.collider.tag == areaTag)
+        if (other.tag == areaTag)
         {
             Event(false);
         }
