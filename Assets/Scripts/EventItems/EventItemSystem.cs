@@ -32,6 +32,8 @@ public class EventItemSystem : MonoBehaviour
 
     protected virtual void Event(bool status)
     {
+        animator.SetBool("IsActive", status);
+
         eventActive = status;
     }
 }

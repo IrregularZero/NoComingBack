@@ -5833,7 +5833,7 @@ Transform:
   m_Children:
   - {fileID: 330585546}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &840312537
 GameObject:
@@ -21077,11 +21077,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealingCard
       objectReference: {fileID: 0}
-    - target: {fileID: 2420774271130553802, guid: 0772bf3af81c88844aa2eae40a3eef9d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2713864469683712025, guid: 0772bf3af81c88844aa2eae40a3eef9d,
         type: 3}
       propertyPath: playerVitalitySystem
@@ -21728,11 +21723,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DamagingCard
       objectReference: {fileID: 0}
-    - target: {fileID: 4411280112738883525, guid: 6f1c57483c3e2d246b4ad22744847f57,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4845070032008651148, guid: 6f1c57483c3e2d246b4ad22744847f57,
         type: 3}
       propertyPath: playerVitalitySystem
@@ -21846,7 +21836,7 @@ PrefabInstance:
     - target: {fileID: 8793581145154423503, guid: 32e9210caf114264f92bbff31cc0c4e7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8793581145154423503, guid: 32e9210caf114264f92bbff31cc0c4e7,
         type: 3}

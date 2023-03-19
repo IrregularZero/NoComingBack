@@ -402,13 +402,14 @@ GameObject:
   - component: {fileID: 4845070032008651148}
   - component: {fileID: 2062739597441565133}
   - component: {fileID: 2062739597441565132}
+  - component: {fileID: 886676668028477362}
   m_Layer: 5
   m_Name: DamagingCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6711334242401017238
 Transform:
   m_ObjectHideFlags: 0
@@ -470,6 +471,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.5, z: 0.25}
   m_Center: {x: 0, y: 0.26, z: 0}
+--- !u!95 &886676668028477362
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411280112738883525}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ea1ee62041c7fb04899a31b8de51b7a3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4458404389014118268
 GameObject:
   m_ObjectHideFlags: 0
