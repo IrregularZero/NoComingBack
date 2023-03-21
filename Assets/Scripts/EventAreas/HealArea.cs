@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamagingCard : EventItemSystem
+public class HealArea : EventArea
 {
     [SerializeField]
     private GameObject particleSystemOnplatform;
@@ -10,8 +10,8 @@ public class DamagingCard : EventItemSystem
     private VitalitySystem playerVitalitySystem;
 
     [SerializeField]
-    float MaxDamageDelay = 0.5f;
-    float damageDelay = 0f;
+    float MaxHealDelay = 0.5f;
+    float healDelay = 0f;
 
     private void Update()
     {
@@ -19,18 +19,17 @@ public class DamagingCard : EventItemSystem
         {
             particleSystemOnplatform.SetActive(true);
 
-            if (damageDelay <= 0f)
+            if (healDelay <= 0f)
             {
-                playerVitalitySystem.TakeDamage(5f);
-                damageDelay = MaxDamageDelay;
+                playerVitalitySystem.RestoreHealth(5f);
+                healDelay = MaxHealDelay;
             }
 
-            damageDelay -= Time.deltaTime;
+            healDelay -= Time.deltaTime;
         }
         else
         {
             particleSystemOnplatform.SetActive(false);
         }
     }
-
 }
