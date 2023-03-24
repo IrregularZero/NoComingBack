@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public sealed class NPCVitality : VitalitySystem
 {
@@ -22,6 +23,13 @@ public sealed class NPCVitality : VitalitySystem
         base.Start();
 
         animator = GetComponent<Animator>();
+
+        // Making HealthBar look at player by retrieving player reference from SceneReferenceCenter
+        ConstraintSource cs = new ConstraintSource();
+        cs.sourceTransform = transform.parent.GetComponent<SceneReferenceCenter>().Player.transform;
+        cs.weight = 1.0f;
+        transform.GetChild(0).GetComponent<LookAtConstraint>().AddSource(cs);
+        transform.GetChild(0).GetComponent<LookAtConstraint>().constraintActive = true;
     }
 
     protected override void Update()

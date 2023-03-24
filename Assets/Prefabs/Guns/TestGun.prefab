@@ -5704,7 +5704,6 @@ MonoBehaviour:
   critMult: 2
   overviewDuration: 2.5
   barell: {x: 0, y: 0.235, z: 0.887}
-  cameraTransform: {fileID: 0}
   shotEffects: {fileID: 3866138995392665206}
   ammoMeter: {fileID: 164037753}
   maxDelayBetweenShots: 0.1

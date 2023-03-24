@@ -35,7 +35,6 @@ public abstract class GunSystem : MonoBehaviour
 
     [SerializeField]
     protected Vector3 barell;
-    [SerializeField]
     protected Transform cameraTransform;
 
     protected Animator animator;
@@ -196,6 +195,7 @@ public abstract class GunSystem : MonoBehaviour
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();
+        cameraTransform = transform.parent.parent.GetComponent<UIReferenceCenter>().CameraTransform;
     }
     protected virtual void Update()
     {
