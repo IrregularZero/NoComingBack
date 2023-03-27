@@ -133,6 +133,31 @@ public abstract class GunSystem : MonoBehaviour
             }
         }
     }
+    public int AmmoInStorage 
+    {
+        get
+        {
+            return ammoInStorage;
+        }
+        set
+        {
+            if (value > 0 && value < maxAmmoInStorage)
+            {
+                ammoInStorage = value;
+            }
+            else if (value >= maxAmmoInStorage)
+            {
+                ammoInStorage = maxAmmoInStorage;
+            }
+        }
+    }
+    public int MaxAmmoInStorage 
+    {
+        get
+        {
+            return maxAmmoInStorage;
+        } 
+    }
     public float ReloadSpeed 
     {
         get
