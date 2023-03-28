@@ -57,6 +57,18 @@ public abstract class Item : MonoBehaviour
         }
     }
     #endregion
+    public Item()
+    {
+        title = string.Empty;
+        type = string.Empty;
+        description = string.Empty;
+    }
+    public Item(string title, string type, string description)
+    {
+        this.title = title;
+        this.type = type;
+        this.description = description;
+    }
 
     public abstract void Use();
 }
