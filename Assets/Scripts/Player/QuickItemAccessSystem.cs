@@ -6,12 +6,12 @@ using UnityEngine;
 public class QuickItemAccessSystem : MonoBehaviour
 {
     [SerializeField]
-    private Dictionary<int, Item> items;
+    private Dictionary<int, GameObject> items; // Game object should contain Item script descendand
     [SerializeField]
     private int maxSize = 4;
 
     #region Properties
-    public Dictionary<int, Item> Items
+    public Dictionary<int, GameObject> Items
     {
         set
         {
@@ -33,10 +33,10 @@ public class QuickItemAccessSystem : MonoBehaviour
 
     private void Start()
     {
-        items = new Dictionary<int, Item>();
+        items = new Dictionary<int, GameObject>();
     }
 
-    public void AsignItemToSlot(int slot, Item asigningItem)
+    public void AsignItemToSlot(int slot, GameObject asigningItem)
     {
         if (slot >= maxSize)
             return;
@@ -52,6 +52,6 @@ public class QuickItemAccessSystem : MonoBehaviour
         if (slot >= maxSize)
             return;
 
-        items[slot].Use();
+        items[slot].GetComponent<Item>().Use();
     }
 }

@@ -6,6 +6,7 @@ public class InputManager : MonoBehaviour
 {
     private PlayerMotor player;
     private PlayerLook look;
+    private QuickItemAccessSystem QIAsystem;
     private PlayerInputs inputs;
 
     private void OnEnable()
@@ -28,6 +29,24 @@ public class InputManager : MonoBehaviour
         inputs.OnFoot.CrouchHold.started += ctx => player.Crouch();
         inputs.OnFoot.CrouchHold.canceled += ctx => player.Crouch();
         inputs.OnFoot.Slide.performed += ctx => player.Slide();
+
+        SwapQuickAccessToAsignment(false);
+    }
+
+    public void SwapQuickAccessToAsignment(bool swap)
+    {
+        if (swap)
+        {
+            // Should change controls to asignment through Inventory
+        }
+        else
+        {
+            inputs.ItemManipulation.NorthSlot.performed += ctx => QIAsystem.UseAsignedItem(0);
+            inputs.ItemManipulation.EastSlot.performed += ctx => QIAsystem.UseAsignedItem(1);
+            inputs.ItemManipulation.WestSlot.performed += ctx => QIAsystem.UseAsignedItem(2);
+            inputs.ItemManipulation.SouthSlot.performed += ctx => QIAsystem.UseAsignedItem(3);
+        }
+        
     }
 
     private void Update()

@@ -337,6 +337,138 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""ItemManipulation"",
+            ""id"": ""e359587c-f46c-42ac-bc57-91d6604c65c6"",
+            ""actions"": [
+                {
+                    ""name"": ""NorthSlot"",
+                    ""type"": ""Button"",
+                    ""id"": ""be926777-73e7-41a3-8103-3225cfbc05d2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EastSlot"",
+                    ""type"": ""Button"",
+                    ""id"": ""07cb20b7-553e-4189-872c-716960739cd3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WestSlot"",
+                    ""type"": ""Button"",
+                    ""id"": ""9b106e56-59c3-4cc2-a23c-2add2a50f9f4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SouthSlot"",
+                    ""type"": ""Button"",
+                    ""id"": ""ae4ba343-1da0-4408-a4e6-8fabfaf6ac48"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""915339d2-31fa-4dfe-9725-ef18b30286c2"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NorthSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76eb3f59-47c4-49a3-9c46-7e5be001ef17"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NorthSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ee5d8610-2688-4a79-b01e-b22c15394878"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EastSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""689b500a-ed77-435a-b5b2-92bf6db8a463"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EastSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c9ca54c-fafc-4620-b627-4821d668a4d8"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SouthSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76d43253-c69b-4e58-a6d9-98d8441696ae"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SouthSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""544bff7a-788b-4e6a-85dc-edb1dd285ef4"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WestSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4cb77d0d-b9e7-4d50-8bdd-65f333617a10"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WestSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -355,6 +487,12 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_Gun_SpecialFire = m_Gun.FindAction("SpecialFire", throwIfNotFound: true);
         m_Gun_Reload = m_Gun.FindAction("Reload", throwIfNotFound: true);
         m_Gun_Overview = m_Gun.FindAction("Overview", throwIfNotFound: true);
+        // ItemManipulation
+        m_ItemManipulation = asset.FindActionMap("ItemManipulation", throwIfNotFound: true);
+        m_ItemManipulation_NorthSlot = m_ItemManipulation.FindAction("NorthSlot", throwIfNotFound: true);
+        m_ItemManipulation_EastSlot = m_ItemManipulation.FindAction("EastSlot", throwIfNotFound: true);
+        m_ItemManipulation_WestSlot = m_ItemManipulation.FindAction("WestSlot", throwIfNotFound: true);
+        m_ItemManipulation_SouthSlot = m_ItemManipulation.FindAction("SouthSlot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -540,6 +678,63 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         }
     }
     public GunActions @Gun => new GunActions(this);
+
+    // ItemManipulation
+    private readonly InputActionMap m_ItemManipulation;
+    private IItemManipulationActions m_ItemManipulationActionsCallbackInterface;
+    private readonly InputAction m_ItemManipulation_NorthSlot;
+    private readonly InputAction m_ItemManipulation_EastSlot;
+    private readonly InputAction m_ItemManipulation_WestSlot;
+    private readonly InputAction m_ItemManipulation_SouthSlot;
+    public struct ItemManipulationActions
+    {
+        private @PlayerInputs m_Wrapper;
+        public ItemManipulationActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @NorthSlot => m_Wrapper.m_ItemManipulation_NorthSlot;
+        public InputAction @EastSlot => m_Wrapper.m_ItemManipulation_EastSlot;
+        public InputAction @WestSlot => m_Wrapper.m_ItemManipulation_WestSlot;
+        public InputAction @SouthSlot => m_Wrapper.m_ItemManipulation_SouthSlot;
+        public InputActionMap Get() { return m_Wrapper.m_ItemManipulation; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ItemManipulationActions set) { return set.Get(); }
+        public void SetCallbacks(IItemManipulationActions instance)
+        {
+            if (m_Wrapper.m_ItemManipulationActionsCallbackInterface != null)
+            {
+                @NorthSlot.started -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnNorthSlot;
+                @NorthSlot.performed -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnNorthSlot;
+                @NorthSlot.canceled -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnNorthSlot;
+                @EastSlot.started -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnEastSlot;
+                @EastSlot.performed -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnEastSlot;
+                @EastSlot.canceled -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnEastSlot;
+                @WestSlot.started -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnWestSlot;
+                @WestSlot.performed -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnWestSlot;
+                @WestSlot.canceled -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnWestSlot;
+                @SouthSlot.started -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnSouthSlot;
+                @SouthSlot.performed -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnSouthSlot;
+                @SouthSlot.canceled -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnSouthSlot;
+            }
+            m_Wrapper.m_ItemManipulationActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @NorthSlot.started += instance.OnNorthSlot;
+                @NorthSlot.performed += instance.OnNorthSlot;
+                @NorthSlot.canceled += instance.OnNorthSlot;
+                @EastSlot.started += instance.OnEastSlot;
+                @EastSlot.performed += instance.OnEastSlot;
+                @EastSlot.canceled += instance.OnEastSlot;
+                @WestSlot.started += instance.OnWestSlot;
+                @WestSlot.performed += instance.OnWestSlot;
+                @WestSlot.canceled += instance.OnWestSlot;
+                @SouthSlot.started += instance.OnSouthSlot;
+                @SouthSlot.performed += instance.OnSouthSlot;
+                @SouthSlot.canceled += instance.OnSouthSlot;
+            }
+        }
+    }
+    public ItemManipulationActions @ItemManipulation => new ItemManipulationActions(this);
     public interface IOnFootActions
     {
         void OnLook(InputAction.CallbackContext context);
@@ -555,5 +750,12 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnSpecialFire(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnOverview(InputAction.CallbackContext context);
+    }
+    public interface IItemManipulationActions
+    {
+        void OnNorthSlot(InputAction.CallbackContext context);
+        void OnEastSlot(InputAction.CallbackContext context);
+        void OnWestSlot(InputAction.CallbackContext context);
+        void OnSouthSlot(InputAction.CallbackContext context);
     }
 }
