@@ -9,6 +9,18 @@ public class EventCoreSystem : MonoBehaviour
     private GameObject activeEventItem;
     private Animator activeEventItemAnimator;
 
+    public GameObject ActiveEventItem 
+    {
+        get
+        {
+            return activeEventItem;
+        }
+        set
+        {
+            activeEventItem = value;
+        }
+    }
+
     private void OnEnable()
     {
         activeEventItemAnimator = activeEventItem.GetComponent<Animator>();
@@ -23,6 +35,14 @@ public class EventCoreSystem : MonoBehaviour
                 other.GetComponent<EventArea>().Event(true);
                 activeEventItemAnimator.SetBool("IsActive", true);
             }
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (activeEventItem == null || other.tag != activeEventItem.tag)
+        {
+            other.GetComponent<EventArea>().Event(false);
+            activeEventItemAnimator.SetBool("IsActive", false);
         }
     }
     private void OnTriggerExit(Collider other)

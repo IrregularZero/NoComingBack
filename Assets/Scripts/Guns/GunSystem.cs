@@ -220,7 +220,7 @@ public abstract class GunSystem : MonoBehaviour
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();
-        cameraTransform = transform.parent.parent.GetComponent<UIReferenceCenter>().CameraTransform;
+        cameraTransform = transform.parent.parent.parent.GetComponent<UIReferenceCenter>().CameraTransform;
     }
     protected virtual void Update()
     {
