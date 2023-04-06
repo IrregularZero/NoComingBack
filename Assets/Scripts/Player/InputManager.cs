@@ -6,6 +6,7 @@ public class InputManager : MonoBehaviour
 {
     private PlayerMotor player;
     private PlayerLook look;
+    [SerializeField]
     private QuickItemAccessSystem QIAsystem;
     private PlayerInputs inputs;
 

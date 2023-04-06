@@ -7,14 +7,12 @@ using UnityEngine.InputSystem.LowLevel;
 public class HandCompatibleItem : Item
 {
     [SerializeField]
-    private bool isEquipped;
+    protected bool isEquipped;
     [SerializeField]
-    private GameObject handCompatibleItemPrefab;
-    private GameObject activeHandCompatibleItem;
+    protected GameObject handCompatibleItemPrefab;
+    protected GameObject activeHandCompatibleItem;
     [SerializeField]
-    private Transform handCompatibleItemPlacement;
-    [SerializeField]
-    private Transform hands; // Should be set as Parent
+    protected Transform handCompatibleItemPlacement; // Should be set as Parent
 
     #region Properties
     public bool IsEquipped 
@@ -53,13 +51,6 @@ public class HandCompatibleItem : Item
             handCompatibleItemPlacement = value;
         }
     }
-    public Transform Hands 
-    {
-        get
-        {
-            return hands;
-        }
-    }
     #endregion
 
     // Use() make weapon toggle it's state from equipped to deequipped
@@ -67,10 +58,7 @@ public class HandCompatibleItem : Item
     {
         if (!isEquipped)
         {
-            activeHandCompatibleItem = Instantiate(handCompatibleItemPrefab, Vector3.zero, Quaternion.identity) as GameObject;
-            activeHandCompatibleItem.transform.parent = hands.transform;
-            activeHandCompatibleItem.transform.position = handCompatibleItemPlacement.position;
-            activeHandCompatibleItem.transform.rotation = handCompatibleItemPlacement.rotation;
+            activeHandCompatibleItem = Instantiate(handCompatibleItemPrefab, handCompatibleItemPlacement.transform.position, Quaternion.identity, handCompatibleItemPlacement) as GameObject;
 
             isEquipped = true;
         }

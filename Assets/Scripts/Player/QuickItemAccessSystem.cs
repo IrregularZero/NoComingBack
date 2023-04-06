@@ -10,6 +10,13 @@ public class QuickItemAccessSystem : MonoBehaviour
     [SerializeField]
     private int maxSize = 4;
 
+    // Test constructions
+    public bool updateItems = false;
+    public GameObject GOSlot0;
+    public GameObject GOSlot1;
+    public GameObject GOSlot2;
+    public GameObject GOSlot3;
+
     #region Properties
     public Dictionary<int, GameObject> Items
     {
@@ -36,6 +43,24 @@ public class QuickItemAccessSystem : MonoBehaviour
         items = new Dictionary<int, GameObject>();
     }
 
+    // Test construction
+    private void Update()
+    {
+        if (updateItems)
+        {
+            if (GOSlot0 != null)
+                AsignItemToSlot(0, GOSlot0);
+            if (GOSlot1 != null)
+                AsignItemToSlot(1, GOSlot1);
+            if (GOSlot2 != null)
+                AsignItemToSlot(2, GOSlot2);
+            if (GOSlot3 != null)
+                AsignItemToSlot(3, GOSlot3);
+
+            updateItems = false;
+        }
+    }
+
     public void AsignItemToSlot(int slot, GameObject asigningItem)
     {
         if (slot >= maxSize)
@@ -50,6 +75,8 @@ public class QuickItemAccessSystem : MonoBehaviour
     public void UseAsignedItem(int slot)
     {
         if (slot >= maxSize)
+            return;
+        else if (items[slot] == null)
             return;
 
         items[slot].GetComponent<Item>().Use();
