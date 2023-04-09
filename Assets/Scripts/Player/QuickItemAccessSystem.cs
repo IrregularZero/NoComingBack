@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,7 +9,12 @@ public class QuickItemAccessSystem : MonoBehaviour
     [SerializeField]
     private Dictionary<int, GameObject> items; // Game object should contain Item script descendand
     [SerializeField]
+    private List<Transform> slots; // Game object should contain Item script descendand
+    [SerializeField]
     private int maxSize = 4;
+
+    private float maxAnimationTimer = 0.2f;
+    private List<float> animationTimers;
 
     // Test constructions
     public bool updateItems = false;
@@ -41,11 +47,19 @@ public class QuickItemAccessSystem : MonoBehaviour
     private void Start()
     {
         items = new Dictionary<int, GameObject>();
+
+        slots = new List<Transform>();
+        animationTimers = new List<float>();
+        for (int i = 0; i < 4; i++)
+        {
+            slots.Add(transform.GetChild(i));
+            animationTimers.Add(0);
+        }
     }
 
-    // Test construction
     private void Update()
     {
+        // Test construction
         if (updateItems)
         {
             if (GOSlot0 != null)
@@ -59,6 +73,14 @@ public class QuickItemAccessSystem : MonoBehaviour
 
             updateItems = false;
         }
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (animationTimers[i] > 0)
+                animationTimers[i] -= Time.deltaTime;
+            else
+                slots[i].GetComponent<Animator>().SetBool("UseAnimationEnabled", false);
+        }
     }
 
     public void AsignItemToSlot(int slot, GameObject asigningItem)
@@ -71,9 +93,14 @@ public class QuickItemAccessSystem : MonoBehaviour
             items[slot] = asigningItem;
         else
             items.Add(slot, asigningItem);
+
+        slots[slot].GetComponent<Animator>().SetBool("UseAnimationEnabled", true);
+        animationTimers[slot] = maxAnimationTimer;
     }
     public void UseAsignedItem(int slot)
     {
+        slots[slot].GetComponent<Animator>().SetBool("UseAnimationEnabled", true);
+        animationTimers[slot] = maxAnimationTimer;
         if (slot >= maxSize)
             return;
         else if (items[slot] == null)

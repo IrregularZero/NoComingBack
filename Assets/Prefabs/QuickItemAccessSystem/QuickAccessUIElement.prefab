@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6fa2b6de93526840a590023c22776be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slots: []
   maxSize: 4
   updateItems: 0
   GOSlot0: {fileID: 0}
