@@ -6,8 +6,11 @@ using UnityEngine;
 public abstract class Item : MonoBehaviour
 {
     [SerializeField]
-    protected string title;
+    protected Sprite itemIcon;
+    protected Color backgroundColor;
+
     [SerializeField]
+    protected string title;
     protected string type;
     [SerializeField]
     protected string description;

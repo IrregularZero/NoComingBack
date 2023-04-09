@@ -54,6 +54,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSize: 4
+  updateItems: 0
+  GOSlot0: {fileID: 0}
+  GOSlot1: {fileID: 0}
+  GOSlot2: {fileID: 0}
+  GOSlot3: {fileID: 0}
 --- !u!1001 &2667784593997713942
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -47,6 +47,11 @@ public class HealingItem : Item
     }
     #endregion
 
+    private void Start()
+    {
+        backgroundColor = new Color(22, 172, 57, 1);
+        type = "Healing Consumable";
+    }
     public override void Use()
     {
         if (amountOfUses > 0)

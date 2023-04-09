@@ -10552,55 +10552,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840312537}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &890094516
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 890094518}
-  - component: {fileID: 890094517}
-  m_Layer: 0
-  m_Name: AmmoRestorage_Item
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &890094517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 890094516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69ca7b7c1f6e0dd4db84645906aa073e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: AmmoCrate
-  type: Ammo restorage item
-  description: RATATATATATA, NO AM- NOPE RATATATATA
-  gun: {fileID: 0}
-  ammoAmount: 300
---- !u!4 &890094518
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 890094516}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.37162685, y: 15.390309, z: -13.518414}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1062184812
 GameObject:
   m_ObjectHideFlags: 0
@@ -15747,56 +15698,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 853552398935538028}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1377682467
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1377682469}
-  - component: {fileID: 1377682468}
-  m_Layer: 0
-  m_Name: Healing_Item
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1377682468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1377682467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fd4438eb2ac0ce4390b4cd6d1b3b029, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Healing potion
-  type: Healing Consumable
-  description: MAMA, I WON'T DIE IN A TOILET!
-  playerVitality: {fileID: 6}
-  healAmount: 50
-  maxAmountOfUses: 3
---- !u!4 &1377682469
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1377682467}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.37162685, y: 15.390309, z: -13.518414}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1441560099
 GameObject:
   m_ObjectHideFlags: 0
@@ -21103,6 +21004,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6fa2b6de93526840a590023c22776be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &815592385688500354
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 815592386458827937, guid: cdaef4658acde0441a531610430406f9,
+        type: 3}
+      propertyPath: m_Name
+      value: Healing_Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 815592386458827942, guid: cdaef4658acde0441a531610430406f9,
+        type: 3}
+      propertyPath: playerVitality
+      value: 
+      objectReference: {fileID: 6}
+    - target: {fileID: 815592386458827943, guid: cdaef4658acde0441a531610430406f9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 815592386458827943, guid: cdaef4658acde0441a531610430406f9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.37162685
+      objectReference: {fileID: 0}
+    - target: {fileID: 815592386458827943, guid: cdaef4658acde0441a531610430406f9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.390309
+      objectReference: {fileID: 0}
+    - target: {fileID: 815592386458827943, guid: cdaef4658acde0441a531610430406f9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.518414
+      objectReference: {fileID: 0}
+    - target: {fileID: 815592386458827943, guid: cdaef4658acde0441a531610430406f9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 815592386458827943, guid: cdaef4658acde0441a531610430406f9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 815592386458827943, guid: cdaef4658acde0441a531610430406f9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 815592386458827943, guid: cdaef4658acde0441a531610430406f9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 815592386458827943, guid: cdaef4658acde0441a531610430406f9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 815592386458827943, guid: cdaef4658acde0441a531610430406f9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 815592386458827943, guid: cdaef4658acde0441a531610430406f9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cdaef4658acde0441a531610430406f9, type: 3}
 --- !u!1001 &853552398935538028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21608,6 +21583,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeEventItem: {fileID: 0}
+--- !u!1001 &7249147271000297686
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7249147271755518816, guid: 092e43dff0cdcd447a7b25ad6f647bc0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249147271755518816, guid: 092e43dff0cdcd447a7b25ad6f647bc0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.37162685
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249147271755518816, guid: 092e43dff0cdcd447a7b25ad6f647bc0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.390309
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249147271755518816, guid: 092e43dff0cdcd447a7b25ad6f647bc0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.518414
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249147271755518816, guid: 092e43dff0cdcd447a7b25ad6f647bc0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249147271755518816, guid: 092e43dff0cdcd447a7b25ad6f647bc0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249147271755518816, guid: 092e43dff0cdcd447a7b25ad6f647bc0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249147271755518816, guid: 092e43dff0cdcd447a7b25ad6f647bc0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249147271755518816, guid: 092e43dff0cdcd447a7b25ad6f647bc0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249147271755518816, guid: 092e43dff0cdcd447a7b25ad6f647bc0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249147271755518816, guid: 092e43dff0cdcd447a7b25ad6f647bc0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249147271755518818, guid: 092e43dff0cdcd447a7b25ad6f647bc0,
+        type: 3}
+      propertyPath: m_Name
+      value: AmmoRestorage_Item
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 092e43dff0cdcd447a7b25ad6f647bc0, type: 3}
 --- !u!1001 &8793581145570365608
 PrefabInstance:
   m_ObjectHideFlags: 0

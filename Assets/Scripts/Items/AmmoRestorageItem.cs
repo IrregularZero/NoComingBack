@@ -38,6 +38,11 @@ public class AmmoRestorageItem : Item
     }
     #endregion
 
+    private void Start()
+    {
+        backgroundColor = new Color(218, 204, 19, 1);
+        type = "Ammo Restorage Consumable";
+    }
     public override void Use()
     {
         if (ammoAmount > 0)

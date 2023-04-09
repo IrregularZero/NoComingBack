@@ -53,6 +53,11 @@ public class HandCompatibleItem : Item
     }
     #endregion
 
+    private void Start()
+    {
+        backgroundColor = new Color(152, 0, 169, 1);
+        type = "Weapon";
+    }
     // Use() make weapon toggle it's state from equipped to deequipped
     public override void Use()
     {

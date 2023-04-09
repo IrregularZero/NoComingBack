@@ -7,6 +7,11 @@ public sealed class EventItem : HandCompatibleItem
     [SerializeField]
     private GameObject player;
 
+    private void Start()
+    {
+        backgroundColor = new Color(49, 53, 175, 1);
+        type = "Event Item";
+    }
     public override void Use()
     {
         base.Use();
