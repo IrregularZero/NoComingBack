@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 
-public class AmmoRestorage : Item
+public class AmmoRestorageItem : Item
 {
     [SerializeField]
     private GameObject gun;
@@ -10,7 +11,7 @@ public class AmmoRestorage : Item
     private int ammoAmount;
 
     #region Properties
-    public GameObject Gun 
+    public GameObject Gun
     {
         get
         {

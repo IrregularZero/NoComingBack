@@ -51,7 +51,7 @@ public class HealingItem : Item
     {
         if (amountOfUses > 0)
         {
-            playerVitality.Health += healAmount;
+            playerVitality.RestoreHealth(healAmount);
 
             amountOfUses--;
         }
