@@ -9,6 +9,8 @@ public class UIReferenceCenter : MonoBehaviour
 
     [SerializeField]
     private Transform cameraTransform;
+    [SerializeField]
+    private GameObject hands;
 
     #region Properties
     public Transform CameraTransform 
@@ -16,6 +18,13 @@ public class UIReferenceCenter : MonoBehaviour
         get
         {
             return cameraTransform;
+        }
+    }
+    public GameObject Hands 
+    {
+        get
+        {
+            return Hands;
         }
     }
     #endregion

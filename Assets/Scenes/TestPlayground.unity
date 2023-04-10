@@ -20867,6 +20867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 330585546}
+  hands: {fileID: 2295637358602404744}
 --- !u!1001 &2136356255
 PrefabInstance:
   m_ObjectHideFlags: 0
