@@ -55,7 +55,7 @@ public class HandCompatibleItem : Item
 
     private void Start()
     {
-        backgroundColor = new Color(152, 0, 169, 1);
+        backgroundColor = new Color(0.596f, 0f, 0.662f, 1f);
         type = "Weapon";
     }
     // Use() make weapon toggle it's state from equipped to deequipped

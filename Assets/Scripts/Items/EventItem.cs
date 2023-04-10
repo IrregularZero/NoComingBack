@@ -9,7 +9,7 @@ public sealed class EventItem : HandCompatibleItem
 
     private void Start()
     {
-        backgroundColor = new Color(49, 53, 175, 1);
+        backgroundColor = new Color(0.192f, 0.207f, 0.686f, 1f);
         type = "Event Item";
     }
     public override void Use()

@@ -16,6 +16,24 @@ public abstract class Item : MonoBehaviour
     protected string description;
 
     #region Properties
+    public Sprite ItemIcon 
+    { 
+        get
+        {
+            return itemIcon;
+        }
+        set
+        {
+            itemIcon = value;
+        }
+    }
+    public Color BackgroundColor 
+    {
+        get
+        {
+            return backgroundColor;
+        }
+    }
     public string Title 
     {
         get

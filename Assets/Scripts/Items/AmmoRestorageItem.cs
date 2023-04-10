@@ -40,7 +40,7 @@ public class AmmoRestorageItem : Item
 
     private void Start()
     {
-        backgroundColor = new Color(218, 204, 19, 1);
+        backgroundColor = new Color(0.854f, 0.8f, 0.074f, 1f);
         type = "Ammo Restorage Consumable";
     }
     public override void Use()

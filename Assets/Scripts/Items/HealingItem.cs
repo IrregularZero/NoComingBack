@@ -49,7 +49,7 @@ public class HealingItem : Item
 
     private void Start()
     {
-        backgroundColor = new Color(22, 172, 57, 1);
+        backgroundColor = new Color(0.086f, 0.674f, 0.223f, 1f);
         type = "Healing Consumable";
     }
     public override void Use()
