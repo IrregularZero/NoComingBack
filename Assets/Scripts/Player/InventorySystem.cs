@@ -14,6 +14,11 @@ public class InventorySystem : MonoBehaviour
     private int selectedSlot = 0;
     private int swapingItemSlot = -1;
 
+    private void Start()
+    {
+        items = new Dictionary<int, GameObject>();
+    }
+
     public void AddItem(GameObject item)
     {
         int slotForNewItem = -1;
