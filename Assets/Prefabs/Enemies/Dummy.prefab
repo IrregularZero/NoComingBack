@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8793581145154423500}
   - component: {fileID: 8793581145154423489}
   - component: {fileID: 8793581145154423490}
+  - component: {fileID: 4115797534126164984}
   - component: {fileID: 8793581145154423488}
   m_Layer: 0
   m_Name: Dummy
@@ -140,6 +141,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealthRestoreDelay: 0.5
+--- !u!114 &4115797534126164984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8793581145154423499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c69b64245e3cdd142a40e15d08bd91c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useEvents: 0
+  promptMessage: Change color
 --- !u!95 &8793581145154423488
 Animator:
   serializedVersion: 4

@@ -14,13 +14,11 @@ public class PlayerInteractionSystem : MonoBehaviour
     private GameObject interactibleIndication;
 
     private Camera cam;
-    private InputManager inputManager;
     private bool interactibleFound = false;
 
     void Start()
     {
         cam = GetComponent<PlayerLook>().cam;
-        inputManager = GetComponent<InputManager>();
     }
 
     // Update is called once per frame
@@ -31,16 +29,19 @@ public class PlayerInteractionSystem : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.Raycast(ray, out hitInfo, interactionDistance, mask))
         {
+            
             if (hitInfo.collider.GetComponent<Interactible>() != null)
             {
                 Interactible interactible = hitInfo.collider.GetComponent<Interactible>();
                 interactibleIndication.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = $"{interactible.promptMessage}: F";
                 interactibleIndication.SetActive(true);
+                interactibleFound = true;
             }
-        }
-        else
-        { 
-            interactibleIndication.SetActive(false);
+            else
+            {
+                interactibleFound = false;
+                interactibleIndication.SetActive(false);
+            }
         }
     }
 

@@ -12,7 +12,7 @@ public class Interactible : MonoBehaviour
     {
         Interact();
     }
-    protected void Interact()
+    protected virtual void Interact()
     {
         
     }
