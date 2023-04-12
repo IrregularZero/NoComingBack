@@ -6,6 +6,7 @@ public class InputManager : MonoBehaviour
 {
     private PlayerMotor player;
     private PlayerLook look;
+    private PlayerInteractionSystem interactionSystem;
     [SerializeField]
     private QuickItemAccessSystem QIAsystem;
     private PlayerInputs inputs;
@@ -23,6 +24,7 @@ public class InputManager : MonoBehaviour
     {
         player = GetComponent<PlayerMotor>();
         look = GetComponent<PlayerLook>();
+        interactionSystem = GetComponent<PlayerInteractionSystem>();
         inputs = new PlayerInputs();
 
         inputs.OnFoot.Jump.performed += ctx => player.Jump();
@@ -30,6 +32,7 @@ public class InputManager : MonoBehaviour
         inputs.OnFoot.CrouchHold.started += ctx => player.Crouch();
         inputs.OnFoot.CrouchHold.canceled += ctx => player.Crouch();
         inputs.OnFoot.Slide.performed += ctx => player.Slide();
+        inputs.OnFoot.Interact.performed += ctx => interactionSystem.Interact();
 
         SwapQuickAccessToAsignment(false);
     }

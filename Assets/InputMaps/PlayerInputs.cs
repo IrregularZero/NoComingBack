@@ -80,6 +80,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""39890f6e-ce7f-4141-bcf8-f4712c552491"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -245,6 +254,28 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""KnockDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d69a62db-c1e5-4ab6-a385-9d86aa5aadf8"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ea166690-0c04-4932-94cc-795d08d8169c"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -481,6 +512,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_OnFoot_KnockDown = m_OnFoot.FindAction("KnockDown", throwIfNotFound: true);
         m_OnFoot_CrouchHold = m_OnFoot.FindAction("CrouchHold", throwIfNotFound: true);
         m_OnFoot_Slide = m_OnFoot.FindAction("Slide", throwIfNotFound: true);
+        m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
         // Gun
         m_Gun = asset.FindActionMap("Gun", throwIfNotFound: true);
         m_Gun_Fire = m_Gun.FindAction("Fire", throwIfNotFound: true);
@@ -558,6 +590,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_KnockDown;
     private readonly InputAction m_OnFoot_CrouchHold;
     private readonly InputAction m_OnFoot_Slide;
+    private readonly InputAction m_OnFoot_Interact;
     public struct OnFootActions
     {
         private @PlayerInputs m_Wrapper;
@@ -568,6 +601,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         public InputAction @KnockDown => m_Wrapper.m_OnFoot_KnockDown;
         public InputAction @CrouchHold => m_Wrapper.m_OnFoot_CrouchHold;
         public InputAction @Slide => m_Wrapper.m_OnFoot_Slide;
+        public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -595,6 +629,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Slide.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnSlide;
                 @Slide.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnSlide;
                 @Slide.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnSlide;
+                @Interact.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -617,6 +654,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Slide.started += instance.OnSlide;
                 @Slide.performed += instance.OnSlide;
                 @Slide.canceled += instance.OnSlide;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -743,6 +783,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnKnockDown(InputAction.CallbackContext context);
         void OnCrouchHold(InputAction.CallbackContext context);
         void OnSlide(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IGunActions
     {
