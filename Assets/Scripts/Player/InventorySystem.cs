@@ -8,6 +8,7 @@ public class InventorySystem : MonoBehaviour
     [SerializeField]
     private QuickItemAccessSystem quickItemAccess;
 
+    private List<Transform> slots;
     private Dictionary<int, GameObject> items;
     private int maxItems = 6;
 
@@ -26,6 +27,12 @@ public class InventorySystem : MonoBehaviour
     private void Start()
     {
         items = new Dictionary<int, GameObject>();
+
+        slots = new List<Transform>();
+        for (int i = 0; i < 6; i++)
+        {
+            slots.Add(transform.GetChild(3).GetChild(i));
+        }
     }
 
     #region Item Manipulation
@@ -85,8 +92,51 @@ public class InventorySystem : MonoBehaviour
     }
     #endregion
 
-    public void SelectedItemTracking(Vector2 mouseInput)
+    private void SelectSlotAndDeselectPrevious(int slot)
     {
-        //
+        slots[selectedSlot].GetChild(0).gameObject.SetActive(false);
+        selectedSlot = slot;
+        slots[selectedSlot].GetChild(0).gameObject.SetActive(true);
+    }
+    public void SelectedItemTracking()
+    {
+        #region Getting mouse angle from center of the screen
+        Vector2 mouseInput = Vector2.zero;
+        mouseInput.x = Input.mousePosition.x - (Screen.width * 0.5f);
+        mouseInput.y = Input.mousePosition.y - (Screen.height * 0.5f);
+        mouseInput.Normalize();
+
+        float angle = 0;
+        if (mouseInput != Vector2.zero)
+        {
+            angle = Mathf.Atan2(mouseInput.y, -mouseInput.x) * Mathf.Rad2Deg;
+            if (angle <= 0) angle += 360;
+        }
+        #endregion
+
+        if (angle >= 60 && angle < 120)
+        {
+            SelectSlotAndDeselectPrevious(0);
+        }
+        else if (angle >= 120 && angle < 180)
+        {
+            SelectSlotAndDeselectPrevious(1);
+        }
+        else if (angle >= 180 && angle < 240)
+        {
+            SelectSlotAndDeselectPrevious(2);
+        }
+        else if (angle >= 240 && angle < 300)
+        {
+            SelectSlotAndDeselectPrevious(3);
+        }
+        else if (angle >= 300 && angle <= 360)
+        {
+            SelectSlotAndDeselectPrevious(4);
+        }
+        else if (angle >= 0 && angle < 60)
+        {
+            SelectSlotAndDeselectPrevious(5);
+        }
     }
 }

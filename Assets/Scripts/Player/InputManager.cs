@@ -103,6 +103,6 @@ public class InputManager : MonoBehaviour
         if (!inventoryEnabled)
             look.processLook(inputs.OnFoot.Look.ReadValue<Vector2>());
         else
-            inventorySystem.SelectedItemTracking(inputs.OnFoot.Look.ReadValue<Vector2>());
+            inventorySystem.SelectedItemTracking();
     }
 }

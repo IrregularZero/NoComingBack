@@ -11077,6 +11077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   QIAsystem: {fileID: 2136356257}
+  inventorySystem: {fileID: 1079547699}
 --- !u!143 &839420274
 CharacterController:
   m_ObjectHideFlags: 0
@@ -16419,7 +16420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1079547698
 RectTransform:
   m_ObjectHideFlags: 0
