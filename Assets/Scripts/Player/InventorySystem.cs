@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class InventorySystem : MonoBehaviour
 {
@@ -14,11 +14,21 @@ public class InventorySystem : MonoBehaviour
     private int selectedSlot = 0;
     private int swapingItemSlot = -1;
 
+    private void OnEnable()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+    private void OnDisable()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     private void Start()
     {
         items = new Dictionary<int, GameObject>();
     }
 
+    #region Item Manipulation
     public void AddItem(GameObject item)
     {
         int slotForNewItem = -1;
@@ -72,5 +82,11 @@ public class InventorySystem : MonoBehaviour
     public void AsignOrDeasignItemToQuickItemAccessSystem(int QIASslotIndex)
     {
         quickItemAccess.AsignItemToSlot(QIASslotIndex, items[selectedSlot]);
+    }
+    #endregion
+
+    public void SelectedItemTracking(Vector2 mouseInput)
+    {
+        //
     }
 }
