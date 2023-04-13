@@ -408,6 +408,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""22c9ac06-5e38-4c99-b64b-7fe12be00cc7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -498,6 +507,28 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""action"": ""WestSlot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e5b02218-51f6-40a0-bd4a-4b91b3dfe8f4"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9c63074e-f217-44ac-8b40-0eeefe7171fb"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -525,6 +556,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_ItemManipulation_EastSlot = m_ItemManipulation.FindAction("EastSlot", throwIfNotFound: true);
         m_ItemManipulation_WestSlot = m_ItemManipulation.FindAction("WestSlot", throwIfNotFound: true);
         m_ItemManipulation_SouthSlot = m_ItemManipulation.FindAction("SouthSlot", throwIfNotFound: true);
+        m_ItemManipulation_Inventory = m_ItemManipulation.FindAction("Inventory", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -726,6 +758,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_ItemManipulation_EastSlot;
     private readonly InputAction m_ItemManipulation_WestSlot;
     private readonly InputAction m_ItemManipulation_SouthSlot;
+    private readonly InputAction m_ItemManipulation_Inventory;
     public struct ItemManipulationActions
     {
         private @PlayerInputs m_Wrapper;
@@ -734,6 +767,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         public InputAction @EastSlot => m_Wrapper.m_ItemManipulation_EastSlot;
         public InputAction @WestSlot => m_Wrapper.m_ItemManipulation_WestSlot;
         public InputAction @SouthSlot => m_Wrapper.m_ItemManipulation_SouthSlot;
+        public InputAction @Inventory => m_Wrapper.m_ItemManipulation_Inventory;
         public InputActionMap Get() { return m_Wrapper.m_ItemManipulation; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -755,6 +789,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @SouthSlot.started -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnSouthSlot;
                 @SouthSlot.performed -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnSouthSlot;
                 @SouthSlot.canceled -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnSouthSlot;
+                @Inventory.started -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnInventory;
+                @Inventory.performed -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnInventory;
+                @Inventory.canceled -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnInventory;
             }
             m_Wrapper.m_ItemManipulationActionsCallbackInterface = instance;
             if (instance != null)
@@ -771,6 +808,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @SouthSlot.started += instance.OnSouthSlot;
                 @SouthSlot.performed += instance.OnSouthSlot;
                 @SouthSlot.canceled += instance.OnSouthSlot;
+                @Inventory.started += instance.OnInventory;
+                @Inventory.performed += instance.OnInventory;
+                @Inventory.canceled += instance.OnInventory;
             }
         }
     }
@@ -798,5 +838,6 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnEastSlot(InputAction.CallbackContext context);
         void OnWestSlot(InputAction.CallbackContext context);
         void OnSouthSlot(InputAction.CallbackContext context);
+        void OnInventory(InputAction.CallbackContext context);
     }
 }

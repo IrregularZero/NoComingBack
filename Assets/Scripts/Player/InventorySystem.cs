@@ -9,7 +9,7 @@ public class InventorySystem : MonoBehaviour
     private QuickItemAccessSystem quickItemAccess;
 
     private Dictionary<int, GameObject> items;
-    private int maxItems = 10;
+    private int maxItems = 6;
 
     private int selectedSlot = 0;
     private int swapingItemSlot = -1;
