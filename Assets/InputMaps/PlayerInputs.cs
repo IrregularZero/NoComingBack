@@ -417,6 +417,33 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Use_InInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""46338af4-f8e8-48f9-a01e-626cf26fa0c4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Remove_InInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""beed2dbd-09b7-43ea-a822-e7fc4a1da39b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Swap_InInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""d085e1fc-6856-4c5d-89ec-695fa1c11e41"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -529,6 +556,39 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""51e5acf8-922c-4646-a7ec-54da3b077e0a"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Use_InInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d9cc4d2c-7384-4b8a-8a4c-14bdff20a8c7"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Remove_InInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""009b3503-ecb6-43bc-8b81-09e8263de057"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Swap_InInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -557,6 +617,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_ItemManipulation_WestSlot = m_ItemManipulation.FindAction("WestSlot", throwIfNotFound: true);
         m_ItemManipulation_SouthSlot = m_ItemManipulation.FindAction("SouthSlot", throwIfNotFound: true);
         m_ItemManipulation_Inventory = m_ItemManipulation.FindAction("Inventory", throwIfNotFound: true);
+        m_ItemManipulation_Use_InInventory = m_ItemManipulation.FindAction("Use_InInventory", throwIfNotFound: true);
+        m_ItemManipulation_Remove_InInventory = m_ItemManipulation.FindAction("Remove_InInventory", throwIfNotFound: true);
+        m_ItemManipulation_Swap_InInventory = m_ItemManipulation.FindAction("Swap_InInventory", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -759,6 +822,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_ItemManipulation_WestSlot;
     private readonly InputAction m_ItemManipulation_SouthSlot;
     private readonly InputAction m_ItemManipulation_Inventory;
+    private readonly InputAction m_ItemManipulation_Use_InInventory;
+    private readonly InputAction m_ItemManipulation_Remove_InInventory;
+    private readonly InputAction m_ItemManipulation_Swap_InInventory;
     public struct ItemManipulationActions
     {
         private @PlayerInputs m_Wrapper;
@@ -768,6 +834,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         public InputAction @WestSlot => m_Wrapper.m_ItemManipulation_WestSlot;
         public InputAction @SouthSlot => m_Wrapper.m_ItemManipulation_SouthSlot;
         public InputAction @Inventory => m_Wrapper.m_ItemManipulation_Inventory;
+        public InputAction @Use_InInventory => m_Wrapper.m_ItemManipulation_Use_InInventory;
+        public InputAction @Remove_InInventory => m_Wrapper.m_ItemManipulation_Remove_InInventory;
+        public InputAction @Swap_InInventory => m_Wrapper.m_ItemManipulation_Swap_InInventory;
         public InputActionMap Get() { return m_Wrapper.m_ItemManipulation; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -792,6 +861,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Inventory.started -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnInventory;
                 @Inventory.performed -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnInventory;
                 @Inventory.canceled -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnInventory;
+                @Use_InInventory.started -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnUse_InInventory;
+                @Use_InInventory.performed -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnUse_InInventory;
+                @Use_InInventory.canceled -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnUse_InInventory;
+                @Remove_InInventory.started -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnRemove_InInventory;
+                @Remove_InInventory.performed -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnRemove_InInventory;
+                @Remove_InInventory.canceled -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnRemove_InInventory;
+                @Swap_InInventory.started -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnSwap_InInventory;
+                @Swap_InInventory.performed -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnSwap_InInventory;
+                @Swap_InInventory.canceled -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnSwap_InInventory;
             }
             m_Wrapper.m_ItemManipulationActionsCallbackInterface = instance;
             if (instance != null)
@@ -811,6 +889,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Inventory.started += instance.OnInventory;
                 @Inventory.performed += instance.OnInventory;
                 @Inventory.canceled += instance.OnInventory;
+                @Use_InInventory.started += instance.OnUse_InInventory;
+                @Use_InInventory.performed += instance.OnUse_InInventory;
+                @Use_InInventory.canceled += instance.OnUse_InInventory;
+                @Remove_InInventory.started += instance.OnRemove_InInventory;
+                @Remove_InInventory.performed += instance.OnRemove_InInventory;
+                @Remove_InInventory.canceled += instance.OnRemove_InInventory;
+                @Swap_InInventory.started += instance.OnSwap_InInventory;
+                @Swap_InInventory.performed += instance.OnSwap_InInventory;
+                @Swap_InInventory.canceled += instance.OnSwap_InInventory;
             }
         }
     }
@@ -839,5 +926,8 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnWestSlot(InputAction.CallbackContext context);
         void OnSouthSlot(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
+        void OnUse_InInventory(InputAction.CallbackContext context);
+        void OnRemove_InInventory(InputAction.CallbackContext context);
+        void OnSwap_InInventory(InputAction.CallbackContext context);
     }
 }

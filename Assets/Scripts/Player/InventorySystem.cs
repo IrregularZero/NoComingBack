@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class InventorySystem : MonoBehaviour
 {
     [SerializeField]
     private QuickItemAccessSystem quickItemAccess;
+    [SerializeField]
+    private GameObject infoPanel;
 
     private List<Transform> slots;
     private Dictionary<int, GameObject> items;
@@ -14,6 +19,11 @@ public class InventorySystem : MonoBehaviour
 
     private int selectedSlot = 0;
     private int swapingItemSlot = -1;
+
+    private Color defaultSelectionColor = new Color(1f, 1f, 1f, 0.3137f);
+
+    private float maxAnimationTimer = 0.2f;
+    private List<float> animationTimers;
 
     private void OnEnable()
     {
@@ -29,9 +39,21 @@ public class InventorySystem : MonoBehaviour
         items = new Dictionary<int, GameObject>();
 
         slots = new List<Transform>();
+        animationTimers = new List<float>();
         for (int i = 0; i < 6; i++)
         {
             slots.Add(transform.GetChild(3).GetChild(i));
+            animationTimers.Add(0f);
+        }
+    }
+    private void Update()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (animationTimers[i] > 0)
+                animationTimers[i] -= Time.deltaTime;
+            else
+                slots[i].GetComponent<Animator>().SetBool("Interacted", false);
         }
     }
 
@@ -66,28 +88,49 @@ public class InventorySystem : MonoBehaviour
             items[slotForNewItem] = item;
         else
             items.Add(slotForNewItem, item);
-    }
 
+
+        slots[selectedSlot].GetChild(0).gameObject.GetComponent<Image>().color = item.GetComponent<Item>().BackgroundColor;
+        slots[selectedSlot].GetChild(1).gameObject.GetComponent<Image>().sprite = item.GetComponent<Item>().ItemIcon;
+        slots[selectedSlot].GetChild(1).gameObject.SetActive(true);
+    }
+    public void UseItem()
+    {
+        if (!items.ContainsKey(selectedSlot) || items[selectedSlot] == null)
+            return;
+
+        slots[selectedSlot].GetComponent<Animator>().SetBool("Interacted", true);
+        animationTimers[selectedSlot] = maxAnimationTimer;
+        items[selectedSlot].GetComponent<Item>().Use();
+    }
     public void RemoveItem() 
     {
         if (!items.ContainsKey(selectedSlot))
             return;
 
-        items[selectedSlot] = null;
-    }
+        slots[selectedSlot].GetComponent<Animator>().SetBool("Interacted", true);
+        animationTimers[selectedSlot] = maxAnimationTimer;
 
+        items[selectedSlot] = null;
+        slots[selectedSlot].GetChild(0).gameObject.GetComponent<Image>().color = defaultSelectionColor;
+    }
     public void SwapItems()
     {
         if (swapingItemSlot < 0)
             return;
 
+        slots[selectedSlot].GetComponent<Animator>().SetBool("Interacted", true);
+        animationTimers[selectedSlot] = maxAnimationTimer;
+
         GameObject tmp = items[selectedSlot];
         items[selectedSlot] = items[swapingItemSlot];
         items[swapingItemSlot] = tmp;
     }
-
     public void AsignOrDeasignItemToQuickItemAccessSystem(int QIASslotIndex)
     {
+        slots[selectedSlot].GetComponent<Animator>().SetBool("Interacted", true);
+        animationTimers[selectedSlot] = maxAnimationTimer;
+
         quickItemAccess.AsignItemToSlot(QIASslotIndex, items[selectedSlot]);
     }
     #endregion
@@ -97,6 +140,21 @@ public class InventorySystem : MonoBehaviour
         slots[selectedSlot].GetChild(0).gameObject.SetActive(false);
         selectedSlot = slot;
         slots[selectedSlot].GetChild(0).gameObject.SetActive(true);
+    }
+    private void SetDescription()
+    {
+        if (!items.ContainsKey(selectedSlot) || items[selectedSlot] == null)
+        {
+            infoPanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Item";
+            infoPanel.transform.GetChild(2).GetComponent<Image>().sprite = null;
+            infoPanel.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "None";
+
+            return;
+        }
+
+        infoPanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = items[selectedSlot].GetComponent<Item>().Title;
+        infoPanel.transform.GetChild(2).GetComponent<Image>().sprite = items[selectedSlot].GetComponent<Item>().ItemIcon;
+        infoPanel.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = items[selectedSlot].GetComponent<Item>().Desription;
     }
     public void SelectedItemTracking()
     {
@@ -138,5 +196,7 @@ public class InventorySystem : MonoBehaviour
         {
             SelectSlotAndDeselectPrevious(5);
         }
+
+        SetDescription();
     }
 }
