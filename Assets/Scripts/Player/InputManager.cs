@@ -41,11 +41,14 @@ public class InputManager : MonoBehaviour
         inputs.OnFoot.Interact.performed += ctx => interactionSystem.Interact();
 
         // Inventory controls
-        inputs.ItemManipulation.Inventory.performed += ctx => EnableInventoryMode();
         inputs.ItemManipulation.Use_InInventory.performed += ctx => inventorySystem.UseItem();
         inputs.ItemManipulation.Remove_InInventory.performed += ctx => inventorySystem.RemoveItem();
         inputs.ItemManipulation.Swap_InInventory.started += ctx => inventorySystem.SwapSequence();
         inputs.ItemManipulation.Swap_InInventory.canceled += ctx => inventorySystem.SwapSequence();
+        inputs.ItemManipulation.Use_InInventory.Disable();
+        inputs.ItemManipulation.Remove_InInventory.Disable();
+        inputs.ItemManipulation.Swap_InInventory.Disable();
+        inputs.ItemManipulation.Inventory.performed += ctx => EnableInventoryMode();
 
         SwapQuickAccessToAsignment(false);
     }
@@ -53,7 +56,6 @@ public class InputManager : MonoBehaviour
     public void EnableInventoryMode()
     {
         inventoryEnabled = !inventoryEnabled;
-
         if (inventoryEnabled)
         {
             SwapQuickAccessToAsignment(true);

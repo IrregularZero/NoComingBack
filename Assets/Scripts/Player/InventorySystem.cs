@@ -24,7 +24,7 @@ public class InventorySystem : MonoBehaviour
 
     private Color defaultSelectionColor = new Color(1f, 1f, 1f, 0.3137f);
 
-    private float maxAnimationTimer = 0.2f;
+    private float maxAnimationTimer = 0.25f;
     private List<float> animationTimers;
 
     private void OnEnable()
@@ -98,20 +98,21 @@ public class InventorySystem : MonoBehaviour
     }
     public void UseItem()
     {
+        slots[selectedSlot].GetComponent<Animator>().SetBool("Interacted", true);
+        animationTimers[selectedSlot] = maxAnimationTimer;
+
         if (!items.ContainsKey(selectedSlot) || items[selectedSlot] == null)
             return;
 
-        slots[selectedSlot].GetComponent<Animator>().SetBool("Interacted", true);
-        animationTimers[selectedSlot] = maxAnimationTimer;
         items[selectedSlot].GetComponent<Item>().Use();
     }
-    public void RemoveItem() 
+    public void RemoveItem()
     {
-        if (!items.ContainsKey(selectedSlot))
-            return;
-
         slots[selectedSlot].GetComponent<Animator>().SetBool("Interacted", true);
         animationTimers[selectedSlot] = maxAnimationTimer;
+
+        if (!items.ContainsKey(selectedSlot))
+            return;
 
         items[selectedSlot] = null;
         slots[selectedSlot].GetChild(0).gameObject.GetComponent<Image>().color = defaultSelectionColor;
