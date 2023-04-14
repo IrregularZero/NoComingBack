@@ -30,13 +30,22 @@ public class InputManager : MonoBehaviour
         interactionSystem = GetComponent<PlayerInteractionSystem>();
         inputs = new PlayerInputs();
 
+        // Movement controls
         inputs.OnFoot.Jump.performed += ctx => player.Jump();
         inputs.OnFoot.KnockDown.performed += ctx => player.KnockDown();
         inputs.OnFoot.CrouchHold.started += ctx => player.Crouch();
         inputs.OnFoot.CrouchHold.canceled += ctx => player.Crouch();
         inputs.OnFoot.Slide.performed += ctx => player.Slide();
+
+        // Interaction system
         inputs.OnFoot.Interact.performed += ctx => interactionSystem.Interact();
+
+        // Inventory controls
         inputs.ItemManipulation.Inventory.performed += ctx => EnableInventoryMode();
+        inputs.ItemManipulation.Use_InInventory.performed += ctx => inventorySystem.UseItem();
+        inputs.ItemManipulation.Remove_InInventory.performed += ctx => inventorySystem.RemoveItem();
+        inputs.ItemManipulation.Swap_InInventory.started += ctx => inventorySystem.SwapSequence();
+        inputs.ItemManipulation.Swap_InInventory.canceled += ctx => inventorySystem.SwapSequence();
 
         SwapQuickAccessToAsignment(false);
     }
@@ -53,6 +62,10 @@ public class InputManager : MonoBehaviour
             inputs.OnFoot.Disable();
             inputs.OnFoot.Movement.Enable();
             inputs.OnFoot.Look.Enable();
+
+            inputs.ItemManipulation.Use_InInventory.Enable();
+            inputs.ItemManipulation.Remove_InInventory.Enable();
+            inputs.ItemManipulation.Swap_InInventory.Enable();
         }
         else
         {
@@ -60,6 +73,10 @@ public class InputManager : MonoBehaviour
             inventorySystem.transform.gameObject.SetActive(false);
 
             inputs.OnFoot.Enable();
+
+            inputs.ItemManipulation.Use_InInventory.Disable();
+            inputs.ItemManipulation.Remove_InInventory.Disable();
+            inputs.ItemManipulation.Swap_InInventory.Disable();
         }
     }
 

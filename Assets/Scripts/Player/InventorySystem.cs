@@ -20,6 +20,8 @@ public class InventorySystem : MonoBehaviour
     private int selectedSlot = 0;
     private int swapingItemSlot = -1;
 
+    private bool swapSequenceInitiated = false;
+
     private Color defaultSelectionColor = new Color(1f, 1f, 1f, 0.3137f);
 
     private float maxAnimationTimer = 0.2f;
@@ -135,26 +137,12 @@ public class InventorySystem : MonoBehaviour
     }
     #endregion
 
+    #region Selected slot
     private void SelectSlotAndDeselectPrevious(int slot)
     {
         slots[selectedSlot].GetChild(0).gameObject.SetActive(false);
         selectedSlot = slot;
         slots[selectedSlot].GetChild(0).gameObject.SetActive(true);
-    }
-    private void SetDescription()
-    {
-        if (!items.ContainsKey(selectedSlot) || items[selectedSlot] == null)
-        {
-            infoPanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Item";
-            infoPanel.transform.GetChild(2).GetComponent<Image>().sprite = null;
-            infoPanel.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "None";
-
-            return;
-        }
-
-        infoPanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = items[selectedSlot].GetComponent<Item>().Title;
-        infoPanel.transform.GetChild(2).GetComponent<Image>().sprite = items[selectedSlot].GetComponent<Item>().ItemIcon;
-        infoPanel.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = items[selectedSlot].GetComponent<Item>().Desription;
     }
     public void SelectedItemTracking()
     {
@@ -198,5 +186,41 @@ public class InventorySystem : MonoBehaviour
         }
 
         SetDescription();
+    }
+    #endregion
+
+    #region Input sequences
+    public void SwapSequence()
+    {
+        if (!swapSequenceInitiated)
+        {
+            slots[selectedSlot].GetComponent<Animator>().SetBool("Interacted", true);
+            animationTimers[selectedSlot] = maxAnimationTimer;
+
+            swapingItemSlot = selectedSlot;
+        }
+        else
+        {
+            SwapItems();
+        }
+
+        swapSequenceInitiated = !swapSequenceInitiated;
+    }
+    #endregion
+
+    private void SetDescription()
+    {
+        if (!items.ContainsKey(selectedSlot) || items[selectedSlot] == null)
+        {
+            infoPanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Item";
+            infoPanel.transform.GetChild(2).GetComponent<Image>().sprite = null;
+            infoPanel.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "None";
+
+            return;
+        }
+
+        infoPanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = items[selectedSlot].GetComponent<Item>().Title;
+        infoPanel.transform.GetChild(2).GetComponent<Image>().sprite = items[selectedSlot].GetComponent<Item>().ItemIcon;
+        infoPanel.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = items[selectedSlot].GetComponent<Item>().Desription;
     }
 }
