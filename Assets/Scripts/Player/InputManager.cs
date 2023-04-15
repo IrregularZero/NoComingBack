@@ -14,6 +14,16 @@ public class InputManager : MonoBehaviour
     private bool inventoryEnabled = false;
     private PlayerInputs inputs;
 
+    #region Properties
+    public InventorySystem Inventory 
+    {
+        get
+        {
+            return inventorySystem;
+        } 
+    }
+    #endregion
+
     private void OnEnable()
     {
         inputs.Enable();

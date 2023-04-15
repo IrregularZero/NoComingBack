@@ -92,9 +92,9 @@ public class InventorySystem : MonoBehaviour
             items.Add(slotForNewItem, item);
 
 
-        slots[selectedSlot].GetChild(0).gameObject.GetComponent<Image>().color = item.GetComponent<Item>().BackgroundColor;
-        slots[selectedSlot].GetChild(1).gameObject.GetComponent<Image>().sprite = item.GetComponent<Item>().ItemIcon;
-        slots[selectedSlot].GetChild(1).gameObject.SetActive(true);
+        slots[slotForNewItem].GetChild(0).gameObject.GetComponent<Image>().color = item.GetComponent<Item>().BackgroundColor;
+        slots[slotForNewItem].GetChild(1).gameObject.GetComponent<Image>().sprite = item.GetComponent<Item>().ItemIcon;
+        slots[slotForNewItem].GetChild(1).gameObject.SetActive(true);
     }
     public void UseItem()
     {

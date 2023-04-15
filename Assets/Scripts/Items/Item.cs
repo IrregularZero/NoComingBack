@@ -7,6 +7,7 @@ public abstract class Item : MonoBehaviour
 {
     [SerializeField]
     protected Sprite itemIcon;
+    [SerializeField]
     protected Color backgroundColor;
 
     [SerializeField]
