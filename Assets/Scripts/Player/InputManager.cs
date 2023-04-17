@@ -11,7 +11,7 @@ public class InputManager : MonoBehaviour
     private QuickItemAccessSystem QIAsystem;
     [SerializeField]
     private InventorySystem inventorySystem;
-    private bool inventoryEnabled = false;
+    private bool inventoryEnabled = true;
     private PlayerInputs inputs;
 
     #region Properties
@@ -20,6 +20,13 @@ public class InputManager : MonoBehaviour
         get
         {
             return inventorySystem;
+        } 
+    }
+    public bool InventoryEnabled 
+    {
+        get
+        {
+            return inventoryEnabled;
         } 
     }
     #endregion
@@ -55,14 +62,27 @@ public class InputManager : MonoBehaviour
         inputs.ItemManipulation.Remove_InInventory.performed += ctx => inventorySystem.RemoveItem();
         inputs.ItemManipulation.Swap_InInventory.started += ctx => inventorySystem.SwapSequence();
         inputs.ItemManipulation.Swap_InInventory.canceled += ctx => inventorySystem.SwapSequence();
-        inputs.ItemManipulation.Use_InInventory.Disable();
-        inputs.ItemManipulation.Remove_InInventory.Disable();
-        inputs.ItemManipulation.Swap_InInventory.Disable();
         inputs.ItemManipulation.Inventory.performed += ctx => EnableInventoryMode();
+
+        // Asignment
+        inputs.ItemManipulation.NorthSlotAsignment.performed += ctx => inventorySystem.AsignOrDeasignItemToQuickItemAccessSystem(0);
+        inputs.ItemManipulation.EastSlotAsignment.performed += ctx => inventorySystem.AsignOrDeasignItemToQuickItemAccessSystem(1);
+        inputs.ItemManipulation.WestSlotAsignment.performed += ctx => inventorySystem.AsignOrDeasignItemToQuickItemAccessSystem(2);
+        inputs.ItemManipulation.SouthSlotAsignment.performed += ctx => inventorySystem.AsignOrDeasignItemToQuickItemAccessSystem(3);
+
+        // hotkeys
+        inputs.ItemManipulation.NorthSlot.performed += ctx => QIAsystem.UseAsignedItem(0);
+        inputs.ItemManipulation.EastSlot.performed += ctx => QIAsystem.UseAsignedItem(1);
+        inputs.ItemManipulation.WestSlot.performed += ctx => QIAsystem.UseAsignedItem(2);
+        inputs.ItemManipulation.SouthSlot.performed += ctx => QIAsystem.UseAsignedItem(3);
 
         SwapQuickAccessToAsignment(false);
     }
-
+    private void Start()
+    {
+        EnableInventoryMode();
+        EnableInventoryMode();
+    }
     public void EnableInventoryMode()
     {
         inventoryEnabled = !inventoryEnabled;
@@ -96,29 +116,27 @@ public class InputManager : MonoBehaviour
     {
         if (swap)
         {
-            // Asignment:
-            inputs.ItemManipulation.NorthSlot.performed -= ctx => QIAsystem.UseAsignedItem(0);
-            inputs.ItemManipulation.EastSlot.performed -= ctx => QIAsystem.UseAsignedItem(1);
-            inputs.ItemManipulation.WestSlot.performed -= ctx => QIAsystem.UseAsignedItem(2);
-            inputs.ItemManipulation.SouthSlot.performed -= ctx => QIAsystem.UseAsignedItem(3);
+            inputs.ItemManipulation.NorthSlot.Disable();
+            inputs.ItemManipulation.EastSlot.Disable();
+            inputs.ItemManipulation.WestSlot.Disable();
+            inputs.ItemManipulation.SouthSlot.Disable();
 
-            inputs.ItemManipulation.NorthSlot.performed += ctx => inventorySystem.AsignOrDeasignItemToQuickItemAccessSystem(0);
-            inputs.ItemManipulation.EastSlot.performed += ctx => inventorySystem.AsignOrDeasignItemToQuickItemAccessSystem(1);
-            inputs.ItemManipulation.WestSlot.performed += ctx => inventorySystem.AsignOrDeasignItemToQuickItemAccessSystem(2);
-            inputs.ItemManipulation.SouthSlot.performed += ctx => inventorySystem.AsignOrDeasignItemToQuickItemAccessSystem(3);
+            inputs.ItemManipulation.NorthSlotAsignment.Enable();
+            inputs.ItemManipulation.EastSlotAsignment.Enable();
+            inputs.ItemManipulation.WestSlotAsignment.Enable();
+            inputs.ItemManipulation.SouthSlotAsignment.Enable();
         }
         else
         {
-            // Quick Access:
-            inputs.ItemManipulation.NorthSlot.performed -= ctx => inventorySystem.AsignOrDeasignItemToQuickItemAccessSystem(0);
-            inputs.ItemManipulation.EastSlot.performed -= ctx => inventorySystem.AsignOrDeasignItemToQuickItemAccessSystem(1);
-            inputs.ItemManipulation.WestSlot.performed -= ctx => inventorySystem.AsignOrDeasignItemToQuickItemAccessSystem(2);
-            inputs.ItemManipulation.SouthSlot.performed -= ctx => inventorySystem.AsignOrDeasignItemToQuickItemAccessSystem(3);
+            inputs.ItemManipulation.NorthSlotAsignment.Disable();
+            inputs.ItemManipulation.EastSlotAsignment.Disable();
+            inputs.ItemManipulation.WestSlotAsignment.Disable();
+            inputs.ItemManipulation.SouthSlotAsignment.Disable();
 
-            inputs.ItemManipulation.NorthSlot.performed += ctx => QIAsystem.UseAsignedItem(0);
-            inputs.ItemManipulation.EastSlot.performed += ctx => QIAsystem.UseAsignedItem(1);
-            inputs.ItemManipulation.WestSlot.performed += ctx => QIAsystem.UseAsignedItem(2);
-            inputs.ItemManipulation.SouthSlot.performed += ctx => QIAsystem.UseAsignedItem(3);
+            inputs.ItemManipulation.NorthSlot.Enable();
+            inputs.ItemManipulation.EastSlot.Enable();
+            inputs.ItemManipulation.WestSlot.Enable();
+            inputs.ItemManipulation.SouthSlot.Enable();
         }
         
     }

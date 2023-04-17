@@ -29,6 +29,10 @@ public class QuickItemAccessSystem : MonoBehaviour
     #region Properties
     public Dictionary<int, GameObject> Items
     {
+        get
+        {
+            return items;
+        }
         set
         {
             foreach (int key in items.Keys)

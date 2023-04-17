@@ -63,34 +63,34 @@ public class InventorySystem : MonoBehaviour
     public void AddItem(GameObject item)
     {
         int slotForNewItem = -1;
+        bool hasSpareSlot = false;
 
-        // Case in which player had used every slot, so there are maxItems amount of items were initialised
-        if (items.Count == maxItems)
+        for (int i = 0; i < items.Count && !hasSpareSlot; i++)
         {
-            bool hasNoSpareSlot = true;
-            for (int i = 0; i < maxItems && hasNoSpareSlot; i++)
+            if (items[i] == null)
             {
-                if (items[i] == null)
-                {
-                    slotForNewItem = i;
-                    hasNoSpareSlot = true;
-                }
+                slotForNewItem = i;
+                hasSpareSlot = true;
             }
+        }
 
-            if (hasNoSpareSlot)
+        if (!hasSpareSlot)
+        {
+            if (items.Count != maxItems)
+            {
+                slotForNewItem = items.Count;
+            }
+            else
             {
                 Debug.Log($"Player has no spare slot for {item.name}");
                 return;
             }
         }
-        else
-            slotForNewItem = items.Count;
 
         if (items.ContainsKey(slotForNewItem))
             items[slotForNewItem] = item;
         else
             items.Add(slotForNewItem, item);
-
 
         slots[slotForNewItem].GetChild(0).gameObject.GetComponent<Image>().color = item.GetComponent<Item>().BackgroundColor;
         slots[slotForNewItem].GetChild(1).gameObject.GetComponent<Image>().sprite = item.GetComponent<Item>().ItemIcon;
@@ -114,8 +114,23 @@ public class InventorySystem : MonoBehaviour
         if (!items.ContainsKey(selectedSlot))
             return;
 
+        if (items[selectedSlot].GetComponent<Item>().Type == "Weapon" || items[selectedSlot].GetComponent<Item>().Type == "Event Item")
+        {
+            if (((HandCompatibleItem)items[selectedSlot].GetComponent<Item>()).IsEquipped)
+                items[selectedSlot].GetComponent<Item>().Use();
+        }
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (quickItemAccess.Items[i].GetComponent<Item>() == items[selectedSlot].GetComponent<Item>())
+            {
+                quickItemAccess.DeasignItemFromSlot(i);
+            }
+        }
+
         items[selectedSlot] = null;
-        slots[selectedSlot].GetChild(0).gameObject.GetComponent<Image>().color = defaultSelectionColor;
+        slots[selectedSlot].GetChild(1).gameObject.SetActive(false);
+        slots[selectedSlot].GetChild(0).GetComponent<Image>().color = defaultSelectionColor;
     }
     public void SwapItems()
     {
@@ -125,14 +140,38 @@ public class InventorySystem : MonoBehaviour
         slots[selectedSlot].GetComponent<Animator>().SetBool("Interacted", true);
         animationTimers[selectedSlot] = maxAnimationTimer;
 
+        if (!items.ContainsKey(selectedSlot))
+        {
+            items.Add(selectedSlot, null);
+        }
+
         GameObject tmp = items[selectedSlot];
         items[selectedSlot] = items[swapingItemSlot];
         items[swapingItemSlot] = tmp;
+
+        slots[swapingItemSlot].GetChild(1).gameObject.SetActive(false);
+        slots[swapingItemSlot].GetChild(0).GetComponent<Image>().color = defaultSelectionColor;
+
+        slots[selectedSlot].GetChild(0).gameObject.GetComponent<Image>().color = items[selectedSlot].GetComponent<Item>().BackgroundColor;
+        slots[selectedSlot].GetChild(1).gameObject.GetComponent<Image>().sprite = items[selectedSlot].GetComponent<Item>().ItemIcon;
+        slots[selectedSlot].GetChild(1).gameObject.SetActive(true);
+
     }
     public void AsignOrDeasignItemToQuickItemAccessSystem(int QIASslotIndex)
     {
         slots[selectedSlot].GetComponent<Animator>().SetBool("Interacted", true);
         animationTimers[selectedSlot] = maxAnimationTimer;
+
+
+
+        if (quickItemAccess.Items.ContainsKey(QIASslotIndex))
+        {
+            if (quickItemAccess.Items[QIASslotIndex] != null && quickItemAccess.Items[QIASslotIndex].GetComponent<Item>() == items[selectedSlot].GetComponent<Item>())
+            {
+                quickItemAccess.DeasignItemFromSlot(QIASslotIndex);
+                return;
+            }
+        }
 
         quickItemAccess.AsignItemToSlot(QIASslotIndex, items[selectedSlot]);
     }
@@ -214,13 +253,14 @@ public class InventorySystem : MonoBehaviour
         if (!items.ContainsKey(selectedSlot) || items[selectedSlot] == null)
         {
             infoPanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Item";
-            infoPanel.transform.GetChild(2).GetComponent<Image>().sprite = null;
+            infoPanel.transform.GetChild(2).gameObject.SetActive(false);
             infoPanel.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "None";
 
             return;
         }
 
         infoPanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = items[selectedSlot].GetComponent<Item>().Title;
+        infoPanel.transform.GetChild(2).gameObject.SetActive(true);
         infoPanel.transform.GetChild(2).GetComponent<Image>().sprite = items[selectedSlot].GetComponent<Item>().ItemIcon;
         infoPanel.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = items[selectedSlot].GetComponent<Item>().Desription;
     }

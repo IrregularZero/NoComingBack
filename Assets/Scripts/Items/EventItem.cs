@@ -4,8 +4,6 @@ using UnityEngine;
 
 public sealed class EventItem : HandCompatibleItem
 {
-    [SerializeField]
-    private GameObject player;
 
     private void Start()
     {
@@ -15,7 +13,8 @@ public sealed class EventItem : HandCompatibleItem
     public override void Use()
     {
         base.Use();
-        
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<EventCoreSystem>().enabled = false;
         player.GetComponent<EventCoreSystem>().ActiveEventItem = activeHandCompatibleItem;
         player.GetComponent<EventCoreSystem>().enabled = true;

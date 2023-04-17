@@ -11,7 +11,6 @@ public class HandCompatibleItem : Item
     [SerializeField]
     protected GameObject handCompatibleItemPrefab;
     protected GameObject activeHandCompatibleItem;
-    [SerializeField]
     protected Transform handCompatibleItemPlacement; // Should be set as Parent
 
     #region Properties
@@ -63,6 +62,12 @@ public class HandCompatibleItem : Item
     {
         if (!isEquipped)
         {
+            GameObject hands = GameObject.FindGameObjectWithTag("Hands");
+            if (hands.GetComponent<HandsObjectsTrackingSystem>().HasFreeHand)
+                handCompatibleItemPlacement = hands.GetComponent<HandsObjectsTrackingSystem>().FreeHand;
+            else
+                return;
+
             activeHandCompatibleItem = Instantiate(handCompatibleItemPrefab, handCompatibleItemPlacement.transform.position, Quaternion.identity, handCompatibleItemPlacement) as GameObject;
 
             isEquipped = true;

@@ -361,9 +361,27 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "NorthSlotAsignment",
+                    "type": "Button",
+                    "id": "f60cb24f-d9ec-47d8-af39-4569fefa6c1a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "EastSlot",
                     "type": "Button",
                     "id": "07cb20b7-553e-4189-872c-716960739cd3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EastSlotAsignment",
+                    "type": "Button",
+                    "id": "b0dcf001-c9ef-43ed-850a-944bc95e5397",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -379,9 +397,27 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "WestSlotAsignment",
+                    "type": "Button",
+                    "id": "a1b506ce-a1f7-43e3-8390-08f5f43c97be",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "SouthSlot",
                     "type": "Button",
                     "id": "ae4ba343-1da0-4408-a4e6-8fabfaf6ac48",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SouthSlotAsignment",
+                    "type": "Button",
+                    "id": "3bb4785d-bae4-4e1d-a791-47ee96ea84e3",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -565,6 +601,94 @@
                     "processors": "",
                     "groups": "",
                     "action": "Swap_InInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5f98ce95-d82d-4107-b443-05e3fac5165a",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NorthSlotAsignment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "08234728-1d5e-4729-a9b3-2d3dd99639f9",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NorthSlotAsignment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d7653f72-d067-419f-9be9-80478f71d8ba",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EastSlotAsignment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d8d694f0-75b0-4a62-994a-1c4f565b13ef",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EastSlotAsignment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0e3e7e2c-f615-4135-b9fc-3ca4ac6a4e3b",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WestSlotAsignment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0d3947fb-930a-4611-9db4-a2136f727a5a",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WestSlotAsignment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c149ea04-60ed-40a5-86e0-c913157ccb49",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SouthSlotAsignment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8afa30b1-5547-4d3e-aef2-8eb2b872b566",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SouthSlotAsignment",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

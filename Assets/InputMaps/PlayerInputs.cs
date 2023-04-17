@@ -383,9 +383,27 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""NorthSlotAsignment"",
+                    ""type"": ""Button"",
+                    ""id"": ""f60cb24f-d9ec-47d8-af39-4569fefa6c1a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""EastSlot"",
                     ""type"": ""Button"",
                     ""id"": ""07cb20b7-553e-4189-872c-716960739cd3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EastSlotAsignment"",
+                    ""type"": ""Button"",
+                    ""id"": ""b0dcf001-c9ef-43ed-850a-944bc95e5397"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -401,9 +419,27 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""WestSlotAsignment"",
+                    ""type"": ""Button"",
+                    ""id"": ""a1b506ce-a1f7-43e3-8390-08f5f43c97be"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""SouthSlot"",
                     ""type"": ""Button"",
                     ""id"": ""ae4ba343-1da0-4408-a4e6-8fabfaf6ac48"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SouthSlotAsignment"",
+                    ""type"": ""Button"",
+                    ""id"": ""3bb4785d-bae4-4e1d-a791-47ee96ea84e3"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -589,6 +625,94 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""action"": ""Swap_InInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f98ce95-d82d-4107-b443-05e3fac5165a"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NorthSlotAsignment"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""08234728-1d5e-4729-a9b3-2d3dd99639f9"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NorthSlotAsignment"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d7653f72-d067-419f-9be9-80478f71d8ba"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EastSlotAsignment"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d8d694f0-75b0-4a62-994a-1c4f565b13ef"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EastSlotAsignment"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0e3e7e2c-f615-4135-b9fc-3ca4ac6a4e3b"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WestSlotAsignment"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d3947fb-930a-4611-9db4-a2136f727a5a"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WestSlotAsignment"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c149ea04-60ed-40a5-86e0-c913157ccb49"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SouthSlotAsignment"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8afa30b1-5547-4d3e-aef2-8eb2b872b566"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SouthSlotAsignment"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -613,9 +737,13 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         // ItemManipulation
         m_ItemManipulation = asset.FindActionMap("ItemManipulation", throwIfNotFound: true);
         m_ItemManipulation_NorthSlot = m_ItemManipulation.FindAction("NorthSlot", throwIfNotFound: true);
+        m_ItemManipulation_NorthSlotAsignment = m_ItemManipulation.FindAction("NorthSlotAsignment", throwIfNotFound: true);
         m_ItemManipulation_EastSlot = m_ItemManipulation.FindAction("EastSlot", throwIfNotFound: true);
+        m_ItemManipulation_EastSlotAsignment = m_ItemManipulation.FindAction("EastSlotAsignment", throwIfNotFound: true);
         m_ItemManipulation_WestSlot = m_ItemManipulation.FindAction("WestSlot", throwIfNotFound: true);
+        m_ItemManipulation_WestSlotAsignment = m_ItemManipulation.FindAction("WestSlotAsignment", throwIfNotFound: true);
         m_ItemManipulation_SouthSlot = m_ItemManipulation.FindAction("SouthSlot", throwIfNotFound: true);
+        m_ItemManipulation_SouthSlotAsignment = m_ItemManipulation.FindAction("SouthSlotAsignment", throwIfNotFound: true);
         m_ItemManipulation_Inventory = m_ItemManipulation.FindAction("Inventory", throwIfNotFound: true);
         m_ItemManipulation_Use_InInventory = m_ItemManipulation.FindAction("Use_InInventory", throwIfNotFound: true);
         m_ItemManipulation_Remove_InInventory = m_ItemManipulation.FindAction("Remove_InInventory", throwIfNotFound: true);
@@ -818,9 +946,13 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_ItemManipulation;
     private IItemManipulationActions m_ItemManipulationActionsCallbackInterface;
     private readonly InputAction m_ItemManipulation_NorthSlot;
+    private readonly InputAction m_ItemManipulation_NorthSlotAsignment;
     private readonly InputAction m_ItemManipulation_EastSlot;
+    private readonly InputAction m_ItemManipulation_EastSlotAsignment;
     private readonly InputAction m_ItemManipulation_WestSlot;
+    private readonly InputAction m_ItemManipulation_WestSlotAsignment;
     private readonly InputAction m_ItemManipulation_SouthSlot;
+    private readonly InputAction m_ItemManipulation_SouthSlotAsignment;
     private readonly InputAction m_ItemManipulation_Inventory;
     private readonly InputAction m_ItemManipulation_Use_InInventory;
     private readonly InputAction m_ItemManipulation_Remove_InInventory;
@@ -830,9 +962,13 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         private @PlayerInputs m_Wrapper;
         public ItemManipulationActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @NorthSlot => m_Wrapper.m_ItemManipulation_NorthSlot;
+        public InputAction @NorthSlotAsignment => m_Wrapper.m_ItemManipulation_NorthSlotAsignment;
         public InputAction @EastSlot => m_Wrapper.m_ItemManipulation_EastSlot;
+        public InputAction @EastSlotAsignment => m_Wrapper.m_ItemManipulation_EastSlotAsignment;
         public InputAction @WestSlot => m_Wrapper.m_ItemManipulation_WestSlot;
+        public InputAction @WestSlotAsignment => m_Wrapper.m_ItemManipulation_WestSlotAsignment;
         public InputAction @SouthSlot => m_Wrapper.m_ItemManipulation_SouthSlot;
+        public InputAction @SouthSlotAsignment => m_Wrapper.m_ItemManipulation_SouthSlotAsignment;
         public InputAction @Inventory => m_Wrapper.m_ItemManipulation_Inventory;
         public InputAction @Use_InInventory => m_Wrapper.m_ItemManipulation_Use_InInventory;
         public InputAction @Remove_InInventory => m_Wrapper.m_ItemManipulation_Remove_InInventory;
@@ -849,15 +985,27 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @NorthSlot.started -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnNorthSlot;
                 @NorthSlot.performed -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnNorthSlot;
                 @NorthSlot.canceled -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnNorthSlot;
+                @NorthSlotAsignment.started -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnNorthSlotAsignment;
+                @NorthSlotAsignment.performed -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnNorthSlotAsignment;
+                @NorthSlotAsignment.canceled -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnNorthSlotAsignment;
                 @EastSlot.started -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnEastSlot;
                 @EastSlot.performed -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnEastSlot;
                 @EastSlot.canceled -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnEastSlot;
+                @EastSlotAsignment.started -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnEastSlotAsignment;
+                @EastSlotAsignment.performed -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnEastSlotAsignment;
+                @EastSlotAsignment.canceled -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnEastSlotAsignment;
                 @WestSlot.started -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnWestSlot;
                 @WestSlot.performed -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnWestSlot;
                 @WestSlot.canceled -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnWestSlot;
+                @WestSlotAsignment.started -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnWestSlotAsignment;
+                @WestSlotAsignment.performed -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnWestSlotAsignment;
+                @WestSlotAsignment.canceled -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnWestSlotAsignment;
                 @SouthSlot.started -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnSouthSlot;
                 @SouthSlot.performed -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnSouthSlot;
                 @SouthSlot.canceled -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnSouthSlot;
+                @SouthSlotAsignment.started -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnSouthSlotAsignment;
+                @SouthSlotAsignment.performed -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnSouthSlotAsignment;
+                @SouthSlotAsignment.canceled -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnSouthSlotAsignment;
                 @Inventory.started -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnInventory;
                 @Inventory.performed -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnInventory;
                 @Inventory.canceled -= m_Wrapper.m_ItemManipulationActionsCallbackInterface.OnInventory;
@@ -877,15 +1025,27 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @NorthSlot.started += instance.OnNorthSlot;
                 @NorthSlot.performed += instance.OnNorthSlot;
                 @NorthSlot.canceled += instance.OnNorthSlot;
+                @NorthSlotAsignment.started += instance.OnNorthSlotAsignment;
+                @NorthSlotAsignment.performed += instance.OnNorthSlotAsignment;
+                @NorthSlotAsignment.canceled += instance.OnNorthSlotAsignment;
                 @EastSlot.started += instance.OnEastSlot;
                 @EastSlot.performed += instance.OnEastSlot;
                 @EastSlot.canceled += instance.OnEastSlot;
+                @EastSlotAsignment.started += instance.OnEastSlotAsignment;
+                @EastSlotAsignment.performed += instance.OnEastSlotAsignment;
+                @EastSlotAsignment.canceled += instance.OnEastSlotAsignment;
                 @WestSlot.started += instance.OnWestSlot;
                 @WestSlot.performed += instance.OnWestSlot;
                 @WestSlot.canceled += instance.OnWestSlot;
+                @WestSlotAsignment.started += instance.OnWestSlotAsignment;
+                @WestSlotAsignment.performed += instance.OnWestSlotAsignment;
+                @WestSlotAsignment.canceled += instance.OnWestSlotAsignment;
                 @SouthSlot.started += instance.OnSouthSlot;
                 @SouthSlot.performed += instance.OnSouthSlot;
                 @SouthSlot.canceled += instance.OnSouthSlot;
+                @SouthSlotAsignment.started += instance.OnSouthSlotAsignment;
+                @SouthSlotAsignment.performed += instance.OnSouthSlotAsignment;
+                @SouthSlotAsignment.canceled += instance.OnSouthSlotAsignment;
                 @Inventory.started += instance.OnInventory;
                 @Inventory.performed += instance.OnInventory;
                 @Inventory.canceled += instance.OnInventory;
@@ -922,9 +1082,13 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     public interface IItemManipulationActions
     {
         void OnNorthSlot(InputAction.CallbackContext context);
+        void OnNorthSlotAsignment(InputAction.CallbackContext context);
         void OnEastSlot(InputAction.CallbackContext context);
+        void OnEastSlotAsignment(InputAction.CallbackContext context);
         void OnWestSlot(InputAction.CallbackContext context);
+        void OnWestSlotAsignment(InputAction.CallbackContext context);
         void OnSouthSlot(InputAction.CallbackContext context);
+        void OnSouthSlotAsignment(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnUse_InInventory(InputAction.CallbackContext context);
         void OnRemove_InInventory(InputAction.CallbackContext context);
