@@ -9,6 +9,11 @@ public class GunInputManager : MonoBehaviour
     private PlayerInputs gunActions;
     private InputManager playerInputs;
 
+    [SerializeField]
+    private bool holdToFireOrCharge = false;
+    [SerializeField]
+    private bool holdToSpecialFireOrCharge = false;
+
     private void OnEnable()
     {
         gunActions.Enable();
@@ -22,9 +27,21 @@ public class GunInputManager : MonoBehaviour
     {
         gunActions = new PlayerInputs();
         playerInputs = GameObject.FindGameObjectWithTag("Player").GetComponent<InputManager>();
-        
-        gunActions.Gun.Fire.performed += ctx => gunSystem.Fire();
-        gunActions.Gun.SpecialFire.performed += ctx => gunSystem.SpecialFire();
+
+        if (!holdToFireOrCharge)
+            gunActions.Gun.Fire.performed += ctx => gunSystem.Fire();
+        else
+        {
+            gunActions.Gun.Fire.started += ctx => gunSystem.Fire();
+            gunActions.Gun.Fire.canceled += ctx => gunSystem.Fire();
+        }
+        if (!holdToSpecialFireOrCharge)
+            gunActions.Gun.SpecialFire.performed += ctx => gunSystem.SpecialFire();
+        else
+        {
+            gunActions.Gun.Fire.started += ctx => gunSystem.SpecialFire();
+            gunActions.Gun.Fire.canceled += ctx => gunSystem.SpecialFire();
+        }
         gunActions.Gun.Reload.performed += ctx => StartCoroutine(gunSystem.Reload());
         gunActions.Gun.Overview.performed += ctx => StartCoroutine(gunSystem.Overview());
     }
