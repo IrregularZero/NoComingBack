@@ -23584,7 +23584,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 2147483647
-  interactionDistance: 10
+  interactionDistance: 3
   interactibleIndication: {fileID: 1238993374}
 --- !u!1001 &7249147271000297686
 PrefabInstance:

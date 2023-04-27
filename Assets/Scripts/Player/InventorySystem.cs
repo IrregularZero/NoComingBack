@@ -122,9 +122,12 @@ public class InventorySystem : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
-            if (quickItemAccess.Items[i].GetComponent<Item>() == items[selectedSlot].GetComponent<Item>())
+            if (quickItemAccess.Items.ContainsKey(i) && quickItemAccess.Items[i] != null)
             {
-                quickItemAccess.DeasignItemFromSlot(i);
+                if (quickItemAccess.Items[i].GetComponent<Item>() == items[selectedSlot].GetComponent<Item>())
+                {
+                    quickItemAccess.DeasignItemFromSlot(i);
+                }
             }
         }
 
