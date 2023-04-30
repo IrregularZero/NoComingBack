@@ -6,22 +6,9 @@ using UnityEngine.Experimental.Rendering;
 public class AmmoRestorageItem : Item
 {
     [SerializeField]
-    private GameObject gun;
-    [SerializeField]
     private int ammoAmount;
 
     #region Properties
-    public GameObject Gun
-    {
-        get
-        {
-            return gun;
-        }
-        set
-        {
-            gun = value;
-        }
-    }
     public int AmmoAmount
     {
         get
@@ -45,6 +32,22 @@ public class AmmoRestorageItem : Item
     }
     public override void Use()
     {
+        GameObject gun;
+        HandsObjectsTrackingSystem hands = GameObject.FindGameObjectWithTag("Hands").GetComponent<HandsObjectsTrackingSystem>();
+        if (hands.RightHand.childCount > 0 && hands.RightHand.GetChild(0).GetComponent<GunSystem>() != null)
+        {
+            gun = hands.RightHand.GetChild(0).gameObject;
+        }
+        else if (hands.LeftHand.childCount > 0 && hands.LeftHand.GetChild(0).GetComponent<GunSystem>() != null)
+        {
+            gun = hands.LeftHand.GetChild(0).gameObject;
+        }
+        else
+        {
+            Debug.Log($"Gun was not found to use {name}");
+            return;
+        }
+
         if (ammoAmount > 0)
         {
             int difference = gun.GetComponent<GunSystem>().MaxAmmoInStorage - gun.GetComponent<GunSystem>().AmmoInStorage;

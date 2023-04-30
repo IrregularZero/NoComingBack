@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8671903003879252915
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1297587354167556805, guid: 18ea9f53284b65249b6ca34fc5d1bf7c,
+        type: 3}
+      propertyPath: m_Name
+      value: HealingCard_Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 3639393568865306596, guid: 18ea9f53284b65249b6ca34fc5d1bf7c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3639393568865306596, guid: 18ea9f53284b65249b6ca34fc5d1bf7c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3639393568865306596, guid: 18ea9f53284b65249b6ca34fc5d1bf7c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 3639393568865306596, guid: 18ea9f53284b65249b6ca34fc5d1bf7c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3639393568865306596, guid: 18ea9f53284b65249b6ca34fc5d1bf7c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3639393568865306596, guid: 18ea9f53284b65249b6ca34fc5d1bf7c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3639393568865306596, guid: 18ea9f53284b65249b6ca34fc5d1bf7c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3639393568865306596, guid: 18ea9f53284b65249b6ca34fc5d1bf7c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3639393568865306596, guid: 18ea9f53284b65249b6ca34fc5d1bf7c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3639393568865306596, guid: 18ea9f53284b65249b6ca34fc5d1bf7c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3639393568865306596, guid: 18ea9f53284b65249b6ca34fc5d1bf7c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791001240606632568, guid: 18ea9f53284b65249b6ca34fc5d1bf7c,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 7791001240606632568, guid: 18ea9f53284b65249b6ca34fc5d1bf7c,
+        type: 3}
+      propertyPath: m_Name
+      value: HealingCard_Drop
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 18ea9f53284b65249b6ca34fc5d1bf7c, type: 3}
+--- !u!1 &7663223331674364278 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1297587354167556805, guid: 18ea9f53284b65249b6ca34fc5d1bf7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8671903003879252915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3243497986944263688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7663223331674364278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b538643b88c932479d7be678dc815d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 0}
+  backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+  title: Healing card
+  description: Grant access to healing zones
+  isEquipped: 0
+  handCompatibleItemPrefab: {fileID: 2420774271130553802, guid: 0772bf3af81c88844aa2eae40a3eef9d,
+    type: 3}
