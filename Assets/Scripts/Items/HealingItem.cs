@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HealingItem : Item
 {
-    [SerializeField]
     private VitalitySystem playerVitality;
     [SerializeField]
     private float healAmount;
@@ -54,6 +53,7 @@ public class HealingItem : Item
     }
     public override void Use()
     {
+        playerVitality = GameObject.FindGameObjectWithTag("Player").GetComponent<VitalitySystem>();
         if (amountOfUses > 0)
         {
             playerVitality.RestoreHealth(healAmount);
