@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GunInputManager : MonoBehaviour
 {
-    [SerializeField]
     private GunSystem gunSystem;
     private PlayerInputs gunActions;
     private InputManager playerInputs;
@@ -26,6 +25,7 @@ public class GunInputManager : MonoBehaviour
     private void Awake()
     {
         gunActions = new PlayerInputs();
+        gunSystem = GetComponent<GunSystem>();
         playerInputs = GameObject.FindGameObjectWithTag("Player").GetComponent<InputManager>();
 
         if (!holdToFireOrCharge)
