@@ -34,7 +34,7 @@ public abstract class GunSystem : MonoBehaviour
     protected float fireAnimationDur;
 
     [SerializeField]
-    protected Vector3 barell;
+    protected Transform barell;
     protected Transform cameraTransform;
 
     protected Animator animator;
@@ -57,10 +57,8 @@ public abstract class GunSystem : MonoBehaviour
         reloadSpeed = -1;
         critChance = -1;
         critMult = -1;
-
-        barell = Vector3.zero;
     }
-    public GunSystem(float damage, float timeBetweenShots, float accuracy, int maxMagazine, int magazine, int ammoInStorage, float reloadSpeed, int critChance, float critMult, Vector3 barell, Transform cameraTransform)
+    public GunSystem(float damage, float timeBetweenShots, float accuracy, int maxMagazine, int magazine, int ammoInStorage, float reloadSpeed, int critChance, float critMult, Transform barell, Transform cameraTransform)
     {
         this.damage = damage;
         this.timeBetweenShots = timeBetweenShots;

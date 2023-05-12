@@ -6,6 +6,7 @@ public class GaussRevolver : GunSystem
 {
     [SerializeField]
     private float chargeHighBorder = 2.5f; // Time it takes to fully charge revolver's special fire
+    [SerializeField]
     private float charge = 0f;
     [SerializeField]
     private int specialAmmoCost = 6;
@@ -14,6 +15,9 @@ public class GaussRevolver : GunSystem
     [SerializeField]
     private float maxRecoveryTime = 0.25f; // Recovery after shot
     private float recoveryTime;
+
+    [SerializeField]
+    private Transform SpecialBarellEnd;
 
     private bool chargingUp = false;
 
@@ -24,6 +28,17 @@ public class GaussRevolver : GunSystem
     protected override void Update()
     {
         base.Update();
+
+        if (chargingUp && recoveryTime <= 0f)
+        {
+            if (charge < chargeHighBorder)
+            {
+                charge += Time.deltaTime;
+            }
+        }
+
+        if (recoveryTime > 0f)
+            recoveryTime -= Time.deltaTime;
     }
 
     public override void Fire()
@@ -53,6 +68,19 @@ public class GaussRevolver : GunSystem
     }
     public override void SpecialFire()
     {
+        // Cannot be fired while reloading
+        if (isReloading)
+            return;
+        else if (recoveryAfterShot > 0)
+            return;
+        else if (recoveryTime > 0f)
+            return;
+        else if (magazine <= 0)
+        {
+            StartCoroutine(Reload());
+            return;
+        }
+
         if (chargingUp)
         {
             float chargeMultiplier = charge / chargeHighBorder;
@@ -66,7 +94,10 @@ public class GaussRevolver : GunSystem
                     hitObject.collider.GetComponent<VitalitySystem>().TakeDamage(highestSpecialDamage * chargeMultiplier * Mathf.Clamp(magazine / specialAmmoCost, 0, 1));
                 }
             }
+
+            recoveryTime = maxRecoveryTime;
             magazine -= specialAmmoCost;
+            charge = 0;
             chargingUp = false;
         }
         else
