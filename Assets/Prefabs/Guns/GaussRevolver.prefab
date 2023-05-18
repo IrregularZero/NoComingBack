@@ -27,8 +27,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021336033973116367}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.0028373457, y: -0.66352856, z: -0.0031991513, w: 0.7481388}
+  m_LocalPosition: {x: 0, y: 0.37, z: 0.233}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -38,7 +38,7 @@ Transform:
   - {fileID: 3140491614844221423}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -83.14, z: -0.49}
 --- !u!114 &2230887653640206502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,6 +79,7 @@ MonoBehaviour:
   shotEffects: {fileID: 7722940574939306675}
   ammoMeter: {fileID: 6587264352819933692}
   chargeHighBorder: 2.5
+  charge: 0
   specialAmmoCost: 6
   highestSpecialDamage: 100
   maxRecoveryTime: 0.25
@@ -192,7 +193,7 @@ Animator:
   m_GameObject: {fileID: 1021336033973116367}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 28d8267fe23c254419ff7eac48c8400a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
