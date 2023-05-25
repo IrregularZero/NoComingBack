@@ -1,10 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-[Serializable]
 public abstract class GunSystem : MonoBehaviour
 {
     [SerializeField]
@@ -218,10 +216,12 @@ public abstract class GunSystem : MonoBehaviour
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();
-        cameraTransform = transform.parent.parent.parent.GetComponent<UIReferenceCenter>().CameraTransform;
+        cameraTransform = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0);
     }
     protected virtual void Update()
     {
+        Debug.Log(damage);
+        Debug.Log(damage * (Random.Range(1, 101) >= critChance ? critMult : 1));
         recoveryAfterShot -= Time.deltaTime;
 
         if (shotEffects.activeSelf)
