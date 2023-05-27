@@ -220,8 +220,6 @@ public abstract class GunSystem : MonoBehaviour
     }
     protected virtual void Update()
     {
-        Debug.Log(damage);
-        Debug.Log(damage * (Random.Range(1, 101) >= critChance ? critMult : 1));
         recoveryAfterShot -= Time.deltaTime;
 
         if (shotEffects.activeSelf)
@@ -265,10 +263,9 @@ public abstract class GunSystem : MonoBehaviour
             isReloading = true;
             yield return new WaitForSeconds(reloadSpeed);
 
-            int magazineLeftovers = maxMagazine - magazine;
-
-            magazine = Mathf.Clamp(maxMagazine - Mathf.Clamp(ammoInStorage - magazineLeftovers, maxMagazine * -1, 0), 0, maxMagazine);
-            ammoInStorage = Mathf.Clamp(ammoInStorage - magazineLeftovers, 0, maxAmmoInStorage);
+            ammoInStorage += magazine;
+            magazine = Mathf.Clamp(ammoInStorage, 0, maxMagazine);
+            ammoInStorage = Mathf.Clamp(ammoInStorage - magazine, 0, maxAmmoInStorage);
 
             isReloading = false;
             animator.SetBool("IsReloading", false);

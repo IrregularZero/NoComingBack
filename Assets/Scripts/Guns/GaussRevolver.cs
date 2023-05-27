@@ -75,6 +75,8 @@ public class GaussRevolver : GunSystem
             return;
         else if (recoveryTime > 0f)
             return;
+        else if (magazine < specialAmmoCost)
+            return;
         else if (magazine <= 0)
         {
             StartCoroutine(Reload());
@@ -91,12 +93,12 @@ public class GaussRevolver : GunSystem
             {
                 if (hitObject.collider.tag == "Enemy")
                 {
-                    hitObject.collider.GetComponent<VitalitySystem>().TakeDamage(highestSpecialDamage * chargeMultiplier * Mathf.Clamp(magazine / specialAmmoCost, 0, 1));
+                    hitObject.collider.GetComponent<VitalitySystem>().TakeDamage(highestSpecialDamage * chargeMultiplier);
                 }
             }
 
             recoveryTime = maxRecoveryTime;
-            magazine -= specialAmmoCost;
+            magazine = Mathf.Clamp(magazine - specialAmmoCost, 0, maxMagazine);
             charge = 0;
             chargingUp = false;
         }
