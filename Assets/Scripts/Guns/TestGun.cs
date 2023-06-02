@@ -56,7 +56,7 @@ public class TestGun : GunSystem
         {
             if (hitObject.collider.tag == "Enemy")
             {
-                hitObject.collider.GetComponent<VitalitySystem>().TakeDamage(damage * Random.Range(1, 101) >= critChance ? critMult : 1);
+                hitObject.collider.GetComponent<VitalitySystem>().TakeDamage(damage * (Random.Range(1, 101) >= critChance ? critMult : 1));
             }
         }
     }

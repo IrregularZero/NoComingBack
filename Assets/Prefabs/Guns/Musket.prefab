@@ -842,6 +842,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33e31b8913c428d4aa3f2932ce07d016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
+  timeBetweenShots: 0.5
+  accuracy: 1
+  maxMagazine: 24
+  magazine: 24
+  ammoInStorage: 120
+  reloadSpeed: 3
+  critChance: 10
+  critMult: 1.5
+  overviewDuration: 0
+  barell: {fileID: 2860785890529154606}
+  shotEffects: {fileID: 2860785890529154609}
+  ammoMeter: {fileID: 1302883289763005502}
+  fireChain: 3
+  maxTimeBetweenShotsInChain: 0.1
+  timeBetweenShotsInChain: 0.1
+  spread: 0.5
+  specialAmmocost: 6
+  specialEffectiveRange: 10
 --- !u!95 &1302883288857953156
 Animator:
   serializedVersion: 4

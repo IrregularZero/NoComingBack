@@ -23065,6 +23065,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6743087099717240912}
     m_Modifications:
+    - target: {fileID: 2860785890447066112, guid: c239be83900ef014c9b9897836ed13f3,
+        type: 3}
+      propertyPath: maxTimeBetweenShotsInChain
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2860785890447066113, guid: c239be83900ef014c9b9897836ed13f3,
         type: 3}
       propertyPath: m_Name

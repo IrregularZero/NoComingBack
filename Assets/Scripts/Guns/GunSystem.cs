@@ -241,6 +241,14 @@ public abstract class GunSystem : MonoBehaviour
         UpdateInterface();
     }
 
+    public static Vector3 RandomDirectionInCone(float radius)
+    {
+        float radradius = radius * Mathf.PI / 360;
+        float z = Random.Range(Mathf.Cos(radradius), 1);
+        float t = Random.Range(0, Mathf.PI * 2);
+        return new Vector3(Mathf.Sqrt(1 - z * z) * Mathf.Cos(t), Mathf.Sqrt(1 - z * z) * Mathf.Sin(t), z);
+    }
+
     public virtual void Fire()
     {
         animator.SetBool("IsFiring", true);
