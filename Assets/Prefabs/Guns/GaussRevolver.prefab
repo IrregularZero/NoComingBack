@@ -66,7 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 25
   timeBetweenShots: 0.75
-  accuracy: 1
+  spread: 0
   maxMagazine: 6
   magazine: 6
   ammoInStorage: 18

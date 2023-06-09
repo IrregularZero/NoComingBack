@@ -5680,7 +5680,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa8574fd8dce9f40877fba491dae506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunSystem: {fileID: 3866138995471074360}
+  holdToFireOrCharge: 0
+  holdToSpecialFireOrCharge: 0
 --- !u!114 &3866138995471074360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5695,7 +5696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   timeBetweenShots: 0.2
-  accuracy: 1
+  spread: 0
   maxMagazine: 5
   magazine: 5
   ammoInStorage: 250
@@ -5703,7 +5704,7 @@ MonoBehaviour:
   critChance: 50
   critMult: 2
   overviewDuration: 2.5
-  barell: {x: 0, y: 0.235, z: 0.887}
+  barell: {fileID: 0}
   shotEffects: {fileID: 3866138995392665206}
   ammoMeter: {fileID: 164037753}
   maxDelayBetweenShots: 0.1

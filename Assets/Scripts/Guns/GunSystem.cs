@@ -11,7 +11,7 @@ public abstract class GunSystem : MonoBehaviour
     protected float timeBetweenShots;
     protected float recoveryAfterShot;
     [SerializeField]
-    protected float accuracy;
+    protected float spread;
     [SerializeField]
     protected int maxMagazine;
     [SerializeField]
@@ -48,7 +48,7 @@ public abstract class GunSystem : MonoBehaviour
     {
         damage = -1;
         timeBetweenShots = -1;
-        accuracy = -1;
+        spread = -1;
         maxMagazine = -1;
         magazine = maxMagazine;
         ammoInStorage = -1;
@@ -56,11 +56,11 @@ public abstract class GunSystem : MonoBehaviour
         critChance = -1;
         critMult = -1;
     }
-    public GunSystem(float damage, float timeBetweenShots, float accuracy, int maxMagazine, int magazine, int ammoInStorage, float reloadSpeed, int critChance, float critMult, Transform barell, Transform cameraTransform)
+    public GunSystem(float damage, float timeBetweenShots, float spread, int maxMagazine, int magazine, int ammoInStorage, float reloadSpeed, int critChance, float critMult, Transform barell, Transform cameraTransform)
     {
         this.damage = damage;
         this.timeBetweenShots = timeBetweenShots;
-        this.accuracy = accuracy;
+        this.spread = spread;
         this.maxMagazine = maxMagazine;
         this.magazine = magazine;
         this.ammoInStorage = ammoInStorage;
@@ -101,17 +101,17 @@ public abstract class GunSystem : MonoBehaviour
             }
         }
     }
-    public float Accuracy 
+    public float Spread 
     {
         get
         {
-            return accuracy;
+            return spread;
         }
         set
         {
             if (value >= 0 && value <= 1)
             {
-                accuracy = value;
+                spread = value;
             }
         }
     }
@@ -239,14 +239,6 @@ public abstract class GunSystem : MonoBehaviour
         }
 
         UpdateInterface();
-    }
-
-    public static Vector3 RandomDirectionInCone(float radius)
-    {
-        float radradius = radius * Mathf.PI / 360;
-        float z = Random.Range(Mathf.Cos(radradius), 1);
-        float t = Random.Range(0, Mathf.PI * 2);
-        return new Vector3(Mathf.Sqrt(1 - z * z) * Mathf.Cos(t), Mathf.Sqrt(1 - z * z) * Mathf.Sin(t), z);
     }
 
     public virtual void Fire()

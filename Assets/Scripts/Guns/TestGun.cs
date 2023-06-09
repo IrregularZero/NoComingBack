@@ -49,7 +49,10 @@ public class TestGun : GunSystem
 
         base.Fire();
 
-        Ray shot = new Ray(cameraTransform.position, cameraTransform.forward);
+        Vector3 direction = new Vector3(cameraTransform.forward.x + Random.Range(-spread, spread),
+            cameraTransform.forward.y + Random.Range(-spread, spread),
+            cameraTransform.forward.z + Random.Range(-spread, spread));
+        Ray shot = new Ray(cameraTransform.position, direction);
         RaycastHit hitObject;
         Debug.DrawRay(cameraTransform.position, cameraTransform.forward, Color.red, 500f);
         if (Physics.Raycast(shot, out hitObject, 500f, 1))

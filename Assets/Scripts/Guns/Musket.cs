@@ -1,27 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class Musket : GunSystem
 {
     [SerializeField]
+    private int maxFireChain = 3;
     private int fireChain = 3;
     [SerializeField]
     private float maxTimeBetweenShotsInChain = 0.1f;
     [SerializeField]
-    private float timeBetweenShotsInChain = 0.1f;
-    [SerializeField]
-    private float spread = 1.5f;
+    private float specialSpread = 1.5f;
     [SerializeField]
     private int specialAmmocost = 6;
     [SerializeField]
     private float specialEffectiveRange = 10f;
 
-    private IEnumerable shootChain()
+    private void Shoot()
     {
-        for (int i = 0; i < fireChain; i++)
+        if (fireChain >= 0 && magazine > 0)
         {
-            Ray shot = new Ray(cameraTransform.position, cameraTransform.forward);
+            Vector3 direction = new Vector3(cameraTransform.forward.x + Random.Range(-spread, spread),
+                cameraTransform.forward.y + Random.Range(-spread, spread),
+                cameraTransform.forward.z + Random.Range(-spread, spread));
+            Ray shot = new Ray(cameraTransform.position, direction);
             RaycastHit hitObject;
             if (Physics.Raycast(shot, out hitObject, 500f, 1))
             {
@@ -30,13 +33,18 @@ public class Musket : GunSystem
                     hitObject.collider.GetComponent<VitalitySystem>().TakeDamage(damage * (Random.Range(1, 101) >= critChance ? critMult : 1));
                 }
             }
-            yield return new WaitForSeconds(maxTimeBetweenShotsInChain);
+            magazine--;
+            fireChain--;
+        }
+        else
+        {
+            fireChain = maxFireChain;
+            CancelInvoke();
         }
     }
 
     public override void Fire()
     {
-
         // Cannot be fired while reloading
         if (isReloading)
             return;
@@ -49,27 +57,9 @@ public class Musket : GunSystem
         }
 
         base.Fire();
+        magazine++;
 
-        for (int i = 0; i < fireChain; i++)
-        {
-            Ray shot = new Ray(cameraTransform.position, cameraTransform.forward);
-            RaycastHit hitObject;
-            if (Physics.Raycast(shot, out hitObject, 500f, 1))
-            {
-                if (hitObject.collider.tag == "Enemy")
-                {
-                    hitObject.collider.GetComponent<VitalitySystem>().TakeDamage(damage * (Random.Range(1, 101) >= critChance ? critMult : 1));
-                }
-            }
-
-            magazine--;
-
-            timeBetweenShotsInChain = maxTimeBetweenShotsInChain;
-            while (timeBetweenShotsInChain > 0)
-            {
-                timeBetweenShotsInChain -= Time.deltaTime;
-            }
-        }
+        InvokeRepeating("Shoot", 0, maxTimeBetweenShotsInChain);
     }
     public override void SpecialFire()
     {
@@ -89,7 +79,9 @@ public class Musket : GunSystem
         // The bigger special cost the more bullets will go
         for (int i = 0; i < specialAmmocost; i++)
         {
-            Vector3 direction = new Vector3(cameraTransform.forward.x + Random.Range(-spread, spread), cameraTransform.forward.y + Random.Range(-spread, spread), cameraTransform.forward.z + Random.Range(-spread, spread));
+            Vector3 direction = new Vector3(cameraTransform.forward.x + Random.Range(-specialSpread, specialSpread),
+                cameraTransform.forward.y + Random.Range(-specialSpread, specialSpread),
+                cameraTransform.forward.z + Random.Range(-specialSpread, specialSpread));
             Ray shot = new Ray(cameraTransform.position, direction);
             RaycastHit hitObject;
             Debug.DrawRay(cameraTransform.position, direction, Color.red, 5f);
