@@ -22860,7 +22860,7 @@ PrefabInstance:
     - target: {fileID: 853552398104114947, guid: de56acc27c2e3804a9410bbc0a16f6dd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 853552398104114947, guid: de56acc27c2e3804a9410bbc0a16f6dd,
         type: 3}
@@ -23349,8 +23349,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mask:
     serializedVersion: 2
-    m_Bits: 2147483647
-  interactionDistance: 3
+    m_Bits: 23
+  interactionDistance: 2
   interactibleIndication: {fileID: 1238993374}
 --- !u!1001 &8793581145570365608
 PrefabInstance:
@@ -23367,7 +23367,7 @@ PrefabInstance:
     - target: {fileID: 8793581145154423503, guid: 32e9210caf114264f92bbff31cc0c4e7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8793581145154423503, guid: 32e9210caf114264f92bbff31cc0c4e7,
         type: 3}

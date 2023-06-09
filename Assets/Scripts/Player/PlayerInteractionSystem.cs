@@ -24,6 +24,8 @@ public class PlayerInteractionSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        interactibleIndication.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = string.Empty;
+
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
 
         RaycastHit hitInfo;

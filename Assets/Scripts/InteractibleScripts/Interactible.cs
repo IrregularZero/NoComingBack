@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Interactible : MonoBehaviour
 {
-    public bool useEvents;
     [SerializeField]
     public string promptMessage;
 
