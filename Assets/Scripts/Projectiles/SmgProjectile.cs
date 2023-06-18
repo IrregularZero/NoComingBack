@@ -7,8 +7,7 @@ public class SmgProjectile : MonoBehaviour
 {
     [SerializeField]
     private float explosionRadius = 5f;
-    [SerializeField]
-    private float explosionDamage = 0f;
+    private float explosionDamage;
 
     #region Properties
     public float ExplosionRadius 
@@ -41,31 +40,34 @@ public class SmgProjectile : MonoBehaviour
     }
     #endregion
 
-    public void fire(float force)
+    public void Fire(float damage, float force)
     {
         Transform direction = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0);
 
-        GetComponent<Rigidbody>().AddForce(new Vector3(direction.forward.x, direction.forward.x, direction.forward.z + force), ForceMode.Force);
+        explosionDamage = damage;
+        GetComponent<Rigidbody>().AddForce(new Vector3(direction.forward.x, direction.forward.y, direction.forward.z) * force, ForceMode.Force);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag != "Player")
         {
-            Explosion(collision.collider.transform.position);
+            Explosion(collision.contacts[0].point);
         }
     }
 
     private void Explosion(Vector3 ExplosionPosition)
     {
+        // Line below contains creation of variables hitColliders with data from command Physics.OverlapSphere(pos, rad), which scans spheral area around object
         Collider[] hitColliders = Physics.OverlapSphere(ExplosionPosition, ExplosionRadius);
-        foreach (var hitCollider in hitColliders)
+        foreach (Collider hitCollider in hitColliders)
         {
             Debug.Log(hitCollider.name);
-            if (hitCollider.gameObject.GetComponent<VitalitySystem>() != null)
+            if (hitCollider.gameObject.GetComponent<VitalitySystem>() != null || hitCollider.gameObject.GetComponent<NPCVitality>() != null)
             {
                 hitCollider.gameObject.GetComponent<VitalitySystem>().TakeDamage(explosionDamage);
             }
         }
+        Destroy(gameObject);
     }
 }

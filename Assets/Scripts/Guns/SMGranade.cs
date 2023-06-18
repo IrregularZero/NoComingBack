@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SMGranade : GunSystem
 {
-    [SerializeField]
     private bool firing = false;
 
+    [SerializeField]
     private GameObject specialProjectile;
+    [SerializeField]
+    private float specialProjectileDamage;
+    [SerializeField]
     private float forceForSpecialProjectile;
     public void Shoot()
     {
@@ -66,6 +70,19 @@ public class SMGranade : GunSystem
 
     public override void SpecialFire()
     {
-        throw new System.NotImplementedException();
+        if (isReloading)
+            return;
+        else if (magazine <= 0)
+        {
+            StartCoroutine(Reload());
+            return;
+        }
+
+        Transform playersCam = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0);
+        GameObject projectile = Instantiate(specialProjectile, playersCam.position + playersCam.TransformDirection(new Vector3(0f, 0f, 0.75f)), playersCam.rotation);
+
+        projectile.GetComponent<SmgProjectile>().Fire(specialProjectileDamage * ((float)magazine / (float)maxMagazine), forceForSpecialProjectile);
+
+        magazine = 0;
     }
 }
