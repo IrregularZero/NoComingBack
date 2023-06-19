@@ -6121,6 +6121,8 @@ MonoBehaviour:
     type: 3}
   specialProjectileDamage: 100
   forceForSpecialProjectile: 1000
+  ammoPerSecond: 1.5
+  recoveringMagazineMeter: {fileID: 7798329031865672496}
 --- !u!95 &5943385812253535275
 Animator:
   serializedVersion: 4
