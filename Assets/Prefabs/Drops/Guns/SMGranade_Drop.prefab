@@ -627,6 +627,7 @@ MonoBehaviour:
   isEquipped: 0
   handCompatibleItemPrefab: {fileID: 7483976557024783278, guid: ad6fc2dbb1afafd46954232a36763bfe,
     type: 3}
+  standardAmmoInStorage: 250
 --- !u!4 &7827162128821544975 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4573443609992856453, guid: 18ea9f53284b65249b6ca34fc5d1bf7c,

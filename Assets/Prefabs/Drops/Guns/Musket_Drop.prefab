@@ -639,17 +639,17 @@ PrefabInstance:
     - target: {fileID: 3639393568865306596, guid: 18ea9f53284b65249b6ca34fc5d1bf7c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 6.902179
       objectReference: {fileID: 0}
     - target: {fileID: 3639393568865306596, guid: 18ea9f53284b65249b6ca34fc5d1bf7c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 3.31
       objectReference: {fileID: 0}
     - target: {fileID: 3639393568865306596, guid: 18ea9f53284b65249b6ca34fc5d1bf7c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 6.1482606
       objectReference: {fileID: 0}
     - target: {fileID: 3639393568865306596, guid: 18ea9f53284b65249b6ca34fc5d1bf7c,
         type: 3}
@@ -731,3 +731,4 @@ MonoBehaviour:
   isEquipped: 0
   handCompatibleItemPrefab: {fileID: 2860785890447066113, guid: c239be83900ef014c9b9897836ed13f3,
     type: 3}
+  standardAmmoInStorage: 120

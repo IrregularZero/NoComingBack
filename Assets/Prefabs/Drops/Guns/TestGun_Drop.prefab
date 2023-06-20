@@ -534,3 +534,4 @@ MonoBehaviour:
   isEquipped: 0
   handCompatibleItemPrefab: {fileID: 3866138995471074374, guid: a8dc88ac697254d42840117984623877,
     type: 3}
+  standardAmmoInStorage: 250

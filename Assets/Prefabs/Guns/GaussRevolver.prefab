@@ -34,7 +34,6 @@ Transform:
   - {fileID: 3321051631590752687}
   - {fileID: 8432370401548551298}
   - {fileID: 9184721270480780913}
-  - {fileID: 3140491614844221423}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -83.14, z: -0.49}
@@ -651,9 +650,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0 | 0
-
-'
+  m_text: 0 | 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -846,15 +843,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8586418716919779328}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.66353464, z: 0, w: 0.7481456}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6883141884606196007}
+  - {fileID: 3140491614844221423}
   m_Father: {fileID: 7729897174633520835}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -83.14, z: 0}
 --- !u!1 &9119694362050606609
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,19 +879,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9119694362050606609}
-  m_LocalRotation: {x: 0.004061675, y: 0.70626783, z: 0.0040711854, w: 0.70792145}
-  m_LocalPosition: {x: 0, y: 0, z: 0.2351}
-  m_LocalScale: {x: 0.0017432893, y: 0.0018617299, z: 0.0062495125}
+  m_LocalRotation: {x: 0.004776874, y: 0.8306308, z: 0.0032020658, w: 0.5567939}
+  m_LocalPosition: {x: 0, y: 0, z: 0.281}
+  m_LocalScale: {x: 0.0017432895, y: 0.00186173, z: 0.006249514}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4239041903842033553}
   - {fileID: 5428366964280492724}
-  m_Father: {fileID: 7729897174633520835}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 89.866, z: 0.659}
+  m_Father: {fileID: 3321051631590752687}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 112.33, z: 0.659}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.4767, y: -0.0663}
+  m_AnchoredPosition: {x: -0.23, y: -0.146}
   m_SizeDelta: {x: 100, y: 104.66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1234054529541184005
@@ -939,7 +937,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &7419619969065968740
 MonoBehaviour:
   m_ObjectHideFlags: 0

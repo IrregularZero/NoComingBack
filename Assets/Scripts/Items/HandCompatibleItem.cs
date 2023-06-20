@@ -13,6 +13,9 @@ public class HandCompatibleItem : Item
     protected GameObject activeHandCompatibleItem;
     protected Transform handCompatibleItemPlacement; // Should be set as Parent
 
+    [SerializeField]
+    private int standardAmmoInStorage;
+
     #region Properties
     public bool IsEquipped 
     {
@@ -50,6 +53,18 @@ public class HandCompatibleItem : Item
             handCompatibleItemPlacement = value;
         }
     }
+    public int StandardAmmoInStorage 
+    {
+        get
+        {
+            return standardAmmoInStorage;
+        } 
+        set
+        {
+            if (value >= 0)
+                standardAmmoInStorage = value;
+        }
+    }
     #endregion
 
     private void Start()
@@ -70,6 +85,9 @@ public class HandCompatibleItem : Item
 
             activeHandCompatibleItem = Instantiate(handCompatibleItemPrefab, handCompatibleItemPlacement.transform.position, Quaternion.identity, handCompatibleItemPlacement) as GameObject;
 
+            activeHandCompatibleItem.name = name;
+            activeHandCompatibleItem.GetComponent<GunSystem>().AmmoInStorage = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventorySystem>().AmmoInStorageOfGuns[activeHandCompatibleItem.name];
+
             isEquipped = true;
         }
         else
@@ -79,6 +97,8 @@ public class HandCompatibleItem : Item
     }
     public void Deequip()
     {
+        GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventorySystem>().AmmoInStorageOfGuns[activeHandCompatibleItem.name] = activeHandCompatibleItem.GetComponent<GunSystem>().AmmoInStorage;
+
         Destroy(activeHandCompatibleItem);
 
         isEquipped = false;

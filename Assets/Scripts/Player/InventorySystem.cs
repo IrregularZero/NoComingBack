@@ -15,6 +15,7 @@ public class InventorySystem : MonoBehaviour
 
     private List<Transform> slots;
     private Dictionary<int, GameObject> items;
+    private Dictionary<string, int> ammoInStorageOfGuns;
     private int maxItems = 6;
 
     private int selectedSlot = 0;
@@ -26,6 +27,28 @@ public class InventorySystem : MonoBehaviour
 
     private float maxAnimationTimer = 0.25f;
     private List<float> animationTimers;
+
+    #region Properties
+    public Dictionary<string, int> AmmoInStorageOfGuns 
+    {
+        get
+        {
+            return ammoInStorageOfGuns;
+        }
+    }
+    public int SelectedSlot 
+    {
+        get
+        {
+            return selectedSlot;
+        }
+        set
+        {
+            if (value >= 0 && value < maxItems)
+                selectedSlot = value;
+        }
+    }
+    #endregion
 
     private void OnEnable()
     {
@@ -39,6 +62,7 @@ public class InventorySystem : MonoBehaviour
     private void Start()
     {
         items = new Dictionary<int, GameObject>();
+        ammoInStorageOfGuns = new Dictionary<string, int>();
 
         slots = new List<Transform>();
         animationTimers = new List<float>();
@@ -62,6 +86,9 @@ public class InventorySystem : MonoBehaviour
     #region Item Manipulation
     public void AddItem(GameObject item)
     {
+        if (ammoInStorageOfGuns.ContainsKey(item.name))
+            return;
+
         int slotForNewItem = -1;
         bool hasSpareSlot = false;
 
@@ -92,6 +119,9 @@ public class InventorySystem : MonoBehaviour
         else
             items.Add(slotForNewItem, item);
 
+        if (item.GetComponent<Item>().Type == "Weapon")
+            ammoInStorageOfGuns.Add(item.name, item.GetComponent<HandCompatibleItem>().StandardAmmoInStorage);
+
         slots[slotForNewItem].GetChild(0).gameObject.GetComponent<Image>().color = item.GetComponent<Item>().BackgroundColor;
         slots[slotForNewItem].GetChild(1).gameObject.GetComponent<Image>().sprite = item.GetComponent<Item>().ItemIcon;
         slots[slotForNewItem].GetChild(1).gameObject.SetActive(true);
@@ -113,6 +143,9 @@ public class InventorySystem : MonoBehaviour
 
         if (!items.ContainsKey(selectedSlot))
             return;
+
+        if (items[selectedSlot].GetComponent<Item>().Type == "Weapon")
+            ammoInStorageOfGuns.Remove(items[selectedSlot].name);
 
         if (items[selectedSlot].GetComponent<Item>().Type == "Weapon" || items[selectedSlot].GetComponent<Item>().Type == "Event Item")
         {
