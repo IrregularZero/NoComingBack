@@ -85,8 +85,11 @@ public class HandCompatibleItem : Item
 
             activeHandCompatibleItem = Instantiate(handCompatibleItemPrefab, handCompatibleItemPlacement.transform.position, Quaternion.identity, handCompatibleItemPlacement) as GameObject;
 
-            activeHandCompatibleItem.name = name;
-            activeHandCompatibleItem.GetComponent<GunSystem>().AmmoInStorage = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventorySystem>().AmmoInStorageOfGuns[activeHandCompatibleItem.name];
+            if (type == "Weapon")
+            {
+                activeHandCompatibleItem.name = name;
+                activeHandCompatibleItem.GetComponent<GunSystem>().AmmoInStorage = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventorySystem>().AmmoInStorageOfGuns[activeHandCompatibleItem.name];
+            }
 
             isEquipped = true;
         }
@@ -97,7 +100,8 @@ public class HandCompatibleItem : Item
     }
     public void Deequip()
     {
-        GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventorySystem>().AmmoInStorageOfGuns[activeHandCompatibleItem.name] = activeHandCompatibleItem.GetComponent<GunSystem>().AmmoInStorage;
+        if (type == "Weapon")
+            GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventorySystem>().AmmoInStorageOfGuns[activeHandCompatibleItem.name] = activeHandCompatibleItem.GetComponent<GunSystem>().AmmoInStorage;
 
         Destroy(activeHandCompatibleItem);
 

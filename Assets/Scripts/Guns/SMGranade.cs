@@ -109,6 +109,7 @@ public class SMGranade : GunSystem
 
         projectile.GetComponent<SmgProjectile>().Fire(specialProjectileDamage * ((float)magazine / (float)maxMagazine), forceForSpecialProjectile);
 
+        shotSpecial = true;
         magazine = 0;
     }
 
