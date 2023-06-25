@@ -19,13 +19,6 @@ public class QuickItemAccessSystem : MonoBehaviour
 
     private Color slotDefaultColor = new Color(0.1603774f, 0.1603774f, 0.1603774f);
 
-    // Test constructions
-    public bool updateItems = false;
-    public GameObject GOSlot0;
-    public GameObject GOSlot1;
-    public GameObject GOSlot2;
-    public GameObject GOSlot3;
-
     #region Properties
     public Dictionary<int, GameObject> Items
     {
@@ -66,32 +59,6 @@ public class QuickItemAccessSystem : MonoBehaviour
 
     private void Update()
     {
-        // Test construction
-        if (updateItems)
-        {
-            if (GOSlot0 != null)
-                AsignItemToSlot(0, GOSlot0);
-            else if (GOSlot1 == null && items.ContainsKey(0) && items[0] != null)
-                DeasignItemFromSlot(0);
-
-            if (GOSlot1 != null)
-                AsignItemToSlot(1, GOSlot1);
-            else if (GOSlot1 == null && items.ContainsKey(1) && items[1] != null)
-                DeasignItemFromSlot(1);
-
-            if (GOSlot2 != null)
-                AsignItemToSlot(2, GOSlot2);
-            else if (GOSlot1 == null && items.ContainsKey(2) && items[2] != null)
-                DeasignItemFromSlot(2);
-
-            if (GOSlot3 != null)
-                AsignItemToSlot(3, GOSlot3);
-            else if (GOSlot1 == null && items.ContainsKey(3) && items[3] != null)
-                DeasignItemFromSlot(3);
-
-            updateItems = false;
-        }
-
         for (int i = 0; i < 4; i++)
         {
             if (animationTimers[i] > 0)
