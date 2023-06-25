@@ -43,6 +43,7 @@ public abstract class GunSystem : MonoBehaviour
 
     [SerializeField]
     protected TextMeshProUGUI ammoMeter;
+    protected Item itemReference;
 
     public GunSystem()
     {
@@ -208,6 +209,17 @@ public abstract class GunSystem : MonoBehaviour
             {
                 overviewDuration = value;
             }
+        }
+    }
+    public Item ItemReference 
+    {
+        get
+        {
+            return itemReference;
+        }
+        set
+        {
+            itemReference = value;
         }
     }
     #endregion

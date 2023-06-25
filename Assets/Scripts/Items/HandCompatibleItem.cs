@@ -12,6 +12,7 @@ public class HandCompatibleItem : Item
     protected GameObject handCompatibleItemPrefab;
     protected GameObject activeHandCompatibleItem;
     protected Transform handCompatibleItemPlacement; // Should be set as Parent
+    protected InventorySystem invSys;
 
     [SerializeField]
     private int standardAmmoInStorage;
@@ -72,23 +73,43 @@ public class HandCompatibleItem : Item
         backgroundColor = new Color(0.596f, 0f, 0.662f, 1f);
         type = "Weapon";
     }
+    private void Update()
+    {
+        if (invSys == null)
+        {
+            invSys = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventorySystem>();
+        }
+    }
     // Use() make weapon toggle it's state from equipped to deequipped
     public override void Use()
     {
         if (!isEquipped)
         {
-            GameObject hands = GameObject.FindGameObjectWithTag("Hands");
-            if (hands.GetComponent<HandsObjectsTrackingSystem>().HasFreeHand)
-                handCompatibleItemPlacement = hands.GetComponent<HandsObjectsTrackingSystem>().FreeHand;
-            else
-                return;
+            HandsObjectsTrackingSystem hands = GameObject.FindGameObjectWithTag("Hands").GetComponent<HandsObjectsTrackingSystem>();
+
+            if (type == "Weapon")
+            {
+                if (hands.RightHand.childCount > 0)
+                {
+                    hands.RightHand.GetChild(0).gameObject.GetComponent<GunSystem>().ItemReference.Use();
+                }
+                handCompatibleItemPlacement = hands.RightHand;
+            }
+            else if (type == "Event Item")
+            {
+                if (hands.LeftHand.childCount <= 0)
+                    handCompatibleItemPlacement = hands.LeftHand;
+                else
+                    return;
+            }
 
             activeHandCompatibleItem = Instantiate(handCompatibleItemPrefab, handCompatibleItemPlacement.transform.position, Quaternion.identity, handCompatibleItemPlacement) as GameObject;
 
             if (type == "Weapon")
             {
                 activeHandCompatibleItem.name = name;
-                activeHandCompatibleItem.GetComponent<GunSystem>().AmmoInStorage = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventorySystem>().AmmoInStorageOfGuns[activeHandCompatibleItem.name];
+                activeHandCompatibleItem.GetComponent<GunSystem>().AmmoInStorage = invSys.AmmoInStorageOfGuns[activeHandCompatibleItem.name];
+                activeHandCompatibleItem.GetComponent<GunSystem>().ItemReference = this;
             }
 
             isEquipped = true;
@@ -101,7 +122,9 @@ public class HandCompatibleItem : Item
     public void Deequip()
     {
         if (type == "Weapon")
-            GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventorySystem>().AmmoInStorageOfGuns[activeHandCompatibleItem.name] = activeHandCompatibleItem.GetComponent<GunSystem>().AmmoInStorage;
+        {
+            invSys.AmmoInStorageOfGuns[activeHandCompatibleItem.name] = activeHandCompatibleItem.GetComponent<GunSystem>().AmmoInStorage;
+        }
 
         Destroy(activeHandCompatibleItem);
 

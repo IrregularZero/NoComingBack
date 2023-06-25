@@ -36,6 +36,13 @@ public class InventorySystem : MonoBehaviour
             return ammoInStorageOfGuns;
         }
     }
+    public Dictionary<int, GameObject> Items 
+    {
+        get
+        {
+            return items;
+        } 
+    }
     public int SelectedSlot 
     {
         get
@@ -135,6 +142,14 @@ public class InventorySystem : MonoBehaviour
             return;
 
         items[selectedSlot].GetComponent<Item>().Use();
+    }
+    public GameObject FindItem(string itemTitle)
+    {
+        foreach (int item in items.Keys)
+            if (items[item].name == itemTitle)
+                return items[item];
+
+        return null;
     }
     public void RemoveItem()
     {
