@@ -36,10 +36,15 @@ public abstract class GunSystem : MonoBehaviour
     protected Transform cameraTransform;
 
     protected Animator animator;
-    [SerializeField]
-    protected GameObject shotEffects;
     protected float maxShotEffectsDuration = 0.1f;
     protected float shotEffectsDuration;
+
+    [SerializeField]
+    protected ParticleSystem shootingSystem;
+    [SerializeField]
+    protected ParticleSystem impactParctileSystem;
+    [SerializeField]
+    protected TrailRenderer bulletTrail;
 
     [SerializeField]
     protected TextMeshProUGUI ammoMeter;
@@ -228,18 +233,12 @@ public abstract class GunSystem : MonoBehaviour
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();
-        cameraTransform = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0);
+        cameraTransform = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0); 
+        barell = GameObject.FindGameObjectWithTag("Player").transform.GetChild(1);
     }
     protected virtual void Update()
     {
         recoveryAfterShot -= Time.deltaTime;
-
-        if (shotEffects.activeSelf)
-        {
-            shotEffectsDuration -= Time.deltaTime;
-            if (shotEffectsDuration <= 0)
-                shotEffects.SetActive(false);
-        }
 
         if (fireAnimationDur > 0)
         {
@@ -257,7 +256,7 @@ public abstract class GunSystem : MonoBehaviour
     {
         animator.SetBool("IsFiring", true);
 
-        shotEffects.SetActive(true);
+        shootingSystem.Play();
         recoveryAfterShot = TimeBetweenShots;
         shotEffectsDuration = maxShotEffectsDuration;
 
@@ -292,6 +291,24 @@ public abstract class GunSystem : MonoBehaviour
     public virtual void UpdateInterface()
     {
         ammoMeter.text = $"{magazine} | {ammoInStorage}";
+    }
+    protected IEnumerator SpawnTrail(TrailRenderer trail, RaycastHit hit)
+    {
+        float time = 0;
+        Vector3 startPosition = trail.transform.position;
+
+        while (time < 1)
+        {
+            trail.transform.position = Vector3.Lerp(startPosition, hit.point, time);
+            time += Time.deltaTime / trail.time;
+
+            yield return null;
+        }
+
+        trail.transform.position = hit.point;
+        Instantiate(impactParctileSystem, hit.point, Quaternion.LookRotation(hit.normal));
+        
+        Destroy(trail.gameObject, trail.time);
     }
     #endregion
 }

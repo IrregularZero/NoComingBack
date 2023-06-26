@@ -17,13 +17,22 @@ public class GaussRevolver : GunSystem
     private float recoveryTime;
 
     [SerializeField]
-    private Transform SpecialBarellEnd;
+    private Transform specialBarellEnd;
+
+    [SerializeField]
+    private ParticleSystem specialShootingSystem;
+    [SerializeField]
+    private LineRenderer specialShotEffect;
+
+    [SerializeField]
+    private float rayDuration = 0.75f;
 
     private bool chargingUp = false;
 
     protected override void Start()
     {
         base.Start();
+        specialBarellEnd = GameObject.FindGameObjectWithTag("Player").transform.GetChild(1);
     }
     protected override void Update()
     {
@@ -41,12 +50,29 @@ public class GaussRevolver : GunSystem
             recoveryTime -= Time.deltaTime;
     }
 
+    public void ShootEffects(RaycastHit hit)
+    {
+        TrailRenderer trail = Instantiate(bulletTrail, barell.position, Quaternion.identity);
+        StartCoroutine(SpawnTrail(trail, hit));
+    }
+    public void SpecialShootEffects(RaycastHit hit)
+    {
+        LineRenderer line = Instantiate(specialShotEffect, specialBarellEnd.position, Quaternion.identity);
+
+        line.SetPosition(0, specialBarellEnd.position);
+        line.SetPosition(1, hit.point);
+
+        Destroy(line, rayDuration);
+    }
+
     public override void Fire()
     {
         // Cannot be fired while reloading
         if (isReloading)
             return;
         else if (recoveryAfterShot > 0)
+            return;
+        else if (chargingUp)
             return;
         else if (magazine <= 0)
         {
@@ -63,6 +89,8 @@ public class GaussRevolver : GunSystem
         RaycastHit hitObject;
         if (Physics.Raycast(shot, out hitObject, 500f, 1))
         {
+            ShootEffects(hitObject);
+
             if (hitObject.collider.tag == "Enemy")
             {
                 hitObject.collider.GetComponent<VitalitySystem>().TakeDamage(damage * (Random.Range(1, 101) >= critChance ? critMult : 1));
@@ -94,6 +122,9 @@ public class GaussRevolver : GunSystem
             RaycastHit hitObject;
             if (Physics.Raycast(shot, out hitObject, 500f, 1))
             {
+                specialShootingSystem.Play();
+                SpecialShootEffects(hitObject);
+                
                 if (hitObject.collider.tag == "Enemy")
                 {
                     hitObject.collider.GetComponent<VitalitySystem>().TakeDamage(highestSpecialDamage * chargeMultiplier);

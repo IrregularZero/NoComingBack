@@ -58,7 +58,7 @@ public class SMGranade : GunSystem
                 }
             }
 
-            shotEffects.SetActive(true);
+            shootingSystem.Play();
             recoveryAfterShot = TimeBetweenShots;
             shotEffectsDuration = maxShotEffectsDuration;
 
