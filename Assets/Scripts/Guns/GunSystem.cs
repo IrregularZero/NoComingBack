@@ -233,8 +233,10 @@ public abstract class GunSystem : MonoBehaviour
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();
-        cameraTransform = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0); 
-        barell = GameObject.FindGameObjectWithTag("Player").transform.GetChild(1);
+        cameraTransform = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0);
+        Vector3 barrelPos = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0).transform.position;
+        barrelPos = new Vector3(barell.localPosition.x - barrelPos.x + 0.5f, -0.155f, barell.localPosition.z - barrelPos.z);
+        barell = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0);
     }
     protected virtual void Update()
     {

@@ -32,7 +32,9 @@ public class GaussRevolver : GunSystem
     protected override void Start()
     {
         base.Start();
-        specialBarellEnd = GameObject.FindGameObjectWithTag("Player").transform.GetChild(1);
+        Vector3 barrelPos = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(1).transform.position;
+        barrelPos = new Vector3(specialBarellEnd.localPosition.x - barrelPos.x + 0.5f, -0.155f, specialBarellEnd.localPosition.z - barrelPos.z);
+        specialBarellEnd = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0);
     }
     protected override void Update()
     {
