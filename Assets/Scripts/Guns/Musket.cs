@@ -17,10 +17,19 @@ public class Musket : GunSystem
     [SerializeField]
     private float specialEffectiveRange = 10f;
 
+    protected override void Start()
+    {
+        base.Start(); 
+        Vector3 barrelPos = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0).transform.position;
+        barrelPos = new Vector3(barell.localPosition.x - barrelPos.x + 0.5f, -0.1f - barrelPos.y, barell.localPosition.z - barrelPos.z);
+        barell = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0);
+    }
+
     private void Shoot()
     {
         if (fireChain >= 0 && magazine > 0)
         {
+            shootingSystem.Play();
             Vector3 direction = new Vector3(cameraTransform.forward.x + Random.Range(-spread, spread),
                 cameraTransform.forward.y + Random.Range(-spread, spread),
                 cameraTransform.forward.z + Random.Range(-spread, spread));
@@ -28,6 +37,7 @@ public class Musket : GunSystem
             RaycastHit hitObject;
             if (Physics.Raycast(shot, out hitObject, 500f, 1))
             {
+                ShootEffects(hitObject);
                 if (hitObject.collider.tag == "Enemy")
                 {
                     hitObject.collider.GetComponent<VitalitySystem>().TakeDamage(damage * (Random.Range(1, 101) >= critChance ? critMult : 1));
@@ -79,6 +89,7 @@ public class Musket : GunSystem
         // The bigger special cost the more bullets will go
         for (int i = 0; i < specialAmmocost; i++)
         {
+            shootingSystem.Play();
             Vector3 direction = new Vector3(cameraTransform.forward.x + Random.Range(-specialSpread, specialSpread),
                 cameraTransform.forward.y + Random.Range(-specialSpread, specialSpread),
                 cameraTransform.forward.z + Random.Range(-specialSpread, specialSpread));
@@ -87,6 +98,8 @@ public class Musket : GunSystem
             Debug.DrawRay(cameraTransform.position, direction, Color.red, 5f);
             if (Physics.Raycast(shot, out hitObject, 500f, 1))
             {
+                ShootEffects(hitObject);
+
                 if (hitObject.collider.tag == "Enemy")
                 {
                     hitObject.collider.GetComponent<VitalitySystem>().TakeDamage(damage * 

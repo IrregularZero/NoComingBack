@@ -32,8 +32,11 @@ public class GaussRevolver : GunSystem
     protected override void Start()
     {
         base.Start();
-        Vector3 barrelPos = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(1).transform.position;
-        barrelPos = new Vector3(specialBarellEnd.localPosition.x - barrelPos.x + 0.5f, -0.155f, specialBarellEnd.localPosition.z - barrelPos.z);
+        Vector3 barrelPos = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0).transform.position;
+        barrelPos = new Vector3(barell.localPosition.x - barrelPos.x + 0.5f, -0.155f - barrelPos.y, barell.localPosition.z - barrelPos.z);
+        barell = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0);
+        barrelPos = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(1).transform.position;
+        barrelPos = new Vector3(specialBarellEnd.localPosition.x - barrelPos.x + 0.5f, -0.15f - barrelPos.y, specialBarellEnd.localPosition.z - barrelPos.z);
         specialBarellEnd = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0);
     }
     protected override void Update()
@@ -52,11 +55,6 @@ public class GaussRevolver : GunSystem
             recoveryTime -= Time.deltaTime;
     }
 
-    public void ShootEffects(RaycastHit hit)
-    {
-        TrailRenderer trail = Instantiate(bulletTrail, barell.position, Quaternion.identity);
-        StartCoroutine(SpawnTrail(trail, hit));
-    }
     public void SpecialShootEffects(RaycastHit hit)
     {
         LineRenderer line = Instantiate(specialShotEffect, specialBarellEnd.position, Quaternion.identity);

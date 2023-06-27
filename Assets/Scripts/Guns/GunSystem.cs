@@ -234,9 +234,6 @@ public abstract class GunSystem : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         cameraTransform = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0);
-        Vector3 barrelPos = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0).transform.position;
-        barrelPos = new Vector3(barell.localPosition.x - barrelPos.x + 0.5f, -0.155f, barell.localPosition.z - barrelPos.z);
-        barell = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0);
     }
     protected virtual void Update()
     {
@@ -311,6 +308,11 @@ public abstract class GunSystem : MonoBehaviour
         Instantiate(impactParctileSystem, hit.point, Quaternion.LookRotation(hit.normal));
         
         Destroy(trail.gameObject, trail.time);
+    }
+    public void ShootEffects(RaycastHit hit)
+    {
+        TrailRenderer trail = Instantiate(bulletTrail, barell.position, Quaternion.identity);
+        StartCoroutine(SpawnTrail(trail, hit));
     }
     #endregion
 }
