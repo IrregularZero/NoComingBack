@@ -45,6 +45,7 @@ public abstract class GunSystem : MonoBehaviour
     protected ParticleSystem impactParctileSystem;
     [SerializeField]
     protected TrailRenderer bulletTrail;
+    protected float impactExistanceTimer = 5f;
 
     [SerializeField]
     protected TextMeshProUGUI ammoMeter;
@@ -305,9 +306,11 @@ public abstract class GunSystem : MonoBehaviour
         }
 
         trail.transform.position = hit.point;
-        Instantiate(impactParctileSystem, hit.point, Quaternion.LookRotation(hit.normal));
+        ParticleSystem impact = Instantiate(impactParctileSystem, hit.point, Quaternion.LookRotation(hit.normal));
         
         Destroy(trail.gameObject, trail.time);
+        Destroy(impact.gameObject, impactExistanceTimer);
+
     }
     public void ShootEffects(RaycastHit hit)
     {

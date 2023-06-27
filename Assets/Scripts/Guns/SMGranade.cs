@@ -24,6 +24,14 @@ public class SMGranade : GunSystem
     [SerializeField]
     protected TextMeshProUGUI recoveringMagazineMeter;
 
+    protected override void Start()
+    {
+        base.Start(); 
+        Vector3 barrelPos = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0).transform.position;
+        barrelPos = new Vector3(barell.localPosition.x - barrelPos.x + 0.5f, -0.155f - barrelPos.y, barell.localPosition.z - barrelPos.z);
+        barell = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0);
+
+    }
     protected override void Update()
     {
         base.Update();
@@ -45,6 +53,8 @@ public class SMGranade : GunSystem
         {
             animator.SetBool("IsFiring", true);
 
+            shootingSystem.Play();
+
             Vector3 direction = new Vector3(cameraTransform.forward.x + Random.Range(-spread, spread),
                 cameraTransform.forward.y + Random.Range(-spread, spread),
                 cameraTransform.forward.z + Random.Range(-spread, spread));
@@ -52,6 +62,8 @@ public class SMGranade : GunSystem
             RaycastHit hitObject;
             if (Physics.Raycast(shot, out hitObject, 500f, 1))
             {
+                ShootEffects(hitObject);
+
                 if (hitObject.collider.tag == "Enemy")
                 {
                     hitObject.collider.GetComponent<VitalitySystem>().TakeDamage(damage * (Random.Range(1, 101) >= critChance ? critMult : 1));

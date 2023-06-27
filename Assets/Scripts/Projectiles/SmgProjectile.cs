@@ -5,9 +5,14 @@ using UnityEngine;
 
 public class SmgProjectile : MonoBehaviour
 {
+    private bool exploded = false;
+
     [SerializeField]
     private float explosionRadius = 5f;
     private float explosionDamage;
+
+    [SerializeField]
+    private ParticleSystem explosionEffects;
 
     #region Properties
     public float ExplosionRadius 
@@ -42,6 +47,7 @@ public class SmgProjectile : MonoBehaviour
 
     public void Fire(float damage, float force)
     {
+        explosionEffects.Stop();
         Transform direction = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0);
 
         explosionDamage = damage;
@@ -50,24 +56,29 @@ public class SmgProjectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (exploded)
+            return;
+
         if (collision.collider.tag != "Player")
         {
+            GetComponent<Rigidbody>().isKinematic = true;
             Explosion(collision.contacts[0].point);
         }
     }
 
     private void Explosion(Vector3 ExplosionPosition)
     {
+        explosionEffects.Play();
+        
         // Line below contains creation of variables hitColliders with data from command Physics.OverlapSphere(pos, rad), which scans spheral area around object
         Collider[] hitColliders = Physics.OverlapSphere(ExplosionPosition, ExplosionRadius);
         foreach (Collider hitCollider in hitColliders)
         {
-            Debug.Log(hitCollider.name);
             if (hitCollider.gameObject.GetComponent<VitalitySystem>() != null || hitCollider.gameObject.GetComponent<NPCVitality>() != null)
             {
                 hitCollider.gameObject.GetComponent<VitalitySystem>().TakeDamage(explosionDamage);
             }
         }
-        Destroy(gameObject);
+        Destroy(gameObject, 3f);
     }
 }
