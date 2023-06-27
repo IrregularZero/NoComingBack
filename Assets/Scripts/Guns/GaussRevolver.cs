@@ -16,7 +16,6 @@ public class GaussRevolver : GunSystem
     private float maxRecoveryTime = 0.25f; // Recovery after shot
     private float recoveryTime;
 
-    [SerializeField]
     private Transform specialBarellEnd;
 
     [SerializeField]
@@ -32,11 +31,7 @@ public class GaussRevolver : GunSystem
     protected override void Start()
     {
         base.Start();
-        Vector3 barrelPos = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0).transform.position;
-        barrelPos = new Vector3(barell.localPosition.x - barrelPos.x + 0.5f, -0.155f - barrelPos.y, barell.localPosition.z - barrelPos.z);
         barell = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0);
-        barrelPos = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(1).transform.position;
-        barrelPos = new Vector3(specialBarellEnd.localPosition.x - barrelPos.x + 0.5f, -0.15f - barrelPos.y, specialBarellEnd.localPosition.z - barrelPos.z);
         specialBarellEnd = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0);
     }
     protected override void Update()
@@ -62,7 +57,7 @@ public class GaussRevolver : GunSystem
         line.SetPosition(0, specialBarellEnd.position);
         line.SetPosition(1, hit.point);
 
-        Destroy(line, rayDuration);
+        Destroy(line.gameObject, rayDuration);
     }
 
     public override void Fire()

@@ -31,7 +31,6 @@ public abstract class GunSystem : MonoBehaviour
     protected float overviewDuration;
     protected float fireAnimationDur;
 
-    [SerializeField]
     protected Transform barell;
     protected Transform cameraTransform;
 

@@ -20,8 +20,6 @@ public class Musket : GunSystem
     protected override void Start()
     {
         base.Start(); 
-        Vector3 barrelPos = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0).transform.position;
-        barrelPos = new Vector3(barell.localPosition.x - barrelPos.x + 0.5f, -0.1f - barrelPos.y, barell.localPosition.z - barrelPos.z);
         barell = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0);
     }
 
