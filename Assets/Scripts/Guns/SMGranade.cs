@@ -49,6 +49,7 @@ public class SMGranade : GunSystem
     {
         if (firing && magazine > 0)
         {
+            animator.SetBool("IsFiring", false);
             animator.SetBool("IsFiring", true);
 
             shootingSystem.Play();
@@ -101,6 +102,7 @@ public class SMGranade : GunSystem
         else
         {
             CancelInvoke("Shoot");
+            animator.SetBool("IsFiring", false);
         }
     }
 
@@ -114,6 +116,8 @@ public class SMGranade : GunSystem
             return;
         }
 
+        animator.SetBool("IsSpecialFiring", true);
+
         Transform playersCam = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0);
         GameObject projectile = Instantiate(specialProjectile, playersCam.position + playersCam.TransformDirection(new Vector3(0f, 0f, 0.75f)), playersCam.rotation);
 
@@ -121,15 +125,32 @@ public class SMGranade : GunSystem
 
         shotSpecial = true;
         magazine = 0;
+        
+        animator.SetBool("IsSpecialFiring", false);
+        animator.SetBool("SpecialShot", true);
     }
 
     public override IEnumerator Reload()
     {
-        if (magazine >= maxMagazine)
+        firing = false;
+        CancelInvoke("Shoot");
+
+        if (magazine >= maxMagazine && ammoInStorage > 0)
             return base.Reload();
         if (shotSpecial)
         {
             shotSpecial = false;
+            reloadSocketTaken = false;
+            recoveringMagazine = 0;
+
+            animator.SetBool("SpecialShot", false);
+            animator.SetBool("SlotTaken", false); 
+            
+            if (reloadSocketTaken && recoveringMagazine >= maxMagazine)
+            {
+                ammoInStorage += (int)Mathf.Floor(recoveringMagazine);
+            }
+
             return base.Reload();
         }
         else if (reloadSocketTaken && recoveringMagazine >= maxMagazine)
@@ -137,8 +158,11 @@ public class SMGranade : GunSystem
             ammoInStorage += (int)Mathf.Floor(recoveringMagazine);
         }
 
+        ammoInStorage -= magazine;
         recoveringMagazine = magazine;
         reloadSocketTaken = true;
+
+        animator.SetBool("SlotTaken", true);
 
         return base.Reload();
     }

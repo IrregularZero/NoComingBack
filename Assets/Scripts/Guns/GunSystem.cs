@@ -27,8 +27,7 @@ public abstract class GunSystem : MonoBehaviour
     protected int critChance;
     [SerializeField]
     protected float critMult;
-    [SerializeField]
-    protected float overviewDuration;
+    protected float overviewDuration = 0.1f;
     protected float fireAnimationDur;
 
     protected Transform barell;
