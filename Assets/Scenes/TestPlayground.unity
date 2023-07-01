@@ -11204,6 +11204,7 @@ MonoBehaviour:
   knockDownEffect: {fileID: 563473151}
   slideEffects: {fileID: 1505112847}
   powerSlideEffects: {fileID: 101231010}
+  maxTiltAngle: -90
 --- !u!114 &839420273
 MonoBehaviour:
   m_ObjectHideFlags: 0

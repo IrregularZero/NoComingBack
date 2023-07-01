@@ -22,7 +22,7 @@ public class PlayerLook : MonoBehaviour
         this.xRotation = Mathf.Clamp(xRotation, -80f, 80f);
 
         // Applying this to camra transform
-        this.cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+        this.cam.transform.localRotation = Quaternion.Euler(xRotation, 0, this.cam.transform.localRotation.z);
 
         // Rotate player to look left and right
         transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSensitivity);

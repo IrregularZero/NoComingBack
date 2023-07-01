@@ -50,8 +50,8 @@ public class InputManager : MonoBehaviour
         // Movement controls
         inputs.OnFoot.Jump.performed += ctx => player.Jump();
         inputs.OnFoot.KnockDown.performed += ctx => player.KnockDown();
-        inputs.OnFoot.CrouchHold.started += ctx => player.Crouch();
-        inputs.OnFoot.CrouchHold.canceled += ctx => player.Crouch();
+        inputs.OnFoot.CrouchHold.started += ctx => player.Slide();
+        inputs.OnFoot.CrouchHold.canceled += ctx => player.Slide();
         inputs.OnFoot.Slide.performed += ctx => player.Slide();
 
         // Interaction system

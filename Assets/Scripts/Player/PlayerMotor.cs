@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
 {
     private Vector3 playerVelocity;
     private CharacterController characterController;
+    private Transform cameraTransform;
 
     // Move
     [SerializeField]
@@ -48,11 +50,17 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField]
     private GameObject powerSlideEffects;
 
+    // Camera Tilt
+    [SerializeField]
+    private float maxTiltAngle = 90;
+    private float tiltAngle;
+
 
     // Start is called before the first frame update
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        cameraTransform = transform.GetChild(0);
         playerVelocity = Vector3.zero;
 
         // Locking cursor in place and making it invisible
@@ -100,6 +108,7 @@ public class PlayerMotor : MonoBehaviour
             isKnockingDown = false;
         }
         #endregion
+        cameraTransform.Rotate(0f, 0f, tiltAngle);
 
         knockDownEffect.SetActive(isKnockingDown);
         slideEffects.SetActive(isPowerSliding ? false : isSliding);
@@ -109,6 +118,8 @@ public class PlayerMotor : MonoBehaviour
     public void ProcessMove(Vector2 input)
     {
         Vector3 movedirection = new Vector3(input.x, 0, input.y);
+
+        ApplyCameraTilt(movedirection);
 
         // if sliding player can't change his direction by rotating camera
         if (!isSliding)
@@ -123,6 +134,34 @@ public class PlayerMotor : MonoBehaviour
 
         characterController.Move(playerVelocity * Time.deltaTime);
     }
+
+    public void ApplyCameraTilt(Vector3 moveDir)
+    {
+        Vector2 move = new Vector2(moveDir.x, moveDir.z);
+        move.Normalize();
+
+        float angle = 0;
+        if (move != Vector2.zero)
+        {
+            angle = Mathf.Atan2(move.y, -move.x) * Mathf.Rad2Deg;
+            if (angle <= 0) angle += 360;
+        }
+        else
+        {
+            tiltAngle = 0f;
+            return;
+        }
+
+        if (angle == 180)
+        {
+            tiltAngle = maxTiltAngle;
+        }
+        else if (angle == 360)
+        {
+            tiltAngle = -maxTiltAngle;
+        }
+    }
+
     public void Jump()
     {
         if (amountOfJumps != maxAmountOfJumps && characterController.isGrounded)
@@ -142,7 +181,7 @@ public class PlayerMotor : MonoBehaviour
             isKnockingDown = true;
         }
     }
-    public void Crouch()
+    private void Crouch()
     {
         isCrouching = !isCrouching;
         lerpCrouch = true;
