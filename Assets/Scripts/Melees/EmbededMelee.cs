@@ -19,8 +19,14 @@ public class EmbededMelee : Melee
         RaycastHit hitInfo;
         if (Physics.Raycast(ray, out hitInfo, distance, 1))
         {
-            if (hitInfo.collider.tag != "Player" && hitInfo.collider.GetComponent<NPCVitality>() != null)
+            if (hitInfo.collider.tag != "Player" && hitInfo.collider.GetComponent<VitalitySystem>() != null)
             {
+                if (hitInfo.collider.GetComponent<VitalitySystem>().Health - damage <= 0)
+                {
+                    // Finisher
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<VitalitySystem>().RestoreHealth(finisherHPBonus);
+                    hitInfo.collider.GetComponent<VitalitySystem>().TakeDamage(damage);
+                }
                 hitInfo.collider.GetComponent<VitalitySystem>().TakeDamage(damage);
             }
         }

@@ -18,6 +18,8 @@ public abstract class Melee : MonoBehaviour
     protected float attackDuration;
     [SerializeField]
     protected float impactFrame;
+    [SerializeField]
+    protected float finisherHPBonus;
 
     [SerializeField]
     protected int maxHits;
