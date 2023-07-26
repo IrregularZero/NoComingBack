@@ -12,6 +12,7 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private InventorySystem inventorySystem;
     private bool inventoryEnabled = true;
+    private MeleeSystem meleeSystem;
     private PlayerInputs inputs;
 
     #region Properties
@@ -45,6 +46,7 @@ public class InputManager : MonoBehaviour
         player = GetComponent<PlayerMotor>();
         look = GetComponent<PlayerLook>();
         interactionSystem = GetComponent<PlayerInteractionSystem>();
+        meleeSystem = GetComponent<MeleeSystem>();
         inputs = new PlayerInputs();
 
         // Movement controls
@@ -75,6 +77,9 @@ public class InputManager : MonoBehaviour
         inputs.ItemManipulation.EastSlot.performed += ctx => QIAsystem.UseAsignedItem(1);
         inputs.ItemManipulation.WestSlot.performed += ctx => QIAsystem.UseAsignedItem(2);
         inputs.ItemManipulation.SouthSlot.performed += ctx => QIAsystem.UseAsignedItem(3);
+
+        // Melee
+        inputs.OnFoot.Melee.performed += ctx => meleeSystem.useEmbededMelee();
 
         SwapQuickAccessToAsignment(false);
     }

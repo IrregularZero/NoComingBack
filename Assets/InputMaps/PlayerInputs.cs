@@ -89,6 +89,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Melee"",
+                    ""type"": ""Button"",
+                    ""id"": ""93aa09b5-f7c8-49ae-ab56-d8ef92a10628"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -276,6 +285,17 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e1cd5e4f-4cc4-4386-9b5c-2ee5ff8f6b49"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Melee"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -728,6 +748,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_OnFoot_CrouchHold = m_OnFoot.FindAction("CrouchHold", throwIfNotFound: true);
         m_OnFoot_Slide = m_OnFoot.FindAction("Slide", throwIfNotFound: true);
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
+        m_OnFoot_Melee = m_OnFoot.FindAction("Melee", throwIfNotFound: true);
         // Gun
         m_Gun = asset.FindActionMap("Gun", throwIfNotFound: true);
         m_Gun_Fire = m_Gun.FindAction("Fire", throwIfNotFound: true);
@@ -814,6 +835,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_CrouchHold;
     private readonly InputAction m_OnFoot_Slide;
     private readonly InputAction m_OnFoot_Interact;
+    private readonly InputAction m_OnFoot_Melee;
     public struct OnFootActions
     {
         private @PlayerInputs m_Wrapper;
@@ -825,6 +847,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         public InputAction @CrouchHold => m_Wrapper.m_OnFoot_CrouchHold;
         public InputAction @Slide => m_Wrapper.m_OnFoot_Slide;
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
+        public InputAction @Melee => m_Wrapper.m_OnFoot_Melee;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -855,6 +878,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
+                @Melee.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnMelee;
+                @Melee.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnMelee;
+                @Melee.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnMelee;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -880,6 +906,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Melee.started += instance.OnMelee;
+                @Melee.performed += instance.OnMelee;
+                @Melee.canceled += instance.OnMelee;
             }
         }
     }
@@ -1071,6 +1100,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnCrouchHold(InputAction.CallbackContext context);
         void OnSlide(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnMelee(InputAction.CallbackContext context);
     }
     public interface IGunActions
     {
