@@ -11596,6 +11596,7 @@ GameObject:
   - component: {fileID: 839420274}
   - component: {fileID: 839420273}
   - component: {fileID: 839420272}
+  - component: {fileID: 7033193038974610132}
   - component: {fileID: 2295637358059207215}
   - component: {fileID: 7033193038974610129}
   - component: {fileID: 7033193038974610130}
@@ -25698,9 +25699,34 @@ MonoBehaviour:
   maxEnergy: 100
   recievedEnergyBonus: 1
   passiveEnergyIncerement: 0.2
+  EnergyDecrement: 1
   chipSpeed: 0.25
   frontUltimateBar: {fileID: 1620846199060233460}
   backUltimateBar: {fileID: 1620846199056016894}
+--- !u!114 &7033193038974610132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839420271}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06abf94e60c105041b22ace6a9ce98b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  maxAmountOfJumps: 5
+  jumpHeight: 1.5
+  weight: 0.5
+  gravity: -9.8
+  knockDownSpeedMultyplier: 7.5
+  slideSpeedMultiplier: 2
+  powerSlideSpeedMultiplier: 2.5
+  knockDownEffect: {fileID: 563473151}
+  slideEffects: {fileID: 1505112847}
+  powerSlideEffects: {fileID: 101231010}
+  maxTiltAngle: 90
 --- !u!1001 &7591054173638454414
 PrefabInstance:
   m_ObjectHideFlags: 0

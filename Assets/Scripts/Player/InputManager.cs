@@ -5,6 +5,7 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     private PlayerMotor player;
+    private PlayerUltimateMotor ultimate;
     private PlayerLook look;
     private PlayerInteractionSystem interactionSystem;
     [SerializeField]
@@ -13,6 +14,7 @@ public class InputManager : MonoBehaviour
     private InventorySystem inventorySystem;
     private bool inventoryEnabled = true;
     private MeleeSystem meleeSystem;
+    private UltimateSystem ultimateSystem;
     private PlayerInputs inputs;
 
     #region Properties
@@ -44,9 +46,11 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         player = GetComponent<PlayerMotor>();
+        ultimate = GetComponent<PlayerUltimateMotor>();
         look = GetComponent<PlayerLook>();
         interactionSystem = GetComponent<PlayerInteractionSystem>();
         meleeSystem = GetComponent<MeleeSystem>();
+        ultimateSystem = GetComponent<UltimateSystem>();
         inputs = new PlayerInputs();
 
         // Movement controls
@@ -81,12 +85,22 @@ public class InputManager : MonoBehaviour
         // Melee
         inputs.OnFoot.Melee.performed += ctx => meleeSystem.useEmbededMelee();
 
+        // Ultimate
+        inputs.OnFoot.ActivateUltimate.performed += ctx => ChangeUltimateModeStatus();
+        inputs.UltimateMode.DectivateUltimate.performed += ctx => ChangeUltimateModeStatus();
+        inputs.UltimateMode.Jump.performed += ctx => ultimate.Jump();
+        inputs.UltimateMode.KnockDown.performed += ctx => ultimate.KnockDown();
+        inputs.UltimateMode.CrouchHold.started += ctx => ultimate.Slide();
+        inputs.UltimateMode.CrouchHold.canceled += ctx => ultimate.Slide();
+        inputs.UltimateMode.Slide.performed += ctx => ultimate.Slide();
+
         SwapQuickAccessToAsignment(false);
     }
     private void Start()
     {
         EnableInventoryMode();
         EnableInventoryMode();
+        ChangeUltimateModeStatus();
     }
     public void EnableInventoryMode()
     {
@@ -97,6 +111,10 @@ public class InputManager : MonoBehaviour
             inventorySystem.transform.gameObject.SetActive(true);
 
             inputs.OnFoot.Disable();
+            inputs.UltimateMode.Disable();
+            player.enabled = true;
+            ultimate.enabled = false;
+            ultimateSystem.UltimateModeEnabled = false;
             inputs.OnFoot.Movement.Enable();
             inputs.OnFoot.Look.Enable();
 
@@ -110,6 +128,7 @@ public class InputManager : MonoBehaviour
             inventorySystem.transform.gameObject.SetActive(false);
 
             inputs.OnFoot.Enable();
+            inputs.UltimateMode.Disable();
 
             inputs.ItemManipulation.Use_InInventory.Disable();
             inputs.ItemManipulation.Remove_InInventory.Disable();
@@ -146,14 +165,47 @@ public class InputManager : MonoBehaviour
         
     }
 
+    public void ChangeUltimateModeStatus()
+    {
+        if (ultimateSystem.Energy >= ultimateSystem.MaxEnergy && inputs.OnFoot.enabled) // Enable Ult mode
+        {
+            inputs.OnFoot.Disable();
+            inputs.UltimateMode.Enable();
+
+            player.enabled = false;
+            ultimate.enabled = true;
+            ultimateSystem.UltimateModeEnabled = true;
+        }
+        else
+        {
+            inputs.OnFoot.Enable();
+            inputs.UltimateMode.Disable();
+
+            player.enabled = true;
+            ultimate.enabled = false;
+            ultimateSystem.UltimateModeEnabled = false;
+        }
+    }
+
     private void Update()
     {
-        player.ProcessMove(inputs.OnFoot.Movement.ReadValue<Vector2>());
+        if (inputs.OnFoot.enabled)
+            player.ProcessMove(inputs.OnFoot.Movement.ReadValue<Vector2>());
+        else
+            ultimate.ProcessMove(inputs.UltimateMode.Movement.ReadValue<Vector2>());
+
+        if (ultimateSystem.UltimateModeEnabled && ultimateSystem.Energy <= 0) 
+            ChangeUltimateModeStatus();
     }
     private void LateUpdate()
     {
         if (!inventoryEnabled)
-            look.processLook(inputs.OnFoot.Look.ReadValue<Vector2>());
+        {
+            if (inputs.OnFoot.enabled)
+                look.processLook(inputs.OnFoot.Look.ReadValue<Vector2>());
+            else
+                look.processLook(inputs.UltimateMode.Look.ReadValue<Vector2>());
+        }
         else
             inventorySystem.SelectedItemTracking();
     }

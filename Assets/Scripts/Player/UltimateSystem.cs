@@ -10,6 +10,8 @@ using UnityEngine.UI;
 
 public class UltimateSystem : MonoBehaviour
 {
+    private bool ultimateModeEnabled = false;
+
     [SerializeField]
     private float energy;
     [SerializeField]
@@ -19,6 +21,8 @@ public class UltimateSystem : MonoBehaviour
     private float recievedEnergyBonus = 1f;
     [SerializeField]
     private float passiveEnergyIncerement;
+    [SerializeField]
+    private float EnergyDecrement;
 
     [SerializeField]
     private float chipSpeed = 2f;
@@ -30,6 +34,17 @@ public class UltimateSystem : MonoBehaviour
     private Image backUltimateBar; // Shows change in player's health
 
     #region Properties
+    public bool UltimateModeEnabled 
+    {
+        get
+        {
+            return ultimateModeEnabled;
+        }
+        set
+        {
+            ultimateModeEnabled = value;
+        }
+    }
     public float Energy 
     {
         get
@@ -44,7 +59,7 @@ public class UltimateSystem : MonoBehaviour
             }
         }
     }
-    public float MaxHealth 
+    public float MaxEnergy
     {
         get
         {
@@ -91,7 +106,10 @@ public class UltimateSystem : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        AddUltimateCharge(passiveEnergyIncerement * Time.deltaTime);
+        if (ultimateModeEnabled)
+            TakeUltimateCharge(EnergyDecrement * Time.deltaTime);
+        else
+            AddUltimateCharge(passiveEnergyIncerement * Time.deltaTime);
 
         energy = Mathf.Clamp(energy, 0, maxEnergy);
 
