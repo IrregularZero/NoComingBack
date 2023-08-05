@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EventCoreSystem : MonoBehaviour
@@ -41,8 +42,11 @@ public class EventCoreSystem : MonoBehaviour
     {
         if (activeEventItem == null || other.tag != activeEventItem.tag)
         {
-            other.GetComponent<EventArea>().Event(false);
-            activeEventItemAnimator.SetBool("IsActive", false);
+            if (other.GetComponent<EventArea>() != null)
+            {
+                other.GetComponent<EventArea>().Event(false);
+                activeEventItemAnimator.SetBool("IsActive", false);
+            }
         }
     }
     private void OnTriggerExit(Collider other)

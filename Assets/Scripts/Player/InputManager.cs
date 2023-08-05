@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
     private bool inventoryEnabled = true;
     private MeleeSystem meleeSystem;
     private UltimateSystem ultimateSystem;
+    private UltimateMelee ultimateMelee;
     private PlayerInputs inputs;
 
     #region Properties
@@ -51,6 +52,7 @@ public class InputManager : MonoBehaviour
         interactionSystem = GetComponent<PlayerInteractionSystem>();
         meleeSystem = GetComponent<MeleeSystem>();
         ultimateSystem = GetComponent<UltimateSystem>();
+        ultimateMelee = GameObject.FindGameObjectWithTag("UltimateMelee").GetComponent<UltimateMelee>();
         inputs = new PlayerInputs();
 
         // Movement controls
@@ -93,6 +95,8 @@ public class InputManager : MonoBehaviour
         inputs.UltimateMode.CrouchHold.started += ctx => ultimate.Slide();
         inputs.UltimateMode.CrouchHold.canceled += ctx => ultimate.Slide();
         inputs.UltimateMode.Slide.performed += ctx => ultimate.Slide();
+        inputs.UltimateMode.HorizontalHit.performed += ctx => ultimateMelee.PerformHorizontalHit();
+        inputs.UltimateMode.VerticalHit.performed += ctx => ultimateMelee.PerformVerticalHit();
 
         SwapQuickAccessToAsignment(false);
     }

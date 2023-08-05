@@ -387,6 +387,24 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HorizontalHit"",
+                    ""type"": ""Button"",
+                    ""id"": ""41e06181-87d2-4372-88b2-4c98f74e3802"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""VerticalHit"",
+                    ""type"": ""Button"",
+                    ""id"": ""411df372-f27d-47de-890f-aa637d64d017"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -563,6 +581,28 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b42891e2-04ca-4e36-9585-2e7776e26239"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HorizontalHit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b3d9c586-e551-47e4-ad16-ba64424269b8"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""VerticalHit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1026,6 +1066,8 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_UltimateMode_Slide = m_UltimateMode.FindAction("Slide", throwIfNotFound: true);
         m_UltimateMode_CrouchHold = m_UltimateMode.FindAction("CrouchHold", throwIfNotFound: true);
         m_UltimateMode_DectivateUltimate = m_UltimateMode.FindAction("DectivateUltimate", throwIfNotFound: true);
+        m_UltimateMode_HorizontalHit = m_UltimateMode.FindAction("HorizontalHit", throwIfNotFound: true);
+        m_UltimateMode_VerticalHit = m_UltimateMode.FindAction("VerticalHit", throwIfNotFound: true);
         // Gun
         m_Gun = asset.FindActionMap("Gun", throwIfNotFound: true);
         m_Gun_Fire = m_Gun.FindAction("Fire", throwIfNotFound: true);
@@ -1209,6 +1251,8 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_UltimateMode_Slide;
     private readonly InputAction m_UltimateMode_CrouchHold;
     private readonly InputAction m_UltimateMode_DectivateUltimate;
+    private readonly InputAction m_UltimateMode_HorizontalHit;
+    private readonly InputAction m_UltimateMode_VerticalHit;
     public struct UltimateModeActions
     {
         private @PlayerInputs m_Wrapper;
@@ -1220,6 +1264,8 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         public InputAction @Slide => m_Wrapper.m_UltimateMode_Slide;
         public InputAction @CrouchHold => m_Wrapper.m_UltimateMode_CrouchHold;
         public InputAction @DectivateUltimate => m_Wrapper.m_UltimateMode_DectivateUltimate;
+        public InputAction @HorizontalHit => m_Wrapper.m_UltimateMode_HorizontalHit;
+        public InputAction @VerticalHit => m_Wrapper.m_UltimateMode_VerticalHit;
         public InputActionMap Get() { return m_Wrapper.m_UltimateMode; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1250,6 +1296,12 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @DectivateUltimate.started -= m_Wrapper.m_UltimateModeActionsCallbackInterface.OnDectivateUltimate;
                 @DectivateUltimate.performed -= m_Wrapper.m_UltimateModeActionsCallbackInterface.OnDectivateUltimate;
                 @DectivateUltimate.canceled -= m_Wrapper.m_UltimateModeActionsCallbackInterface.OnDectivateUltimate;
+                @HorizontalHit.started -= m_Wrapper.m_UltimateModeActionsCallbackInterface.OnHorizontalHit;
+                @HorizontalHit.performed -= m_Wrapper.m_UltimateModeActionsCallbackInterface.OnHorizontalHit;
+                @HorizontalHit.canceled -= m_Wrapper.m_UltimateModeActionsCallbackInterface.OnHorizontalHit;
+                @VerticalHit.started -= m_Wrapper.m_UltimateModeActionsCallbackInterface.OnVerticalHit;
+                @VerticalHit.performed -= m_Wrapper.m_UltimateModeActionsCallbackInterface.OnVerticalHit;
+                @VerticalHit.canceled -= m_Wrapper.m_UltimateModeActionsCallbackInterface.OnVerticalHit;
             }
             m_Wrapper.m_UltimateModeActionsCallbackInterface = instance;
             if (instance != null)
@@ -1275,6 +1327,12 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @DectivateUltimate.started += instance.OnDectivateUltimate;
                 @DectivateUltimate.performed += instance.OnDectivateUltimate;
                 @DectivateUltimate.canceled += instance.OnDectivateUltimate;
+                @HorizontalHit.started += instance.OnHorizontalHit;
+                @HorizontalHit.performed += instance.OnHorizontalHit;
+                @HorizontalHit.canceled += instance.OnHorizontalHit;
+                @VerticalHit.started += instance.OnVerticalHit;
+                @VerticalHit.performed += instance.OnVerticalHit;
+                @VerticalHit.canceled += instance.OnVerticalHit;
             }
         }
     }
@@ -1478,6 +1536,8 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnSlide(InputAction.CallbackContext context);
         void OnCrouchHold(InputAction.CallbackContext context);
         void OnDectivateUltimate(InputAction.CallbackContext context);
+        void OnHorizontalHit(InputAction.CallbackContext context);
+        void OnVerticalHit(InputAction.CallbackContext context);
     }
     public interface IGunActions
     {
