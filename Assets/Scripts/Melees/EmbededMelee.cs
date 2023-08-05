@@ -10,6 +10,18 @@ public class EmbededMelee : Melee
         base.Start();
     }
 
+    private void OnEnable()
+    {
+        GetComponent<Animator>().enabled = false;
+        transform.GetChild(0).gameObject.SetActive(false);
+    }
+    private void OnDisable()
+    {
+        attackDuration = 0;
+        GetComponent<Animator>().enabled = false;
+        transform.GetChild(0).gameObject.SetActive(false);
+    }
+
     public override void Damage()
     {
         if (!isAttacking)

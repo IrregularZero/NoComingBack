@@ -97,6 +97,17 @@ public class UltimateMelee : MonoBehaviour
         lastAttackPerformed = string.Empty;
     }
 
+    private void OnEnable()
+    {
+        GetComponent<Animator>().enabled = true;
+        transform.GetChild(0).gameObject.SetActive(true);
+    }
+    private void OnDisable()
+    {
+        GetComponent<Animator>().enabled = false;
+        transform.GetChild(0).gameObject.SetActive(false);
+    }
+
     public void PerformHorizontalHit()
     {
         if (isAttacking) 

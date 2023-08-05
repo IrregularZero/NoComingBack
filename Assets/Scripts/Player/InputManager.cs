@@ -179,6 +179,13 @@ public class InputManager : MonoBehaviour
             player.enabled = false;
             ultimate.enabled = true;
             ultimateSystem.UltimateModeEnabled = true;
+
+            meleeSystem.EmbededMelee.GetComponent<EmbededMelee>().enabled = false;
+
+            ultimateMelee.enabled = true;
+
+            GameObject.FindGameObjectWithTag("Hands").transform.GetChild(0).gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("Hands").transform.GetChild(1).gameObject.SetActive(false);
         }
         else
         {
@@ -188,6 +195,13 @@ public class InputManager : MonoBehaviour
             player.enabled = true;
             ultimate.enabled = false;
             ultimateSystem.UltimateModeEnabled = false;
+
+            meleeSystem.EmbededMelee.GetComponent<EmbededMelee>().enabled = true;
+
+            ultimateMelee.enabled = false;
+
+            GameObject.FindGameObjectWithTag("Hands").transform.GetChild(0).gameObject.SetActive(true);
+            GameObject.FindGameObjectWithTag("Hands").transform.GetChild(1).gameObject.SetActive(true);
         }
     }
 
