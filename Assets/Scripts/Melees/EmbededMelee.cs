@@ -12,8 +12,8 @@ public class EmbededMelee : Melee
 
     private void OnEnable()
     {
-        GetComponent<Animator>().enabled = false;
-        transform.GetChild(0).gameObject.SetActive(false);
+        GetComponent<Animator>().enabled = true;
+        transform.GetChild(0).gameObject.SetActive(true);
     }
     private void OnDisable()
     {
