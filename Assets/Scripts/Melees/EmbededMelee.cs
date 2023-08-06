@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class EmbededMelee : Melee
 {
+    [SerializeField]
+    private TrailRenderer trail;
 
     protected override void Start()
     {
         base.Start();
+    }
+    protected override void Update()
+    {
+        base.Update();
+
+        trail.enabled = isAttacking;
     }
 
     private void OnEnable()
@@ -40,16 +48,15 @@ public class EmbededMelee : Melee
                     hitInfo.collider.GetComponent<VitalitySystem>().TakeDamage(damage);
                 }
                 hitInfo.collider.GetComponent<VitalitySystem>().TakeDamage(damage);
+
+                isAttacking = false;
             }
         }
-        isAttacking = false;
     }
 
     public override void Use()
     {
         if (animator.GetInteger("Hit") + 1 > maxHits)
-            return;
-        if (hits + 1 > animator.GetInteger("Hit") + 1)
             return;
 
         if (!isAttacking)

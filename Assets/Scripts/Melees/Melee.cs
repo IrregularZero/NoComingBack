@@ -46,7 +46,7 @@ public abstract class Melee : MonoBehaviour
                 if (hits > animator.GetInteger("Hit"))
                 {
                     hasAttacked = false;
-                    animator.SetInteger("Hit", hits);
+                    animator.SetInteger("Hit", animator.GetInteger("Hit") + 1);
                     attackDuration = maxAttackDuration;
                 }
                 else

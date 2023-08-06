@@ -19364,6 +19364,7 @@ MonoBehaviour:
   impactFrame: 0.1
   finisherHPBonus: 50
   maxHits: 3
+  trail: {fileID: 2005214791}
 --- !u!1 &1505112847
 GameObject:
   m_ObjectHideFlags: 0
