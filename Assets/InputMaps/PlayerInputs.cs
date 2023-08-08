@@ -405,6 +405,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShieldUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""f7d8e68d-8e42-41bd-bd4a-1d48852f478f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -603,6 +612,17 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""VerticalHit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fabccc39-aa7d-4960-8568-d864319def6c"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShieldUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1068,6 +1088,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_UltimateMode_DectivateUltimate = m_UltimateMode.FindAction("DectivateUltimate", throwIfNotFound: true);
         m_UltimateMode_HorizontalHit = m_UltimateMode.FindAction("HorizontalHit", throwIfNotFound: true);
         m_UltimateMode_VerticalHit = m_UltimateMode.FindAction("VerticalHit", throwIfNotFound: true);
+        m_UltimateMode_ShieldUp = m_UltimateMode.FindAction("ShieldUp", throwIfNotFound: true);
         // Gun
         m_Gun = asset.FindActionMap("Gun", throwIfNotFound: true);
         m_Gun_Fire = m_Gun.FindAction("Fire", throwIfNotFound: true);
@@ -1253,6 +1274,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_UltimateMode_DectivateUltimate;
     private readonly InputAction m_UltimateMode_HorizontalHit;
     private readonly InputAction m_UltimateMode_VerticalHit;
+    private readonly InputAction m_UltimateMode_ShieldUp;
     public struct UltimateModeActions
     {
         private @PlayerInputs m_Wrapper;
@@ -1266,6 +1288,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         public InputAction @DectivateUltimate => m_Wrapper.m_UltimateMode_DectivateUltimate;
         public InputAction @HorizontalHit => m_Wrapper.m_UltimateMode_HorizontalHit;
         public InputAction @VerticalHit => m_Wrapper.m_UltimateMode_VerticalHit;
+        public InputAction @ShieldUp => m_Wrapper.m_UltimateMode_ShieldUp;
         public InputActionMap Get() { return m_Wrapper.m_UltimateMode; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1302,6 +1325,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @VerticalHit.started -= m_Wrapper.m_UltimateModeActionsCallbackInterface.OnVerticalHit;
                 @VerticalHit.performed -= m_Wrapper.m_UltimateModeActionsCallbackInterface.OnVerticalHit;
                 @VerticalHit.canceled -= m_Wrapper.m_UltimateModeActionsCallbackInterface.OnVerticalHit;
+                @ShieldUp.started -= m_Wrapper.m_UltimateModeActionsCallbackInterface.OnShieldUp;
+                @ShieldUp.performed -= m_Wrapper.m_UltimateModeActionsCallbackInterface.OnShieldUp;
+                @ShieldUp.canceled -= m_Wrapper.m_UltimateModeActionsCallbackInterface.OnShieldUp;
             }
             m_Wrapper.m_UltimateModeActionsCallbackInterface = instance;
             if (instance != null)
@@ -1333,6 +1359,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @VerticalHit.started += instance.OnVerticalHit;
                 @VerticalHit.performed += instance.OnVerticalHit;
                 @VerticalHit.canceled += instance.OnVerticalHit;
+                @ShieldUp.started += instance.OnShieldUp;
+                @ShieldUp.performed += instance.OnShieldUp;
+                @ShieldUp.canceled += instance.OnShieldUp;
             }
         }
     }
@@ -1538,6 +1567,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnDectivateUltimate(InputAction.CallbackContext context);
         void OnHorizontalHit(InputAction.CallbackContext context);
         void OnVerticalHit(InputAction.CallbackContext context);
+        void OnShieldUp(InputAction.CallbackContext context);
     }
     public interface IGunActions
     {

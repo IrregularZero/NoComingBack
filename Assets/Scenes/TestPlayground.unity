@@ -17984,6 +17984,7 @@ MonoBehaviour:
   horizontalHitDuration: 0.3
   verticalHitDamage: 100
   verticalHitDuration: 0.3
+  shieldChangeStateTimer: 0.3
 --- !u!1 &1111635595
 GameObject:
   m_ObjectHideFlags: 0

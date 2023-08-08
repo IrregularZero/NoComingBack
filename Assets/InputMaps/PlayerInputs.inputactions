@@ -383,6 +383,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ShieldUp",
+                    "type": "Button",
+                    "id": "f7d8e68d-8e42-41bd-bd4a-1d48852f478f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -581,6 +590,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "VerticalHit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fabccc39-aa7d-4960-8568-d864319def6c",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShieldUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

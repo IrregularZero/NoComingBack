@@ -97,6 +97,8 @@ public class InputManager : MonoBehaviour
         inputs.UltimateMode.Slide.performed += ctx => ultimate.Slide();
         inputs.UltimateMode.HorizontalHit.performed += ctx => ultimateMelee.PerformHorizontalHit();
         inputs.UltimateMode.VerticalHit.performed += ctx => ultimateMelee.PerformVerticalHit();
+        inputs.UltimateMode.ShieldUp.started += ctx => StartCoroutine(ultimateMelee.ToggleDefensiveState());
+        inputs.UltimateMode.ShieldUp.canceled += ctx => StartCoroutine(ultimateMelee.ToggleDefensiveState());
 
         SwapQuickAccessToAsignment(false);
     }
