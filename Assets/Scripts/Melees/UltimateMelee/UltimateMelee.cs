@@ -22,6 +22,11 @@ public class UltimateMelee : MonoBehaviour
     private float shieldChangeStateTimer;
     private float previousDamageResist;
 
+    [SerializeField]
+    private GameObject WavePrefab;
+    [SerializeField]
+    private float WaveDamage;
+
     private Animator animator;
 
     #region Properties
