@@ -22,7 +22,7 @@ public class UltimateSystem : MonoBehaviour
     [SerializeField]
     private float passiveEnergyIncerement;
     [SerializeField]
-    private float EnergyDecrement;
+    private float passiveEnergyDecrement = 1f;
 
     [SerializeField]
     private float chipSpeed = 2f;
@@ -95,6 +95,17 @@ public class UltimateSystem : MonoBehaviour
             passiveEnergyIncerement = value;
         }
     }
+    public float PassiveEnergyDecrement 
+    {
+        get
+        {
+            return passiveEnergyDecrement;
+        }
+        set
+        {
+            passiveEnergyDecrement = value;
+        } 
+    }
     #endregion
 
     // Start is called before the first frame update
@@ -107,7 +118,7 @@ public class UltimateSystem : MonoBehaviour
     private void Update()
     {
         if (ultimateModeEnabled)
-            TakeUltimateCharge(EnergyDecrement * Time.deltaTime);
+            TakeUltimateCharge(passiveEnergyDecrement * Time.deltaTime);
         else
             AddUltimateCharge(passiveEnergyIncerement * Time.deltaTime);
 

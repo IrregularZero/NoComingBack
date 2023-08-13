@@ -12,15 +12,22 @@ public class UltimateMelee : MonoBehaviour
     [SerializeField]
     private float horizontalHitDamage = 50f;
     [SerializeField]
+    private float horizontalHitCost = 15f;
+    [SerializeField]
     private float horizontalHitDuration = 0.3f;
     [SerializeField]
     private float verticalHitDamage = 100f;
+    [SerializeField]
+    private float verticalHitCost = 30f;
     [SerializeField]
     private float verticalHitDuration = 0.3f;
 
     [SerializeField]
     private float shieldChangeStateTimer;
-    private float previousDamageResist;
+    [SerializeField]
+    private float addictionalDamageResist = -0.75f;
+    [SerializeField]
+    private float UCPassiveDecrementDefenceModeMultiplier = 2f;
 
     private Animator animator;
 
@@ -121,8 +128,12 @@ public class UltimateMelee : MonoBehaviour
 
         isAttacking = true;
         isActionBeingPerformed = true;
+
+        GameObject.FindGameObjectWithTag("Player").GetComponent<UltimateSystem>().TakeUltimateCharge(horizontalHitCost);
+
         animator.SetTrigger("HitHorizontaly");
         lastAttackPerformed = "horizontalhit";
+
         StartCoroutine(ResetHitDuration(horizontalHitDuration));
     }
     public void PerformVerticalHit()
@@ -132,8 +143,12 @@ public class UltimateMelee : MonoBehaviour
 
         isAttacking = true;
         isActionBeingPerformed = true;
+
+        GameObject.FindGameObjectWithTag("Player").GetComponent<UltimateSystem>().TakeUltimateCharge(verticalHitCost);
+
         animator.SetTrigger("HitVerticaly");
         lastAttackPerformed = "verticalhit";
+
         StartCoroutine(ResetHitDuration(verticalHitDuration));
     }
 
@@ -154,12 +169,13 @@ public class UltimateMelee : MonoBehaviour
 
             if (isShieldUp) // Then turn it off
             {
-                GameObject.FindGameObjectWithTag("Player").GetComponent<VitalitySystem>().DamageResist = previousDamageResist;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<VitalitySystem>().DamageResist -= addictionalDamageResist;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<UltimateSystem>().PassiveEnergyDecrement /= UCPassiveDecrementDefenceModeMultiplier;
             }
             else // Else turn it on
             {
-                previousDamageResist = GameObject.FindGameObjectWithTag("Player").GetComponent<VitalitySystem>().DamageResist;
-                GameObject.FindGameObjectWithTag("Player").GetComponent<VitalitySystem>().DamageResist = 0;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<VitalitySystem>().DamageResist += addictionalDamageResist;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<UltimateSystem>().PassiveEnergyDecrement *= UCPassiveDecrementDefenceModeMultiplier;
             }
 
             isShieldUp = !isShieldUp;
