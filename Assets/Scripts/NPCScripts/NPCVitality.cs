@@ -13,9 +13,10 @@ public sealed class NPCVitality : VitalitySystem
     [SerializeField]
     private float maxDamagedAnimDuration;
     private float damagedDur;
+    private string weaponTypeDamaged;
 
     [SerializeField]
-    private float expirationTimer = 15;
+    private float expirationTimer = 15f;
 
 
     protected override void Start()
@@ -24,13 +25,14 @@ public sealed class NPCVitality : VitalitySystem
 
         animator = GetComponent<Animator>();
 
-        // Making HealthBar look at player by retrieving player reference from SceneReferenceCenter
         ConstraintSource cs = new ConstraintSource();
-        cs.sourceTransform = transform.parent.GetComponent<SceneReferenceCenter>().Player.transform;
+        cs.sourceTransform = GameObject.FindGameObjectWithTag("Player").transform;
         cs.weight = 1.0f;
         transform.GetChild(0).GetComponent<LookAtConstraint>().AddSource(cs);
         transform.GetChild(0).GetComponent<LookAtConstraint>().constraintActive = true;
-    }
+
+        weaponTypeDamaged = string.Empty;
+        }
 
     protected override void Update()
     {
@@ -69,6 +71,16 @@ public sealed class NPCVitality : VitalitySystem
         animator.SetBool("IsDamaged", true);
         damagedDur = maxDamagedAnimDuration;
     }
+    public void TakeDamage(float damage, string weaponTypeDamaged)
+    {
+        base.TakeDamage(damage);
+
+        this.weaponTypeDamaged = weaponTypeDamaged;
+        animator.SetBool("IsDamaged", false);
+        animator.SetBool("IsDamaged", true);
+        damagedDur = maxDamagedAnimDuration;
+    }
+
     public override void RestoreHealth(float healAmount)
     {
         base.RestoreHealth(healAmount);
@@ -79,5 +91,11 @@ public sealed class NPCVitality : VitalitySystem
         // For enemies with AI, it should be disabled
 
         animator.SetBool("IsDead", isDead);
+
+        switch (weaponTypeDamaged)
+        {
+            case "Gun": GameObject.FindGameObjectWithTag("Player").GetComponent<UltimateSystem>().AddUltimateCharge(10f); break;
+            case "Melee": GameObject.FindGameObjectWithTag("Player").GetComponent<UltimateSystem>().AddUltimateCharge(30f); break;
+        }
     }
 }

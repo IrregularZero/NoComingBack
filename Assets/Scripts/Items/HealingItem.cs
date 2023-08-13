@@ -56,6 +56,7 @@ public class HealingItem : Item
         playerVitality = GameObject.FindGameObjectWithTag("Player").GetComponent<VitalitySystem>();
         if (amountOfUses > 0)
         {
+            playerVitality.GetComponent<UltimateSystem>().AddUltimateCharge(Mathf.Clamp(playerVitality.Health + healAmount - playerVitality.MaxHealth, 0, playerVitality.GetComponent<UltimateSystem>().MaxEnergy));
             playerVitality.RestoreHealth(healAmount);
 
             amountOfUses--;

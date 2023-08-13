@@ -86,9 +86,9 @@ public class GaussRevolver : GunSystem
         {
             ShootEffects(hitObject);
 
-            if (hitObject.collider.tag == "Enemy")
+            if (hitObject.collider.GetComponent<VitalitySystem>() != null && hitObject.collider.tag != "Player")
             {
-                hitObject.collider.GetComponent<VitalitySystem>().TakeDamage(damage * (Random.Range(1, 101) >= critChance ? critMult : 1));
+                hitObject.collider.GetComponent<NPCVitality>().TakeDamage(damage * (Random.Range(1, 100) >= critChance ? critMult : 1), "Gun");
             }
         }
     }
