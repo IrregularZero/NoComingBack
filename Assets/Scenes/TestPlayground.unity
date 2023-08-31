@@ -17981,12 +17981,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalHitDamage: 50
+  horizontalHitCost: 15
   horizontalHitDuration: 0.3
   verticalHitDamage: 100
+  verticalHitCost: 30
   verticalHitDuration: 0.3
   shieldChangeStateTimer: 0.3
-  WavePrefab: {fileID: 0}
-  WaveDamage: 0
+  addictionalDamageResist: -0.75
+  UCPassiveDecrementDefenceModeMultiplier: 2
 --- !u!1 &1111635595
 GameObject:
   m_ObjectHideFlags: 0
@@ -26653,6 +26655,75 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &6482015893625145470
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6482015894507940946, guid: b186308b2be0f314abee67ac1009bc12,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482015894507940946, guid: b186308b2be0f314abee67ac1009bc12,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.896222
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482015894507940946, guid: b186308b2be0f314abee67ac1009bc12,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.289
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482015894507940946, guid: b186308b2be0f314abee67ac1009bc12,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.126
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482015894507940946, guid: b186308b2be0f314abee67ac1009bc12,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482015894507940946, guid: b186308b2be0f314abee67ac1009bc12,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482015894507940946, guid: b186308b2be0f314abee67ac1009bc12,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482015894507940946, guid: b186308b2be0f314abee67ac1009bc12,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482015894507940946, guid: b186308b2be0f314abee67ac1009bc12,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482015894507940946, guid: b186308b2be0f314abee67ac1009bc12,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482015894507940946, guid: b186308b2be0f314abee67ac1009bc12,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482015894507940949, guid: b186308b2be0f314abee67ac1009bc12,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemiesProjectile
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b186308b2be0f314abee67ac1009bc12, type: 3}
 --- !u!4 &6743087099717240912
 Transform:
   m_ObjectHideFlags: 0
@@ -26785,7 +26856,7 @@ MonoBehaviour:
   maxEnergy: 100
   recievedEnergyBonus: 1
   passiveEnergyIncerement: 0.2
-  EnergyDecrement: 1
+  passiveEnergyDecrement: 1
   chipSpeed: 0.25
   frontUltimateBar: {fileID: 1620846199060233460}
   backUltimateBar: {fileID: 1620846199056016894}
