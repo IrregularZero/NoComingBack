@@ -5,6 +5,9 @@ using UnityEngine;
 public class EnemiesProjectile : MonoBehaviour
 {
     private CharacterController characterController;
+    private bool destroying = false;
+    [SerializeField]
+    private float liveTimer = 10f;
     [SerializeField]
     private float destroyTimer = 0.5f;
 
@@ -19,10 +22,18 @@ public class EnemiesProjectile : MonoBehaviour
     }
     private void Update()
     {
-        characterController.Move(transform.forward * speed * Time.deltaTime);
+        if (!destroying)
+            characterController.Move(transform.forward * speed * Time.deltaTime);
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (destroying)
+            return;
+        if (other.name == name)
+            return;
+        if (other.tag != "Player")
+            return;
+
         if (other.gameObject.GetComponent<VitalitySystem>() != null)
         {
             other.gameObject.GetComponent<VitalitySystem>().TakeDamage(damage);
@@ -30,9 +41,23 @@ public class EnemiesProjectile : MonoBehaviour
 
         StartCoroutine(DestructionSequence());
     }
-    private IEnumerator DestructionSequence()
+
+    private IEnumerator LiveCycle()
     {
+        yield return new WaitForSeconds(liveTimer);
+        StartCoroutine(DestructionSequence());
+    }
+
+    public IEnumerator DestructionSequence()
+    {
+        destroying = true;
+        characterController.enabled = false;
         yield return new WaitForSeconds(destroyTimer);
         Destroy(gameObject);
+    }
+    public void SetupProjectile(float speed, float damage)
+    {
+        this.speed = speed;
+        this.damage = damage;
     }
 }
