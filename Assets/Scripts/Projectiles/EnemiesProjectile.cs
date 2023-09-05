@@ -19,6 +19,7 @@ public class EnemiesProjectile : MonoBehaviour
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+        StartCoroutine(LiveCycle());
     }
     private void Update()
     {

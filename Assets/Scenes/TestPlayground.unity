@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 100
-  damageResist: 1
+  damageMultiplier: 1
   healingBonus: 1
   useUI: 1
   frontHealthBar: {fileID: 1660652902}
@@ -17987,7 +17987,7 @@ MonoBehaviour:
   verticalHitCost: 30
   verticalHitDuration: 0.3
   shieldChangeStateTimer: 0.3
-  addictionalDamageResist: -0.75
+  addictionalDamageMultiplier: -0.75
   UCPassiveDecrementDefenceModeMultiplier: 2
 --- !u!1 &1111635595
 GameObject:
@@ -26524,7 +26524,7 @@ PrefabInstance:
     - target: {fileID: 5598691280963637828, guid: 648f479e335ad0f42b61ec448bb563dc,
         type: 3}
       propertyPath: m_Name
-      value: SlowShooter
+      value: StandardProjectileShooter
       objectReference: {fileID: 0}
     - target: {fileID: 5598691280963637829, guid: 648f479e335ad0f42b61ec448bb563dc,
         type: 3}

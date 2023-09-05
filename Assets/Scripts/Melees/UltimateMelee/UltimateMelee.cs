@@ -25,7 +25,7 @@ public class UltimateMelee : MonoBehaviour
     [SerializeField]
     private float shieldChangeStateTimer;
     [SerializeField]
-    private float addictionalDamageResist = -0.75f;
+    private float addictionalDamageMultiplier = -0.75f;
     [SerializeField]
     private float UCPassiveDecrementDefenceModeMultiplier = 2f;
 
@@ -169,12 +169,12 @@ public class UltimateMelee : MonoBehaviour
 
             if (isShieldUp) // Then turn it off
             {
-                GameObject.FindGameObjectWithTag("Player").GetComponent<VitalitySystem>().DamageResist -= addictionalDamageResist;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<VitalitySystem>().DamageMultiplier -= addictionalDamageMultiplier;
                 GameObject.FindGameObjectWithTag("Player").GetComponent<UltimateSystem>().PassiveEnergyDecrement /= UCPassiveDecrementDefenceModeMultiplier;
             }
             else // Else turn it on
             {
-                GameObject.FindGameObjectWithTag("Player").GetComponent<VitalitySystem>().DamageResist += addictionalDamageResist;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<VitalitySystem>().DamageMultiplier += addictionalDamageMultiplier;
                 GameObject.FindGameObjectWithTag("Player").GetComponent<UltimateSystem>().PassiveEnergyDecrement *= UCPassiveDecrementDefenceModeMultiplier;
             }
 

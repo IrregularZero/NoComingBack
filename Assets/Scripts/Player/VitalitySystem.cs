@@ -16,9 +16,9 @@ public class VitalitySystem : MonoBehaviour
     protected float maxHealth = 100;
 
     [SerializeField]
-    protected float damageResist = 1; // Multiplier to decrease incoming damage
+    protected float damageMultiplier = 1; // Multiplier to in/decrease incoming damage
     [SerializeField]
-    protected float healingBonus = 1; // Multiplier to increase incoming heal
+    protected float healingBonus = 1; // Multiplier to de/increase incoming heal
     [SerializeField]
     protected bool useUI;
 
@@ -67,17 +67,17 @@ public class VitalitySystem : MonoBehaviour
             }
         }
     }
-    public float DamageResist 
+    public float DamageMultiplier
     {
         get
         {
-            return damageResist;
+            return damageMultiplier;
         }
         set
         {
             if (value >= 0 && value <= 1)
             {
-                damageResist = value;
+                damageMultiplier = value;
             }
         }
     }
@@ -118,7 +118,8 @@ public class VitalitySystem : MonoBehaviour
 
         UpdateHealthUI();
 
-        Death(health <= 0);
+        if (health <= 0)
+            Death(true);
 
         if (healthChangeEffects.color.a - alphaDecrement * Time.deltaTime >= 0)
             healthChangeEffects.color = new Color(healthChangeEffects.color.r, healthChangeEffects.color.g, healthChangeEffects.color.b, healthChangeEffects.color.a - alphaDecrement * Time.deltaTime);
@@ -159,7 +160,7 @@ public class VitalitySystem : MonoBehaviour
         if (useUI)
             healthChangeEffects.color = new Color(1, 0, 0, 0.4f);
 
-        health -= damage * damageResist;
+        health -= damage * damageMultiplier;
         lerpTimer = 0;
     }
     public virtual void RestoreHealth(float healAmount)
@@ -171,7 +172,7 @@ public class VitalitySystem : MonoBehaviour
         lerpTimer = 0f;
     }
 
-    public virtual void Death(bool isDead)
+    public virtual IEnumerator Death(bool isDead)
     {
         DeathScreen.SetActive(isDead);
 
@@ -179,5 +180,6 @@ public class VitalitySystem : MonoBehaviour
         {
             // Here statistics should be updated
         }
+        yield return null;
     }
 }
