@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce36d7fea44e4e4ca1eadf7c2dad40c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  liveTimer: 1.5
+  liveTimer: 5.5
   destroyTimer: 0.5
   speed: 0
   damage: 0

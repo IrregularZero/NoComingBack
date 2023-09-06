@@ -7,10 +7,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4480839645501806760, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: damageMultiplier
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 5598691280963637828, guid: 648f479e335ad0f42b61ec448bb563dc,
         type: 3}
       propertyPath: m_Name
-      value: SemiAutoShooter_1l (1)
+      value: SemiAutoShooter_1l
       objectReference: {fileID: 0}
     - target: {fileID: 5598691280963637829, guid: 648f479e335ad0f42b61ec448bb563dc,
         type: 3}
@@ -20,17 +25,17 @@ PrefabInstance:
     - target: {fileID: 5598691280963637829, guid: 648f479e335ad0f42b61ec448bb563dc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.988194
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5598691280963637829, guid: 648f479e335ad0f42b61ec448bb563dc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.45
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5598691280963637829, guid: 648f479e335ad0f42b61ec448bb563dc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.7450042
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5598691280963637829, guid: 648f479e335ad0f42b61ec448bb563dc,
         type: 3}
