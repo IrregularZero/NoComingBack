@@ -5,20 +5,21 @@ using UnityEngine.Animations;
 
 public class StandardProjectileShooterBehaviour : MonoBehaviour
 {
-    private NPCVitality vitality;
-    private bool canFire = false;
+    protected NPCVitality vitality;
+
+    protected bool canFire = false;
     [SerializeField]
-    private float reloadTime;
+    protected float reloadTime;
 
     [SerializeField]
-    private float damage;
+    protected float damage;
     [SerializeField]
-    private float speed;
+    protected float speed;
 
     [SerializeField]
-    private GameObject projectile;
+    protected GameObject projectile;
 
-    private void Start()
+    protected virtual void Start()
     {
         vitality = GetComponent<NPCVitality>();
 
@@ -30,27 +31,30 @@ public class StandardProjectileShooterBehaviour : MonoBehaviour
 
         StartCoroutine(Reload());
     }
-    private void Update()
+    protected virtual void Update()
     {
         if (vitality.Health <= 0)
             Death();
 
         if (canFire)
-        {
-            GameObject activeProjectile = Instantiate(projectile, transform.GetChild(1).position, transform.rotation);
-            activeProjectile.GetComponent<EnemiesProjectile>().SetupProjectile(speed, damage);
-            canFire = false;
-            StartCoroutine(Reload());
-        }
+            Fire();
+    }
+    
+    public virtual void Fire()
+    {
+        GameObject activeProjectile = Instantiate(projectile, transform.GetChild(1).position, transform.rotation);
+        activeProjectile.GetComponent<EnemiesProjectile>().SetupProjectile(speed, damage); 
+        StartCoroutine(Reload());
     }
 
-    private IEnumerator Reload()
+    public virtual IEnumerator Reload()
     {
+        canFire = false;
         yield return new WaitForSeconds(reloadTime);
         canFire = true;
     }
 
-    private void Death()
+    public virtual void Death()
     {
         StopAllCoroutines();
         canFire = false;

@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 5598691280963637827}
   - component: {fileID: 5598691280963637826}
   - component: {fileID: 4480839645501806760}
-  - component: {fileID: 4949669167051678939}
+  - component: {fileID: 7706569059333070059}
   - component: {fileID: 8529250607087282231}
   m_Layer: 0
   m_Name: StandardProjectileShooter
@@ -126,7 +126,7 @@ MonoBehaviour:
   maxDamagedAnimDuration: 0.2
   staggered: 0
   expirationTimer: 15
---- !u!114 &4949669167051678939
+--- !u!114 &7706569059333070059
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,9 +138,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a3230592f7b574e9d1a48db4ba85e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reloadTime: 0
-  damage: 0
-  speed: 0
+  reloadTime: 3
+  damage: 175
+  speed: 25
   projectile: {fileID: 6482015894507940949, guid: b186308b2be0f314abee67ac1009bc12,
     type: 3}
 --- !u!95 &8529250607087282231

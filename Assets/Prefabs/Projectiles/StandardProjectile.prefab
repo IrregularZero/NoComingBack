@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6482015894507940947}
   - component: {fileID: 8054733846125724354}
   m_Layer: 0
-  m_Name: EnemiesProjectile
+  m_Name: StandardProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
