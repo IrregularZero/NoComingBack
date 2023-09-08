@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2843491776770971995
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5598691280963637828, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: m_Name
+      value: Sniper_1l
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598691280963637829, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598691280963637829, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598691280963637829, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598691280963637829, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598691280963637829, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598691280963637829, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598691280963637829, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598691280963637829, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598691280963637829, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598691280963637829, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598691280963637829, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598691282288093177, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 260ba5e859b0e4d4896d099c6697b1a2, type: 2}
+    - target: {fileID: 7706569059333070059, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: speed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7706569059333070059, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: damage
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7706569059333070059, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: reloadTime
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7706569059333070059, guid: 648f479e335ad0f42b61ec448bb563dc, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 648f479e335ad0f42b61ec448bb563dc, type: 3}
+--- !u!1 &7693433192208370463 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5598691280963637828, guid: 648f479e335ad0f42b61ec448bb563dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 2843491776770971995}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3682571685489841547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693433192208370463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b147a977d64564447a294db2dee2c6e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reloadTime: 10
+  damage: 500
+  speed: 50
+  projectile: {fileID: 6482015894507940949, guid: b186308b2be0f314abee67ac1009bc12,
+    type: 3}
+  braceTime: 0.5
+  AimedUpColor: {r: 1, g: 0.9254903, b: 0, a: 1}
+  braceColor: {r: 1, g: 0.10410564, b: 0, a: 1}
+  sightTrail: {fileID: 5863165249815385263, guid: 267c78f2e17bfb6458a5acbf37d5bcfb,
+    type: 3}
