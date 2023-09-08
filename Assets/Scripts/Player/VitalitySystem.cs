@@ -119,7 +119,7 @@ public class VitalitySystem : MonoBehaviour
         UpdateHealthUI();
 
         if (health <= 0)
-            Death(true);
+            StartCoroutine(Death(true));
 
         if (healthChangeEffects.color.a - alphaDecrement * Time.deltaTime >= 0)
             healthChangeEffects.color = new Color(healthChangeEffects.color.r, healthChangeEffects.color.g, healthChangeEffects.color.b, healthChangeEffects.color.a - alphaDecrement * Time.deltaTime);
@@ -180,6 +180,6 @@ public class VitalitySystem : MonoBehaviour
         {
             // Here statistics should be updated
         }
-        yield return null;
+        yield return new WaitForSeconds(0);
     }
 }
