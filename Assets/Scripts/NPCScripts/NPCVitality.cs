@@ -6,6 +6,9 @@ using UnityEngine.Animations;
 
 public sealed class NPCVitality : VitalitySystem
 {
+    [SerializeField]
+    private bool useAnimations = true;
+
     private Animator animator; // used to animate HP & death
 
     [SerializeField]
@@ -25,11 +28,14 @@ public sealed class NPCVitality : VitalitySystem
 
         animator = GetComponent<Animator>();
 
-        ConstraintSource cs = new ConstraintSource();
-        cs.sourceTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        cs.weight = 1.0f;
-        transform.GetChild(0).GetComponent<LookAtConstraint>().AddSource(cs);
-        transform.GetChild(0).GetComponent<LookAtConstraint>().constraintActive = true;
+        if (frontHealthBar != null)
+        {
+            ConstraintSource cs = new ConstraintSource();
+            cs.sourceTransform = GameObject.FindGameObjectWithTag("Player").transform;
+            cs.weight = 1.0f;
+            transform.GetChild(0).GetComponent<LookAtConstraint>().AddSource(cs);
+            transform.GetChild(0).GetComponent<LookAtConstraint>().constraintActive = true;
+        }
 
         weaponTypeDamaged = string.Empty;
     }
@@ -38,7 +44,8 @@ public sealed class NPCVitality : VitalitySystem
     {
         health = Mathf.Clamp(health, 0, maxHealth);
 
-        UpdateHealthUI();
+        if (frontHealthBar != null)
+            UpdateHealthUI();
 
         if (health <= 0)
             Death(true);
@@ -49,7 +56,8 @@ public sealed class NPCVitality : VitalitySystem
     {
         base.TakeDamage(damage);
 
-        animator.SetTrigger("Damaged");
+        if (useAnimations)
+            animator.SetTrigger("Damaged");
         StartCoroutine(StaggeredState());
     }
     public void TakeDamage(float damage, string weaponTypeDamaged)
@@ -57,7 +65,8 @@ public sealed class NPCVitality : VitalitySystem
         base.TakeDamage(damage);
 
         this.weaponTypeDamaged = weaponTypeDamaged;
-        animator.SetTrigger("Damaged");
+        if (useAnimations)
+            animator.SetTrigger("Damaged");
         StartCoroutine(StaggeredState());
     }
 
@@ -77,7 +86,8 @@ public sealed class NPCVitality : VitalitySystem
     {
         // For enemies with AI, it should be disabled
 
-        animator.SetBool("IsDead", isDead);
+        if (useAnimations)
+            animator.SetBool("IsDead", isDead);
 
         switch (weaponTypeDamaged)
         {

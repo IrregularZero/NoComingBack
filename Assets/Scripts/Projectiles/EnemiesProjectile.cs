@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemiesProjectile : MonoBehaviour
 {
+    private NPCVitality vitality;
+
     private CharacterController characterController;
     private bool destroying = false;
     [SerializeField]
@@ -16,17 +18,21 @@ public class EnemiesProjectile : MonoBehaviour
     [SerializeField]
     private float damage;
 
-    private void Start()
+    protected virtual void Start()
     {
+        vitality = GetComponent<NPCVitality>();
         characterController = GetComponent<CharacterController>();
         StartCoroutine(LiveCycle());
     }
-    private void Update()
+    protected virtual void Update()
     {
         if (!destroying)
             characterController.Move(transform.forward * speed * Time.deltaTime);
+
+        if (vitality.Health <= 0)
+            StartCoroutine(DestructionSequence());
     }
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (destroying)
             return;
@@ -43,22 +49,29 @@ public class EnemiesProjectile : MonoBehaviour
         StartCoroutine(DestructionSequence());
     }
 
-    private IEnumerator LiveCycle()
+    protected virtual IEnumerator LiveCycle()
     {
         yield return new WaitForSeconds(liveTimer);
         StartCoroutine(DestructionSequence());
     }
 
-    public IEnumerator DestructionSequence()
+    public virtual IEnumerator DestructionSequence()
     {
         destroying = true;
         characterController.enabled = false;
         yield return new WaitForSeconds(destroyTimer);
         Destroy(gameObject);
     }
-    public void SetupProjectile(float speed, float damage)
+    public virtual void SetupProjectile(float speed, float damage)
     {
         this.speed = speed;
         this.damage = damage;
+
+    }
+    public virtual void SetupProjectile(float speed, float damage, Color projectileColor)
+    {
+        this.speed = speed;
+        this.damage = damage;
+        transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material.color = projectileColor;
     }
 }

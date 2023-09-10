@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SemiAutoShooterBehaviour : StandardProjectileShooterBehaviour
+public class SemiAutoShooter_l1_Behaviour : StandardProjectileShooter_l1_Behaviour
 {
     [SerializeField]
     private int chain;
@@ -27,7 +27,7 @@ public class SemiAutoShooterBehaviour : StandardProjectileShooterBehaviour
     public override void Fire()
     {
         GameObject activeProjectile = Instantiate(projectile, transform.GetChild(1).position, transform.rotation);
-        activeProjectile.GetComponent<EnemiesProjectile>().SetupProjectile(speed, damage);
+        activeProjectile.GetComponent<EnemiesProjectile>().SetupProjectile(speed, damage, projectileColor);
 
         leftInChain--;
         if (leftInChain <= 0)

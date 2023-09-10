@@ -111,6 +111,7 @@ MonoBehaviour:
   reloadTime: 10
   damage: 500
   speed: 50
+  projectileColor: {r: 0, g: 0, b: 0, a: 1}
   projectile: {fileID: 6482015894507940949, guid: b186308b2be0f314abee67ac1009bc12,
     type: 3}
   braceTime: 0.5

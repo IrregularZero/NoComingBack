@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 
-public class StandardProjectileShooterBehaviour : MonoBehaviour
+public class StandardProjectileShooter_l1_Behaviour : MonoBehaviour
 {
     protected NPCVitality vitality;
 
@@ -15,6 +15,8 @@ public class StandardProjectileShooterBehaviour : MonoBehaviour
     protected float damage;
     [SerializeField]
     protected float speed;
+    [SerializeField]
+    protected Color projectileColor;
 
     [SerializeField]
     protected GameObject projectile;
@@ -43,7 +45,7 @@ public class StandardProjectileShooterBehaviour : MonoBehaviour
     public virtual void Fire()
     {
         GameObject activeProjectile = Instantiate(projectile, transform.GetChild(1).position, transform.rotation);
-        activeProjectile.GetComponent<EnemiesProjectile>().SetupProjectile(speed, damage); 
+        activeProjectile.GetComponent<EnemiesProjectile>().SetupProjectile(speed, damage, projectileColor); 
         StartCoroutine(Reload());
     }
 

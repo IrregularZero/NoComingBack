@@ -102,6 +102,7 @@ MonoBehaviour:
   reloadTime: 4
   damage: 150
   speed: 15
+  projectileColor: {r: 0.1811588, g: 0.1938976, b: 0.6509, a: 1}
   projectile: {fileID: 6482015894507940949, guid: b186308b2be0f314abee67ac1009bc12,
     type: 3}
   chain: 3

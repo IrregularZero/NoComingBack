@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class l1_SniperBehaviour : StandardProjectileShooterBehaviour
+public class Sniper_l1_Behaviour : StandardProjectileShooter_l1_Behaviour
 {
     private Transform playerPosition;
 
@@ -77,12 +77,6 @@ public class l1_SniperBehaviour : StandardProjectileShooterBehaviour
         }
     }
 
-    public override void Fire()
-    {
-        GameObject activeProjectile = Instantiate(projectile, transform.GetChild(1).position, transform.rotation);
-        activeProjectile.GetComponent<EnemiesProjectile>().SetupProjectile(speed, damage);
-        StartCoroutine(Reload());
-    }
     public override IEnumerator Reload()
     {
         actualSightTrail.GetComponent<LineRenderer>().enabled = false;

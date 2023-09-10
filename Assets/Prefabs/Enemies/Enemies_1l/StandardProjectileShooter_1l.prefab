@@ -46,8 +46,8 @@ GameObject:
   - component: {fileID: 7706569059333070059}
   - component: {fileID: 8529250607087282231}
   m_Layer: 0
-  m_Name: StandardProjectileShooter
-  m_TagString: Untagged
+  m_Name: StandardProjectileShooter_1l
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,6 +123,7 @@ MonoBehaviour:
   DeathScreen: {fileID: 0}
   healthChangeEffects: {fileID: 0}
   alphaDecrement: 0.45
+  useAnimations: 1
   maxDamagedAnimDuration: 0.2
   staggered: 0
   expirationTimer: 15
@@ -141,6 +142,7 @@ MonoBehaviour:
   reloadTime: 3
   damage: 175
   speed: 25
+  projectileColor: {r: 0, g: 0, b: 0, a: 0}
   projectile: {fileID: 6482015894507940949, guid: b186308b2be0f314abee67ac1009bc12,
     type: 3}
 --- !u!95 &8529250607087282231

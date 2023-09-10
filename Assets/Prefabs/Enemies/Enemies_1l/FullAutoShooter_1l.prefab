@@ -17,6 +17,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FullAutoShooter_1l
       objectReference: {fileID: 0}
+    - target: {fileID: 5598691280963637828, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5598691280963637829, guid: 648f479e335ad0f42b61ec448bb563dc,
         type: 3}
       propertyPath: m_RootOrder
@@ -101,6 +106,7 @@ MonoBehaviour:
   reloadTime: 10
   damage: 75
   speed: 12.5
+  projectileColor: {r: 0.7075471, g: 0, b: 0.0655, a: 1}
   projectile: {fileID: 6482015894507940949, guid: b186308b2be0f314abee67ac1009bc12,
     type: 3}
   chain: 15
