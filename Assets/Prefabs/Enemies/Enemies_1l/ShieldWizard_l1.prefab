@@ -161,7 +161,6 @@ GameObject:
   - component: {fileID: 5334482917438283765}
   - component: {fileID: 8860439074325327190}
   - component: {fileID: 5677800779744859233}
-  - component: {fileID: 6398288489649750889}
   - component: {fileID: 5052764021418905957}
   m_Layer: 0
   m_Name: Insignia
@@ -235,20 +234,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6398288489649750889
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2971593864044429573}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 6e7b426bc5cfb49faa14d91ace2ad76d, type: 2}
 --- !u!114 &5052764021418905957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,9 +255,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 950481358649178497}
+  - component: {fileID: 6140745074666155832}
+  - component: {fileID: 216257754006930147}
+  - component: {fileID: 1161983539}
+  - component: {fileID: 6585730704564304158}
+  - component: {fileID: 5427104704521397734}
   m_Layer: 0
   m_Name: ShieldWizard_l1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -295,6 +285,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &6140745074666155832
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304289594649724158}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &216257754006930147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304289594649724158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c537a2a60a7d99c488d3c9f1d8bccb60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 100
+  damageMultiplier: 1
+  healingBonus: 1
+  useUI: 0
+  frontHealthBar: {fileID: 6384351342416880109}
+  backHealthBar: {fileID: 6384351342429452519}
+  DeathScreen: {fileID: 0}
+  healthChangeEffects: {fileID: 0}
+  alphaDecrement: 0.45
+  useAnimations: 1
+  maxDamagedAnimDuration: 0
+  staggered: 0
+  expirationTimer: 15
+--- !u!114 &1161983539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304289594649724158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf66b06de767e0468092cdca63c63d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reloadTime: 2.5
+  damage: 0
+  speed: 0
+  projectileColor: {r: 0, g: 0, b: 0, a: 0}
+  projectile: {fileID: 0}
+  shieldPrefab: {fileID: 2232395901923254084, guid: 26f1ca5df73a4ba479fabe625d2868c0,
+    type: 3}
+--- !u!1183024399 &6585730704564304158
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304289594649724158}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 0
+  m_IsLocked: 0
+  m_Sources: []
+--- !u!95 &5427104704521397734
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304289594649724158}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7396001725926542028
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +392,6 @@ GameObject:
   - component: {fileID: 2590823369159072212}
   - component: {fileID: 6582183576226348507}
   - component: {fileID: 3689726702819715624}
-  - component: {fileID: 33835175729815128}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -379,20 +464,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &33835175729815128
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7396001725926542028}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8781216735760090126
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,3 +647,27 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6139299428332119360}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6384351342416880109 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 984856707638576301, guid: 946baf54bac1ade4d9a59e81d39b7604,
+    type: 3}
+  m_PrefabInstance: {fileID: 6139299428332119360}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6384351342429452519 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 984856707642760615, guid: 946baf54bac1ade4d9a59e81d39b7604,
+    type: 3}
+  m_PrefabInstance: {fileID: 6139299428332119360}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

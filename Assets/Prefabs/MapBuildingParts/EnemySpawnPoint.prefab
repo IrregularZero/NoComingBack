@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3714336937744230457}
+  - component: {fileID: 5996761616604830392}
   m_Layer: 0
   m_Name: EnemySpawnPoint
   m_TagString: EnemySpawnPoint
@@ -63,3 +64,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5996761616604830392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3714336937744230462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6d9de272b8267e4d9c8926c917b2467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
