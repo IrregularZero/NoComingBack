@@ -48,7 +48,7 @@ public sealed class NPCVitality : VitalitySystem
             UpdateHealthUI();
 
         if (health <= 0)
-            Death(true);
+            StartCoroutine(Death(true));
 
     }
 

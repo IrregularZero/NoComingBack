@@ -117,7 +117,7 @@ RectTransform:
   m_Children:
   - {fileID: 3807187282622104227}
   m_Father: {fileID: 554289279578781917}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -212,9 +212,10 @@ GameObject:
   m_Component:
   - component: {fileID: 554289279578781917}
   - component: {fileID: 2689507748825359686}
+  - component: {fileID: 3391757195828386911}
   m_Layer: 0
-  m_Name: EnemyShield
-  m_TagString: Untagged
+  m_Name: EnemyShield_l1
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -231,8 +232,8 @@ Transform:
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3083730034798954228}
   - {fileID: 7403363520358111708}
+  - {fileID: 3083730034798954228}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -249,6 +250,32 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3391757195828386911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2232395901923254084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c537a2a60a7d99c488d3c9f1d8bccb60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 100
+  damageMultiplier: 0.5
+  healingBonus: 0
+  useUI: 0
+  frontHealthBar: {fileID: 3807187284551714792}
+  backHealthBar: {fileID: 3807187284564287202}
+  DeathScreen: {fileID: 0}
+  healthChangeEffects: {fileID: 0}
+  alphaDecrement: 0.45
+  useAnimations: 0
+  maxDamagedAnimDuration: 0
+  staggered: 0
+  expirationTimer: 0
 --- !u!1 &8801499871244551167
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +306,7 @@ Transform:
   m_Children:
   - {fileID: 3934271519826949531}
   m_Father: {fileID: 554289279578781917}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4143084457108407109
 PrefabInstance:
@@ -431,3 +458,27 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4143084457108407109}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3807187284551714792 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 984856707638576301, guid: 946baf54bac1ade4d9a59e81d39b7604,
+    type: 3}
+  m_PrefabInstance: {fileID: 4143084457108407109}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3807187284564287202 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 984856707642760615, guid: 946baf54bac1ade4d9a59e81d39b7604,
+    type: 3}
+  m_PrefabInstance: {fileID: 4143084457108407109}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
