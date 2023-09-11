@@ -10,6 +10,9 @@ public class ShieldWizard_l1_Behaviour : StandardProjectileShooter_l1_Behaviour
     [SerializeField]
     private GameObject shieldPrefab;
     private GameObject actualShield;
+    [SerializeField]
+    private GameObject LineToSheildedAlly;
+    private GameObject actualLineToShieldedAlly;
 
     protected override void Update()
     {
@@ -30,6 +33,7 @@ public class ShieldWizard_l1_Behaviour : StandardProjectileShooter_l1_Behaviour
                 }
                 else if (shieldInitiated && actualShield == null)
                 {
+                    Destroy(actualLineToShieldedAlly);
                     StartCoroutine(Reload());
                 }
             }
@@ -121,6 +125,11 @@ public class ShieldWizard_l1_Behaviour : StandardProjectileShooter_l1_Behaviour
         }
 
         actualShield = Instantiate(shieldPrefab, targetedAlly.transform);
+        actualLineToShieldedAlly = Instantiate(LineToSheildedAlly);
+
+        actualLineToShieldedAlly.GetComponent<LineRenderer>().SetPosition(0, transform.GetChild(1).position);
+        actualLineToShieldedAlly.GetComponent<LineRenderer>().SetPosition(1, actualShield.transform.position);
+
         shieldInitiated = true;
     }
     public override IEnumerator Reload()
@@ -132,5 +141,11 @@ public class ShieldWizard_l1_Behaviour : StandardProjectileShooter_l1_Behaviour
         shieldInitiated = false;
 
         canFire = true;
+    }
+    public override void Death()
+    {
+        base.Death();
+        Destroy(actualLineToShieldedAlly);
+        Destroy(actualShield);
     }
 }
