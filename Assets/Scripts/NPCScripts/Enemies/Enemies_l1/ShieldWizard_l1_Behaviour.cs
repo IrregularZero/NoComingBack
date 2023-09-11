@@ -127,7 +127,7 @@ public class ShieldWizard_l1_Behaviour : StandardProjectileShooter_l1_Behaviour
         actualShield = Instantiate(shieldPrefab, targetedAlly.transform);
         actualLineToShieldedAlly = Instantiate(LineToSheildedAlly);
 
-        actualLineToShieldedAlly.GetComponent<LineRenderer>().SetPosition(0, transform.GetChild(1).position);
+        actualLineToShieldedAlly.GetComponent<LineRenderer>().SetPosition(0, transform.position);
         actualLineToShieldedAlly.GetComponent<LineRenderer>().SetPosition(1, actualShield.transform.position);
 
         shieldInitiated = true;
