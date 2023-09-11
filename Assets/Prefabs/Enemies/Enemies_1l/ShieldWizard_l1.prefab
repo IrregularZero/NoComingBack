@@ -344,7 +344,7 @@ MonoBehaviour:
   projectile: {fileID: 0}
   shieldPrefab: {fileID: 2232395901923254084, guid: 26f1ca5df73a4ba479fabe625d2868c0,
     type: 3}
-  LineToSheildedAlly: {fileID: 705898119611899875, guid: b559b03fa36ff5d4297966d385dd9752,
+  LineToSheildedAlly: {fileID: 5858829502849496483, guid: 044b5cc2b7839b74bb771796a4f0fbfb,
     type: 3}
 --- !u!1183024399 &6585730704564304158
 LookAtConstraint:
