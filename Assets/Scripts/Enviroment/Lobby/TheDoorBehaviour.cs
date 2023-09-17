@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class TheDoorBehaviour : Interactible
 {
+    [SerializeField]
+    private bool canBeOpened = true;
     private bool isOpened = false;
     [SerializeField]
     private float maxDistanceToThePlayer;
@@ -29,6 +31,9 @@ public class TheDoorBehaviour : Interactible
 
     protected override void Interact()
     {
+        if (!canBeOpened)
+            return;
+
         isOpened = true;
         animator.SetTrigger("Open");
     }
