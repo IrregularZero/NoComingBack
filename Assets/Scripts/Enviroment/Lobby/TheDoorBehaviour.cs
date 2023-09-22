@@ -6,18 +6,18 @@ using UnityEngine;
 public class TheDoorBehaviour : Interactible
 {
     [SerializeField]
-    private bool canBeOpened = true;
-    private bool isOpened = false;
+    protected bool canBeOpened = true;
+    protected bool isOpened = false;
     [SerializeField]
-    private float maxDistanceToThePlayer;
+    protected float maxDistanceToThePlayer;
 
-    private Animator animator;
+    protected Animator animator;
 
-    private void Start()
+    protected virtual void Start()
     {
         animator = GetComponent<Animator>();
     }
-    private void Update()
+    protected virtual void Update()
     {
         if (isOpened)
         {

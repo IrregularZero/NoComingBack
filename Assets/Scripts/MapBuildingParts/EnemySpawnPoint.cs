@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemySpawnPoint : MonoBehaviour
 {
+    [SerializeField]
     private bool isTaken = false;
 
     #region Properties
