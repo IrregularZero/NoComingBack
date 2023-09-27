@@ -62,7 +62,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Proceed into the dungeon?
+  canBeOpened: 1
   maxDistanceToThePlayer: 20
+  roomEntrance: 1
+  entrance: 0
 --- !u!95 &3697783298410036265
 Animator:
   serializedVersion: 4
