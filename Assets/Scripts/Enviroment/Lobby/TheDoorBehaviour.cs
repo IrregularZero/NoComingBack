@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class TheDoorBehaviour : Interactible
     [SerializeField]
     protected bool canBeOpened = true;
     protected bool isOpened = false;
+    [SerializeField]
+    private bool useMaxDistance = true;
     [SerializeField]
     protected float maxDistanceToThePlayer;
 
@@ -19,6 +22,67 @@ public class TheDoorBehaviour : Interactible
     protected Animator animator;
     private ChapterGameController_l1 gameController;
 
+    #region Props
+    public bool CanBeOpened 
+    {
+        get
+        {
+            return canBeOpened;
+        }
+        set
+        {
+            canBeOpened = value;
+        }
+    }
+    public bool IsOpened 
+    {
+        get
+        {
+            return isOpened;
+        }
+        set
+        {
+            isOpened = value;
+        }
+    }
+    public float MaxDistanceToThePlayer
+    {
+        get
+        {
+            return maxDistanceToThePlayer;
+        }
+        set
+        {
+            if (value >= 0)
+            {
+                maxDistanceToThePlayer = value;
+            }
+        }
+    }
+    public bool RoomEntrance
+    {
+        get
+        {
+            return roomEntrance;
+        }
+        set
+        {
+            roomEntrance = value;
+        }
+    }
+    public bool Entrance
+    {
+        get
+        {
+            return entrance;
+        }
+        set
+        {
+            entrance = value;
+        }
+    }
+    #endregion
+
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();
@@ -29,10 +93,12 @@ public class TheDoorBehaviour : Interactible
     {
         if (isOpened)
         {
-            if ((transform.position - GameObject.FindGameObjectWithTag("Player").transform.position).magnitude > maxDistanceToThePlayer)
+            if (useMaxDistance)
             {
-                isOpened = false;
-                animator.SetTrigger("Close");
+                if ((transform.position - GameObject.FindGameObjectWithTag("Player").transform.position).magnitude > maxDistanceToThePlayer)
+                {
+                    Close();
+                }
             }
         }
     }
@@ -45,12 +111,27 @@ public class TheDoorBehaviour : Interactible
         if (roomEntrance)
         {
             if (entrance)
+            {
                 gameController.Initiate();
+            }
             else
+            {
+                Debug.Log($"Completed {transform.parent.parent.name}");
                 gameController.Deactivate();
+            }
         }
 
+        Open();
+    }
+
+    public void Open()
+    {
         isOpened = true;
         animator.SetTrigger("Open");
+    }
+    public void Close()
+    {
+        isOpened = false;
+        animator.SetTrigger("Close");
     }
 }

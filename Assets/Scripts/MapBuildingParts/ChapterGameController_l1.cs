@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ChapterGameController_l1 : MonoBehaviour
 {
+    private bool initialized = false;
+    private bool isActive = false;
+
     [SerializeField]
     private int enemyLayoutVariantsNumber;
     [SerializeField]
@@ -18,8 +22,22 @@ public class ChapterGameController_l1 : MonoBehaviour
     private GameObject enemyLayout4;
 
     private List<GameObject> layouts;
+    [SerializeField]
+    private string lockdownPrompt = "Finish the dungeon first";
+    [SerializeField]
+    private TheDoorBehaviour entranceDoor;
+    private string entranceDoorPrompt;
+    [SerializeField]
+    private TheDoorBehaviour exitDoor;
+    private string exitDoorPrompt;
+    [SerializeField]
+    private GameObject pocket;
 
     private GameObject activeLayout;
+    private NPCVitality[] enemiesLives;
+    [SerializeField]
+    private float timeToStartScanning;
+    private bool shouldBeScanned = false;
 
     private void Start()
     {
@@ -40,15 +58,71 @@ public class ChapterGameController_l1 : MonoBehaviour
         }
         #endregion
     }
+    private void Update()
+    {
+        if (isActive && shouldBeScanned)
+        {
+            bool enemiesDead = true;
+            for (int i = 0; i < enemiesLives.Length; i++)
+            {
+                if (enemiesLives[i].Health > 0)
+                {
+                    enemiesDead = false;
+                    break;
+                }
+            }
+
+            if (enemiesDead)
+            {
+                Deactivate();
+            }
+        }
+    }
 
     public void Initiate()
     {
+        if (initialized)
+            return;
+
         Transform initializationPoint = transform.parent.GetChild(0).GetChild(0);
 
         activeLayout = Instantiate(layouts[Random.Range(0, layouts.Count - 1)], initializationPoint);
+
+        initialized = true;
+
+        entranceDoor.CanBeOpened = false;
+        entranceDoorPrompt = entranceDoor.promptMessage;
+        entranceDoor.promptMessage = lockdownPrompt;
+
+        exitDoor.CanBeOpened = false;
+        exitDoorPrompt = exitDoor.promptMessage;
+        exitDoor.promptMessage = lockdownPrompt;
+
+        pocket.SetActive(true);
+        enemiesLives = activeLayout.GetComponentsInChildren<NPCVitality>().Where(child => child.tag == "Enemy").ToArray();
+        isActive = true;
+
+        StartCoroutine(delayTillScan());
     }
+
+    private IEnumerator delayTillScan()
+    {
+        yield return new WaitForSeconds(timeToStartScanning);
+
+        shouldBeScanned = true;
+    }
+    
     public void Deactivate()
     {
+        isActive = false;
+
+        entranceDoor.CanBeOpened = true;
+        entranceDoor.promptMessage = entranceDoorPrompt;
+        exitDoor.CanBeOpened = true;
+        exitDoor.promptMessage = exitDoorPrompt;
+
+        pocket.SetActive(false);
+
         Destroy(activeLayout);
     }
 }
