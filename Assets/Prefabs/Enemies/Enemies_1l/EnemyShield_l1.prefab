@@ -264,7 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 100
-  damageMultiplier: 0.5
+  damageMultiplier: 0.25
   healingBonus: 0
   useUI: 0
   frontHealthBar: {fileID: 3807187284551714792}
