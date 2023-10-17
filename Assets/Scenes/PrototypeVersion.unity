@@ -13207,6 +13207,7 @@ GameObject:
   - component: {fileID: 6}
   - component: {fileID: 7033193038974610131}
   - component: {fileID: 7033193038974610128}
+  - component: {fileID: 7033193038974610133}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -28284,6 +28285,20 @@ MonoBehaviour:
   slideEffects: {fileID: 1505112847}
   powerSlideEffects: {fileID: 101231010}
   maxTiltAngle: 90
+--- !u!114 &7033193038974610133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839420271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdbdef83f031dd843a43ac64c32032b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  returnPosition: {x: 0, y: 0, z: 0}
+  returnPositionUpdateTimer: 5
 --- !u!4 &7256998864821783387
 Transform:
   m_ObjectHideFlags: 0

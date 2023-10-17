@@ -49,8 +49,22 @@ public class ReturnSystem : MonoBehaviour
 
         StartCoroutine(SetReturnPosition());
     }
+    private void Update()
+    {
+        if (transform.position.y <= -50)
+        {
+            ReturnToReturnPosition();
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Void")
+        {
+            ReturnToReturnPosition();
+        }
+    }
 
-    public IEnumerator SetReturnPosition()
+    private IEnumerator SetReturnPosition()
     {
         yield return new WaitForSeconds(returnPositionUpdateTimer);
 
@@ -60,5 +74,12 @@ public class ReturnSystem : MonoBehaviour
         }
 
         StartCoroutine(SetReturnPosition());
+    }
+
+    public void ReturnToReturnPosition()
+    {
+        characterController.enabled = false;
+        transform.position = returnPosition;
+        characterController.enabled = true;
     }
 }
