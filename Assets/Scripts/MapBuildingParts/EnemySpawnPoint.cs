@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemySpawnPoint : MonoBehaviour
 {
-    [SerializeField]
     private bool isTaken = false;
 
     #region Properties
@@ -20,4 +19,12 @@ public class EnemySpawnPoint : MonoBehaviour
         }
     }
     #endregion
+
+    private void Update()
+    {
+        if (transform.GetChild(0).childCount > 0)
+            isTaken = true;
+        else
+            isTaken = false;
+    }
 }
