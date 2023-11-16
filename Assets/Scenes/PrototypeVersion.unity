@@ -5295,7 +5295,7 @@ GameObject:
   - component: {fileID: 243512538}
   - component: {fileID: 243512537}
   - component: {fileID: 243512536}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Guard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5887,7 +5887,7 @@ GameObject:
   - component: {fileID: 335970684}
   - component: {fileID: 335970685}
   - component: {fileID: 335970686}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6362,7 +6362,7 @@ GameObject:
   - component: {fileID: 396760104}
   - component: {fileID: 396760103}
   - component: {fileID: 396760102}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7587,7 +7587,7 @@ GameObject:
   - component: {fileID: 687853576}
   - component: {fileID: 687853575}
   - component: {fileID: 687853574}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13361,7 +13361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 960978064}
   - component: {fileID: 960978065}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19041,13 +19041,13 @@ GameObject:
   - component: {fileID: 1110383632}
   - component: {fileID: 1110383634}
   - component: {fileID: 1110383633}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: UltimateMelee
   m_TagString: UltimateMelee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1110383632
 Transform:
   m_ObjectHideFlags: 0
@@ -20355,7 +20355,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1460980118}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: BarellEffects (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20560,7 +20560,7 @@ GameObject:
   - component: {fileID: 1498210958}
   - component: {fileID: 1498210960}
   - component: {fileID: 1498210959}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: EmbededMelee
   m_TagString: EmbededMelee
   m_Icon: {fileID: 0}
@@ -26470,7 +26470,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1954289235}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: BarellEffects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26577,7 +26577,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2005214790}
   - component: {fileID: 2005214791}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27538,7 +27538,7 @@ GameObject:
   - component: {fileID: 4332183247156146181}
   - component: {fileID: 3646653159184969877}
   - component: {fileID: 8872122176775706504}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Guard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27557,7 +27557,7 @@ GameObject:
   - component: {fileID: 5376737446002816739}
   - component: {fileID: 3344928513132468362}
   - component: {fileID: 708001271759089021}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27969,7 +27969,7 @@ GameObject:
   - component: {fileID: 7011385105319151254}
   - component: {fileID: 1603654079837028557}
   - component: {fileID: 7256998864821783388}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28118,7 +28118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 516328499415948970}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
