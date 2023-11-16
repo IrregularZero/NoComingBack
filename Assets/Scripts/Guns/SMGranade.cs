@@ -137,6 +137,8 @@ public class SMGranade : GunSystem
 
         if (magazine >= maxMagazine && ammoInStorage > 0)
             return base.Reload();
+        if (ammoInStorage <= 0)
+            return base.Reload();
         if (shotSpecial)
         {
             shotSpecial = false;

@@ -43,6 +43,13 @@ public class InventorySystem : MonoBehaviour
             return items;
         } 
     }
+    public int MaxItems 
+    {
+        get
+        {
+            return maxItems;
+        }
+    }
     public int SelectedSlot 
     {
         get
@@ -125,6 +132,11 @@ public class InventorySystem : MonoBehaviour
             items[slotForNewItem] = item;
         else
             items.Add(slotForNewItem, item);
+
+        // We have to actually change item's hierarchy here in inventory
+        GameObject oldItemsParent = item.transform.parent.gameObject;
+        item.transform.parent = GameObject.FindGameObjectWithTag("Player").GetComponent<InputManager>().Inventory.transform.GetChild(4);
+        Destroy(oldItemsParent);
 
         if (item.GetComponent<Item>().Type == "Weapon")
             ammoInStorageOfGuns.Add(item.name, item.GetComponent<HandCompatibleItem>().StandardAmmoInStorage);
