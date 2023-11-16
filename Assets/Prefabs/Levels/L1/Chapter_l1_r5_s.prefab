@@ -367,15 +367,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayoutVariantsNumber: 5
-  enemyLayout0: {fileID: 8567058298726863984, guid: 4013a393bdb2e914eaa659f37d027bea,
+  enemyLayout0: {fileID: 8716288332920143283, guid: 9fbbb6eb2a216e8488d6af15588954eb,
     type: 3}
-  enemyLayout1: {fileID: 3777060430869762670, guid: 4c4c7fe5dd77095419195ce9b3c68878,
+  enemyLayout1: {fileID: 8474068728757954713, guid: 35e5ec24b00b7ed47b73aba5673de46f,
     type: 3}
-  enemyLayout2: {fileID: 3777060430869762670, guid: 8699ed478e5d2894980587c59adbc695,
+  enemyLayout2: {fileID: 1282112982173621684, guid: 23251afa93f95064d92dd6b5284390b6,
     type: 3}
-  enemyLayout3: {fileID: 3239010678759434427, guid: 096f3d235794fce40b1cf326efaf3819,
+  enemyLayout3: {fileID: 3339452153249048788, guid: 057cdd81b42803642b9ed663beb8022e,
     type: 3}
-  enemyLayout4: {fileID: 4584603317336733706, guid: d7e5f23b40ea6c44683c7c9c2085fa51,
+  enemyLayout4: {fileID: 133137518649557911, guid: cb515dbaca7116f48b2dbbe0c8c11ff4,
     type: 3}
   lockdownPrompt: Finish the dungeon first
   entranceDoor: {fileID: 3514384722375341976}
