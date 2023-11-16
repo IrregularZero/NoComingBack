@@ -20,6 +20,7 @@ public sealed class NPCVitality : VitalitySystem
 
     [SerializeField]
     private float expirationTimer = 15f;
+    private bool expiring = false;
 
 
     protected override void Start()
@@ -84,7 +85,10 @@ public sealed class NPCVitality : VitalitySystem
 
     public override IEnumerator Death(bool isDead)
     {
-        // For enemies with AI, it should be disabled
+        if (expiring)
+            yield return new WaitForSeconds(0);
+        else
+            expiring = true;
 
         if (useAnimations)
             animator.SetBool("IsDead", isDead);
