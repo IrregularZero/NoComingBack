@@ -21,6 +21,7 @@ public class TheDoorBehaviour : Interactible
 
     protected Animator animator;
     private ChapterGameController_l1 gameController;
+    private LevelController levelController;
 
     #region Props
     public bool CanBeOpened 
@@ -86,8 +87,11 @@ public class TheDoorBehaviour : Interactible
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();
+
         if (roomEntrance)
             gameController = transform.parent.parent.GetChild(1).gameObject.GetComponent<ChapterGameController_l1>();
+        else
+            levelController = transform.parent.GetChild(transform.parent.childCount - 2).GetComponent<LevelController>();
     }
     protected virtual void Update()
     {
@@ -119,6 +123,11 @@ public class TheDoorBehaviour : Interactible
                 Debug.Log($"Completed {transform.parent.parent.name}");
                 gameController.Deactivate();
             }
+        }
+        else
+        {
+            Debug.Log($"Player has started the game!");
+            levelController.Initiate();
         }
 
         Open();

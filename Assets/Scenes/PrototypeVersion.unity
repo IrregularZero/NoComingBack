@@ -5967,7 +5967,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1918776802}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &361133192
 GameObject:
@@ -19030,6 +19030,62 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100483413}
   m_Mesh: {fileID: 4300000, guid: cce41387554d348a18b32048c3ca0d9d, type: 2}
+--- !u!1 &1109874290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1109874291}
+  - component: {fileID: 1109874292}
+  m_Layer: 0
+  m_Name: LevelController_l1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1109874291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109874290}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1918776802}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1109874292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109874290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c1199d260aae3f4d9f54d2da6c68d2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaptersNumber: 5
+  chapter0: {fileID: 3503132103835011860, guid: 1910a7e762a31174dbbdb8c6d54c7843,
+    type: 3}
+  chapter1: {fileID: 1879917834048968015, guid: 4e2c2e86d47d39447a8208ce3af7e108,
+    type: 3}
+  chapter2: {fileID: 1500760204507620300, guid: 88e651242b4f84345bf9cb0fed38a458,
+    type: 3}
+  chapter3: {fileID: 2127057264445801337, guid: 3250ceb1bb93b6c42b124ca7da829fc0,
+    type: 3}
+  chapter4: {fileID: 3992935924272772137, guid: 50875a6fd8b5aee498257da71719885c,
+    type: 3}
+  maxAmountOfChapters: 3
 --- !u!1 &1110383631
 GameObject:
   m_ObjectHideFlags: 0
@@ -26457,6 +26513,7 @@ Transform:
   - {fileID: 2040091585}
   - {fileID: 94028416}
   - {fileID: 672525191}
+  - {fileID: 1109874291}
   - {fileID: 350334884}
   m_Father: {fileID: 0}
   m_RootOrder: 2
