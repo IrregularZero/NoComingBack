@@ -77,7 +77,10 @@ public class HandCompatibleItem : Item
     {
         if (invSys == null)
         {
-            invSys = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventorySystem>();
+            if (GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventorySystem>() != null)
+            {
+                invSys = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventorySystem>();
+            }
         }
     }
     // Use() make weapon toggle it's state from equipped to deequipped

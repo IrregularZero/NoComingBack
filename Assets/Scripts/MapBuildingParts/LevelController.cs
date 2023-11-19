@@ -44,6 +44,7 @@ public class LevelController : MonoBehaviour
                 default: Debug.Log($"Enemy variants number exceeds maximum by {i - i + 1}"); break;
             }
         }
+        activeChapters = new List<GameObject>();
         #endregion
     }
 
@@ -59,15 +60,18 @@ public class LevelController : MonoBehaviour
             bool generated = false;
             while (!generated)
             {
-                int generatedIndex = Random.Range(0, chaptersNumber);
+                int generatedIndex = Random.Range(0, chaptersNumber - 1);
 
                 generated = true;
-                for (int j = 0; j < chapterIndexes.Length; j++)
+                if (i != 0)
                 {
-                    if (generatedIndex == chapterIndexes[j])
+                    for (int j = 0; j < i; j++)
                     {
-                        generated = false;
-                        break;
+                        if (generatedIndex == chapterIndexes[j])
+                        {
+                            generated = false;
+                            break;
+                        }
                     }
                 }
 
@@ -83,8 +87,9 @@ public class LevelController : MonoBehaviour
                 initializationPoint = transform.parent.GetChild(transform.parent.childCount - 1);
             else
                 initializationPoint = activeChapters[activeChapters.Count - 1].transform.GetChild(
-                    activeChapters[activeChapters.Count - 1].transform.childCount);
+                    activeChapters[activeChapters.Count - 1].transform.childCount - 1);
 
+            Debug.Log(initializationPoint);
             activeChapters.Add(Instantiate(chapters[chapterIndexes[i]], initializationPoint));
         }
 
