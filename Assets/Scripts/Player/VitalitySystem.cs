@@ -38,6 +38,9 @@ public class VitalitySystem : MonoBehaviour
     [SerializeField]
     protected float alphaDecrement = 0.45f;
 
+    [SerializeField]
+    protected float timeToRestart = 2.2f;
+
     #region Properties
     public float Health 
     {
@@ -175,11 +178,20 @@ public class VitalitySystem : MonoBehaviour
     public virtual IEnumerator Death(bool isDead)
     {
         DeathScreen.SetActive(isDead);
+        GetComponent<InputManager>().enabled = false;
+
+        StartCoroutine(Restart());
 
         if (isDead)
         {
             // Here statistics should be updated
         }
         yield return new WaitForSeconds(0);
+    }
+    private IEnumerator Restart()
+    {
+        yield return new WaitForSeconds(timeToRestart);
+
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().Restart();
     }
 }

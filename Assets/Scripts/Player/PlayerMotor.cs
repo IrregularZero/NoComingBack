@@ -137,6 +137,12 @@ public class PlayerMotor : MonoBehaviour
 
     public void ApplyCameraTilt(Vector3 moveDir)
     {
+        if (GetComponent<InputManager>().enabled || GetComponent<InputManager>().Inventory.gameObject.activeSelf)
+        {
+            tiltAngle = 0f;
+            return;
+        }
+
         Vector2 move = new Vector2(moveDir.x, moveDir.z);
         move.Normalize();
 
