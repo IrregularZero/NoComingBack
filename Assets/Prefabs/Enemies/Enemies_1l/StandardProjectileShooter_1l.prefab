@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 5598691280963637826}
   - component: {fileID: 4480839645501806760}
   - component: {fileID: 7706569059333070059}
+  - component: {fileID: 95739908907586235}
   - component: {fileID: 8529250607087282231}
   m_Layer: 0
   m_Name: StandardProjectileShooter_1l
@@ -123,6 +124,7 @@ MonoBehaviour:
   DeathScreen: {fileID: 0}
   healthChangeEffects: {fileID: 0}
   alphaDecrement: 0.45
+  timeToRestart: 2.2
   useAnimations: 1
   maxDamagedAnimDuration: 0.2
   staggered: 0
@@ -145,6 +147,29 @@ MonoBehaviour:
   projectileColor: {r: 0, g: 0, b: 0, a: 0}
   projectile: {fileID: 6482015894507940949, guid: b186308b2be0f314abee67ac1009bc12,
     type: 3}
+--- !u!114 &95739908907586235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5598691280963637828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ef06461659fb9428677c59aace7c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountofDrops: 5
+  drop0: {fileID: 0}
+  drop1: {fileID: 0}
+  drop2: {fileID: 0}
+  drop3: {fileID: 0}
+  drop4: {fileID: 0}
+  drop0Cap: 0
+  drop1Cap: 0
+  drop2Cap: 0
+  drop3Cap: 0
+  drop4Cap: 0
 --- !u!95 &8529250607087282231
 Animator:
   serializedVersion: 4

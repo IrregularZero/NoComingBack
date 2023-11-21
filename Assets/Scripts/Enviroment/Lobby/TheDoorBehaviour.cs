@@ -121,7 +121,6 @@ public class TheDoorBehaviour : Interactible
             else
             {
                 Debug.Log($"Completed {transform.parent.parent.name}");
-                gameController.Deactivate();
             }
         }
         else

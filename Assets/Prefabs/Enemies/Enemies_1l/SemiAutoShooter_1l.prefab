@@ -7,6 +7,61 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 95739908907586235, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: drop0
+      value: 
+      objectReference: {fileID: 582247932542747899, guid: f11ae3457a53a1c4cbdce98526d0a309,
+        type: 3}
+    - target: {fileID: 95739908907586235, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: drop1
+      value: 
+      objectReference: {fileID: 2435046660124421954, guid: 488f93be46125fd458a0c01c046f6aea,
+        type: 3}
+    - target: {fileID: 95739908907586235, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: drop2
+      value: 
+      objectReference: {fileID: 7676317350334802775, guid: 9a5bd3d3f469aa44b9dc956e332371fd,
+        type: 3}
+    - target: {fileID: 95739908907586235, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: drop3
+      value: 
+      objectReference: {fileID: 4818182175305277378, guid: 939a82a79bb95d849a9ae67ee42e9e85,
+        type: 3}
+    - target: {fileID: 95739908907586235, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: drop4
+      value: 
+      objectReference: {fileID: 1435410523006175579, guid: 5a3780bbb93d26c429c42679a573ad38,
+        type: 3}
+    - target: {fileID: 95739908907586235, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: drop0Cap
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 95739908907586235, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: drop1Cap
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 95739908907586235, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: drop2Cap
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 95739908907586235, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: drop3Cap
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 95739908907586235, guid: 648f479e335ad0f42b61ec448bb563dc,
+        type: 3}
+      propertyPath: drop4Cap
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 4480839645501806760, guid: 648f479e335ad0f42b61ec448bb563dc,
         type: 3}
       propertyPath: damageMultiplier

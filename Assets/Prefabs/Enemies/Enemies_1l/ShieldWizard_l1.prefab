@@ -259,6 +259,7 @@ GameObject:
   - component: {fileID: 216257754006930147}
   - component: {fileID: 1161983539}
   - component: {fileID: 6585730704564304158}
+  - component: {fileID: 7047623087883959617}
   - component: {fileID: 5427104704521397734}
   m_Layer: 0
   m_Name: ShieldWizard_l1
@@ -321,6 +322,7 @@ MonoBehaviour:
   DeathScreen: {fileID: 0}
   healthChangeEffects: {fileID: 0}
   alphaDecrement: 0.45
+  timeToRestart: 2.2
   useAnimations: 1
   maxDamagedAnimDuration: 0
   staggered: 0
@@ -363,6 +365,29 @@ LookAtConstraint:
   m_IsContraintActive: 0
   m_IsLocked: 0
   m_Sources: []
+--- !u!114 &7047623087883959617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304289594649724158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ef06461659fb9428677c59aace7c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountofDrops: 5
+  drop0: {fileID: 2435046660124421954, guid: 488f93be46125fd458a0c01c046f6aea, type: 3}
+  drop1: {fileID: 7676317350334802775, guid: 9a5bd3d3f469aa44b9dc956e332371fd, type: 3}
+  drop2: {fileID: 7676317350334802775, guid: 9a5bd3d3f469aa44b9dc956e332371fd, type: 3}
+  drop3: {fileID: 7676317350334802775, guid: 9a5bd3d3f469aa44b9dc956e332371fd, type: 3}
+  drop4: {fileID: 4818182175305277378, guid: 939a82a79bb95d849a9ae67ee42e9e85, type: 3}
+  drop0Cap: 10
+  drop1Cap: 30
+  drop2Cap: 50
+  drop3Cap: 70
+  drop4Cap: 90
 --- !u!95 &5427104704521397734
 Animator:
   serializedVersion: 4

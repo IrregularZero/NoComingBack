@@ -116,6 +116,8 @@ public class ChapterGameController_l1 : MonoBehaviour
     {
         isActive = false;
 
+        DropItems();
+
         entranceDoor.CanBeOpened = true;
         entranceDoor.promptMessage = entranceDoorPrompt;
         exitDoor.CanBeOpened = true;
@@ -124,5 +126,14 @@ public class ChapterGameController_l1 : MonoBehaviour
         pocket.SetActive(false);
 
         Destroy(activeLayout);
+    }
+
+    public void DropItems()
+    {
+        DropList[] bodies = activeLayout.GetComponentsInChildren<DropList>().Where(child => child.tag == "Enemy").ToArray();
+        for (int i = 0; i < bodies.Length; i++)
+        {
+            bodies[i].DropItem(Random.Range(1f, 100f), transform.parent);
+        }
     }
 }

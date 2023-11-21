@@ -7,6 +7,45 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1230219786749927415, guid: 6cd43b2891de47a40873b6ecc459a05c,
+        type: 3}
+      propertyPath: drop0
+      value: 
+      objectReference: {fileID: 7676317350334802775, guid: 9a5bd3d3f469aa44b9dc956e332371fd,
+        type: 3}
+    - target: {fileID: 1230219786749927415, guid: 6cd43b2891de47a40873b6ecc459a05c,
+        type: 3}
+      propertyPath: drop2
+      value: 
+      objectReference: {fileID: 4818182175305277378, guid: 939a82a79bb95d849a9ae67ee42e9e85,
+        type: 3}
+    - target: {fileID: 1230219786749927415, guid: 6cd43b2891de47a40873b6ecc459a05c,
+        type: 3}
+      propertyPath: drop3
+      value: 
+      objectReference: {fileID: 582247932542747899, guid: 2b21e20b30af52a4e803f5d8d1ec1a8d,
+        type: 3}
+    - target: {fileID: 1230219786749927415, guid: 6cd43b2891de47a40873b6ecc459a05c,
+        type: 3}
+      propertyPath: drop4
+      value: 
+      objectReference: {fileID: 2440574157785187473, guid: 344a112382e48414796180e2b4ec72bd,
+        type: 3}
+    - target: {fileID: 1230219786749927415, guid: 6cd43b2891de47a40873b6ecc459a05c,
+        type: 3}
+      propertyPath: drop2Cap
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1230219786749927415, guid: 6cd43b2891de47a40873b6ecc459a05c,
+        type: 3}
+      propertyPath: drop3Cap
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1230219786749927415, guid: 6cd43b2891de47a40873b6ecc459a05c,
+        type: 3}
+      propertyPath: drop4Cap
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 3344379547054134756, guid: 6cd43b2891de47a40873b6ecc459a05c,
         type: 3}
       propertyPath: damageMultiplier

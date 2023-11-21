@@ -60,7 +60,7 @@ public class LevelController : MonoBehaviour
             bool generated = false;
             while (!generated)
             {
-                int generatedIndex = Random.Range(0, chaptersNumber - 1);
+                int generatedIndex = Random.Range(0, chaptersNumber);
 
                 generated = true;
                 if (i != 0)
