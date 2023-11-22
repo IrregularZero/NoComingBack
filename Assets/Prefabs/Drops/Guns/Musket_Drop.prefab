@@ -724,7 +724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
-  backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0}
   title: Musket
   description: Name may sound old, but it shoots as efficient as new ones with it's
     shotgun fire as special and burst fire as primary option

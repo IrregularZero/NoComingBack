@@ -91,7 +91,7 @@ public class TheDoorBehaviour : Interactible
         if (roomEntrance)
             gameController = transform.parent.parent.GetChild(1).gameObject.GetComponent<ChapterGameController_l1>();
         else
-            levelController = transform.parent.GetChild(transform.parent.childCount - 2).GetComponent<LevelController>();
+            levelController = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>();
     }
     protected virtual void Update()
     {
