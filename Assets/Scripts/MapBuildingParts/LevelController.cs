@@ -84,7 +84,7 @@ public class LevelController : MonoBehaviour
         for (int i = 0; i < maxAmountOfChapters; i++)
         {
             if (i == 0)
-                initializationPoint = transform.parent.GetChild(transform.parent.childCount - 1);
+                initializationPoint = transform.parent.GetChild(0);
             else
                 initializationPoint = activeChapters[activeChapters.Count - 1].transform.GetChild(
                     activeChapters[activeChapters.Count - 1].transform.childCount - 1);

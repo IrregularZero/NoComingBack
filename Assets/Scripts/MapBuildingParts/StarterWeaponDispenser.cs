@@ -32,5 +32,7 @@ public class StarterWeaponDispenser : MonoBehaviour
             case 2: Instantiate(weaponOption2, transform.position, Quaternion.identity, transform.parent); break;
             default: Debug.Log("Generated index bigger than expected"); break;
         }
+
+        Destroy(gameObject);
     }
 }
