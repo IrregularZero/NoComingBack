@@ -5,6 +5,7 @@ using UnityEngine;
 public class VitalitySystemPerks : BasePerk
 {
     private bool active = false;
+
     [SerializeField]
     private bool damageMultiplierAffected = false;
     [SerializeField]
@@ -24,7 +25,81 @@ public class VitalitySystemPerks : BasePerk
     private VitalitySystem vitalitySystem;
 
     #region Properties
+    public bool Active 
+    {
+        get
+        {
+            return active;
+        }
+    }
 
+    public bool DamageMultiplierAffected 
+    {
+        get
+        {
+            return damageMultiplierAffected;
+        }
+        set
+        {
+            damageMultiplierAffected = value;
+        }
+    }
+    public float AdditiveBonusDamageMultiplier 
+    {
+        get
+        {
+            return additiveBonusDamageMultiplier;
+        }
+        set
+        {
+            additiveBonusDamageMultiplier = value;
+        }
+    }
+    public float MultiplicativeBonusDamageMultiplier 
+    {
+        get
+        {
+            return multiplicativeBonusDamageMultiplier;
+        }
+        set
+        {
+            multiplicativeBonusDamageMultiplier = value;
+        }
+    }
+
+    public bool HealingBonusAffected 
+    {
+        get
+        {
+            return healingBonusAffected;
+        }
+        set
+        {
+            healingBonusAffected = value;
+        }
+    }
+    public float AdditiveHealingBonus 
+    {
+        get
+        {
+            return additiveHealingBonus;
+        }
+        set
+        {
+            additiveHealingBonus = value;
+        }
+    }
+    public float MultiplicativeHealingBonus 
+    {
+        get
+        {
+            return multiplicativeHealingBonus;
+        }
+        set
+        {
+            multiplicativeHealingBonus = value;
+        }
+    }
     #endregion
 
     private void Start()
