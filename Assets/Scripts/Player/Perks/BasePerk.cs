@@ -6,11 +6,24 @@ using UnityEngine;
 public abstract class BasePerk : MonoBehaviour
 {
     [SerializeField]
+    protected Sprite logo;
+    [SerializeField]
     protected string title;
     [SerializeField]
     protected string description;
 
     #region Propterties
+    public Sprite Logo 
+    {
+        get
+        {
+            return logo;
+        }
+        set
+        {
+            logo = value;
+        }
+    }
     public string Title 
     {
         get

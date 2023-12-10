@@ -13,6 +13,7 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private InventorySystem inventorySystem;
     private bool inventoryEnabled = true;
+    private PerkHoldingSystem perkHoldingSystem;
     private MeleeSystem meleeSystem;
     private UltimateSystem ultimateSystem;
     private UltimateMelee ultimateMelee;
@@ -49,6 +50,7 @@ public class InputManager : MonoBehaviour
         player = GetComponent<PlayerMotor>();
         ultimate = GetComponent<PlayerUltimateMotor>();
         look = GetComponent<PlayerLook>();
+        perkHoldingSystem = GameObject.FindGameObjectWithTag("PerkHolder").GetComponent<PerkHoldingSystem>();
         interactionSystem = GetComponent<PlayerInteractionSystem>();
         meleeSystem = GetComponent<MeleeSystem>();
         ultimateSystem = GetComponent<UltimateSystem>();
@@ -71,6 +73,10 @@ public class InputManager : MonoBehaviour
         inputs.ItemManipulation.Swap_InInventory.started += ctx => inventorySystem.SwapSequence();
         inputs.ItemManipulation.Swap_InInventory.canceled += ctx => inventorySystem.SwapSequence();
         inputs.ItemManipulation.Inventory.performed += ctx => EnableInventoryMode();
+
+        // Perk holding system
+        inputs.OnFoot.PerkScreen.started += ctx => perkHoldingSystem.EnablePerkScreen();
+        inputs.OnFoot.PerkScreen.canceled += ctx => perkHoldingSystem.DisablePerkScreen();
 
         // Asignment
         inputs.ItemManipulation.NorthSlotAsignment.performed += ctx => inventorySystem.AsignOrDeasignItemToQuickItemAccessSystem(0);

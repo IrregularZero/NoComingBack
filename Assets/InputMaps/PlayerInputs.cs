@@ -107,6 +107,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PerkScreen"",
+                    ""type"": ""Button"",
+                    ""id"": ""3494fa48-6b0e-4fc1-95f7-46b5a9647950"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -316,6 +325,17 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ActivateUltimate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f2a1fed-62e2-4fd2-831d-5e39e99a2ae5"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PerkScreen"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1077,6 +1097,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
         m_OnFoot_Melee = m_OnFoot.FindAction("Melee", throwIfNotFound: true);
         m_OnFoot_ActivateUltimate = m_OnFoot.FindAction("ActivateUltimate", throwIfNotFound: true);
+        m_OnFoot_PerkScreen = m_OnFoot.FindAction("PerkScreen", throwIfNotFound: true);
         // UltimateMode
         m_UltimateMode = asset.FindActionMap("UltimateMode", throwIfNotFound: true);
         m_UltimateMode_Movement = m_UltimateMode.FindAction("Movement", throwIfNotFound: true);
@@ -1177,6 +1198,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Interact;
     private readonly InputAction m_OnFoot_Melee;
     private readonly InputAction m_OnFoot_ActivateUltimate;
+    private readonly InputAction m_OnFoot_PerkScreen;
     public struct OnFootActions
     {
         private @PlayerInputs m_Wrapper;
@@ -1190,6 +1212,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
         public InputAction @Melee => m_Wrapper.m_OnFoot_Melee;
         public InputAction @ActivateUltimate => m_Wrapper.m_OnFoot_ActivateUltimate;
+        public InputAction @PerkScreen => m_Wrapper.m_OnFoot_PerkScreen;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1226,6 +1249,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @ActivateUltimate.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnActivateUltimate;
                 @ActivateUltimate.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnActivateUltimate;
                 @ActivateUltimate.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnActivateUltimate;
+                @PerkScreen.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPerkScreen;
+                @PerkScreen.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPerkScreen;
+                @PerkScreen.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnPerkScreen;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -1257,6 +1283,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @ActivateUltimate.started += instance.OnActivateUltimate;
                 @ActivateUltimate.performed += instance.OnActivateUltimate;
                 @ActivateUltimate.canceled += instance.OnActivateUltimate;
+                @PerkScreen.started += instance.OnPerkScreen;
+                @PerkScreen.performed += instance.OnPerkScreen;
+                @PerkScreen.canceled += instance.OnPerkScreen;
             }
         }
     }
@@ -1555,6 +1584,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnMelee(InputAction.CallbackContext context);
         void OnActivateUltimate(InputAction.CallbackContext context);
+        void OnPerkScreen(InputAction.CallbackContext context);
     }
     public interface IUltimateModeActions
     {
