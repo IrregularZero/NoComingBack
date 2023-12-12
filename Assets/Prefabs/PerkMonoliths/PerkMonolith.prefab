@@ -421,35 +421,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3464609991588153682, guid: 7c4f5dbf747dfb24781d565042755306,
-        type: 3}
-      propertyPath: m_Layer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615979805667398927, guid: 7c4f5dbf747dfb24781d565042755306,
-        type: 3}
-      propertyPath: m_Layer
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7822565637964667441, guid: 7c4f5dbf747dfb24781d565042755306,
         type: 3}
       propertyPath: m_Name
       value: PerkCard
-      objectReference: {fileID: 0}
-    - target: {fileID: 7822565637964667441, guid: 7c4f5dbf747dfb24781d565042755306,
-        type: 3}
-      propertyPath: m_Layer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7914307387410866240, guid: 7c4f5dbf747dfb24781d565042755306,
-        type: 3}
-      propertyPath: m_Layer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8176029941093543467, guid: 7c4f5dbf747dfb24781d565042755306,
-        type: 3}
-      propertyPath: m_Layer
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c4f5dbf747dfb24781d565042755306, type: 3}

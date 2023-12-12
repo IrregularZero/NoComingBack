@@ -68,6 +68,7 @@ public class PerkHoldingSystem : MonoBehaviour
             perkDisplays[i].GetChild(1).GetComponent<Image>().sprite = perks[i].Logo;
             perkDisplays[i].GetChild(2).GetComponent<TextMeshProUGUI>().text = perks[i].Title;
             perkDisplays[i].GetChild(3).GetComponent<TextMeshProUGUI>().text = perks[i].Description;
+            perkDisplays[i].GetChild(3).GetComponent<TextMeshProUGUI>().text = perkDisplays[i].GetChild(3).GetComponent<TextMeshProUGUI>().text.Replace("\\n", "\n");
         }
         transform.GetChild(0).gameObject.SetActive(true);
 

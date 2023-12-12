@@ -20,6 +20,7 @@ public class PerkMonolithInteractions : Interactible
         transform.GetChild(1).GetChild(0).GetChild(0).GetChild(1).GetComponent<Image>().sprite = perk.Logo;
         transform.GetChild(1).GetChild(0).GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>().text = perk.Title;
         transform.GetChild(1).GetChild(0).GetChild(0).GetChild(3).GetComponent<TextMeshProUGUI>().text = perk.Description;
+        transform.GetChild(1).GetChild(0).GetChild(0).GetChild(3).GetComponent<TextMeshProUGUI>().text = transform.GetChild(1).GetChild(0).GetChild(0).GetChild(3).GetComponent<TextMeshProUGUI>().text.Replace("\\n", "\n");
     }
 
     protected override void Interact()
