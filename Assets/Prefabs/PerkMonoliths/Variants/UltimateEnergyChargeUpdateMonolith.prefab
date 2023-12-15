@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6117595357365301080
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5274038559157666116, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_Name
+      value: UltimateEnergyChargeUpdateMonolith
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639311783799065331, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: title
+      value: Ultimate.EnergyCharge.Update
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639311783799065331, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: description
+      value: 'Ultimate system update so it can generate more energy\nPassive energy
+        generation: x2'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639311783799065331, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: damageMultiplierAffected
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639311783799065331, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: multiplicativeBonusDamageMultiplier
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8639311783799065331, guid: b16cd5fed6a7626418956ac280e23af5, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: b16cd5fed6a7626418956ac280e23af5, type: 3}
+--- !u!1 &7414124895565826147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3603534870095243067, guid: b16cd5fed6a7626418956ac280e23af5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6117595357365301080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8445164974606918670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7414124895565826147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62de365a806d3af4c81c2acde20efe64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logo: {fileID: 0}
+  title: Ultimate.EnergyCharge.Update
+  description: 'Ultimate system update so it can generate more energy\nPassive energy
+    generation: x2'
+  passiveEnergyIncrementAffected: 1
+  additivePassiveEnergyIncrement: 0
+  multiplicativePassiveEnergyIncrement: 2
+  passiveEnergyDecrementAffected: 0
+  additivePassiveEnergyDecrement: 0
+  multiplicativePassiveEnergyDecrement: 1
