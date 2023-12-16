@@ -82,6 +82,10 @@ public class VitalitySystem : MonoBehaviour
             {
                 damageMultiplier = value;
             }
+            else
+            {
+                damageMultiplier = 0.1f;
+            }
         }
     }
     public float HealingBonus 

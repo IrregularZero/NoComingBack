@@ -26,6 +26,107 @@ public abstract class Melee : MonoBehaviour
     protected int hits;
     protected Animator animator;
 
+    #region Protected
+    public bool IsAttacking 
+    {
+        get
+        {
+            return isAttacking;
+        } 
+    }
+    public bool HasAttacked 
+    {
+        get
+        {
+            return hasAttacked;
+        }
+    }
+
+    public float DamageModificator 
+    {
+        get
+        {
+            return damage;
+        }
+        set
+        {
+            if (value >= 0)
+            {
+                damage = value;
+            }
+            else
+            {
+                damage = 0;
+            }
+        }
+    }
+    public float Distance 
+    {
+        get
+        {
+            return distance;
+        }
+        set
+        {
+            if (value >= 0)
+            {
+                distance = value;
+            }
+            else
+            {
+                distance = 0;
+            }
+        }
+    }
+    public float MaxAttackDuration 
+    {
+        get
+        {
+            return maxAttackDuration;
+        }
+        set
+        {
+            if (value >= 0)
+            {
+                maxAttackDuration = value;
+            }
+            else
+            {
+                maxAttackDuration = 0;
+            }
+        }
+    }
+    public float ImpactFrame 
+    {
+        get
+        {
+            return impactFrame;
+        }
+        set
+        {
+            if (value >= 0)
+            {
+                impactFrame = value;
+            }
+            else
+            {
+                impactFrame = 0;
+            }
+        }
+    }
+    public float FinisherHPBonus 
+    {
+        get
+        {
+            return finisherHPBonus;
+        }
+        set
+        {
+            finisherHPBonus = value;
+        }
+    }
+    #endregion
+
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();
