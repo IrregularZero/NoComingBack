@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6192924555642049884
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5274038559157666116, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_Name
+      value: MeleeUpdate2Monolith
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639311783799065331, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: title
+      value: Melee.Update I
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639311783799065331, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: description
+      value: En
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8639311783799065331, guid: b16cd5fed6a7626418956ac280e23af5, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: b16cd5fed6a7626418956ac280e23af5, type: 3}
+--- !u!1 &7490581076332786279 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3603534870095243067, guid: b16cd5fed6a7626418956ac280e23af5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6192924555642049884}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7981454676047894556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7490581076332786279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63102f2c5d72c84582c0dd49fa6ee1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logo: {fileID: 0}
+  title: Melee.Update II
+  description: 'Update to melee system, so it deals more damage\nMelee Damage: x2'
+  meleeDamageAffected: 1
+  additiveMeleeDamage: 0
+  multiplicativeMeleeDamage: 2
+  finisherHealAffected: 0
+  additiveFinisherHeal: 0
+  multiplicativeFinisherHeal: 1
