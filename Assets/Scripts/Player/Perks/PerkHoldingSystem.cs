@@ -50,7 +50,7 @@ public class PerkHoldingSystem : MonoBehaviour
     #region Perks manipulation
     public void AddPerk(GameObject perk)
     {
-        perk.transform.parent = transform.GetChild(0);
+        perk.transform.parent = transform;
 
         perks.Add(perk.GetComponent<BasePerk>());
         perks[perks.Count - 1].GetComponent<BasePerk>().EnableEffect();

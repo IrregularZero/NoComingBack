@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8225012032849929648
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5274038559157666116, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_Name
+      value: PowerDrop_AnihilatorMonolith
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.6997776
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.231842
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460925137046028935, guid: b16cd5fed6a7626418956ac280e23af5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8639311783799065331, guid: b16cd5fed6a7626418956ac280e23af5, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: b16cd5fed6a7626418956ac280e23af5, type: 3}
+--- !u!1 &4622750414953497227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3603534870095243067, guid: b16cd5fed6a7626418956ac280e23af5,
+    type: 3}
+  m_PrefabInstance: {fileID: 8225012032849929648}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &835866814585319291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4622750414953497227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74fd3084ac97bd643a0a3ca1e3a633c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logo: {fileID: 0}
+  title: PowerDrop_Anihilator
+  description: 'Creates bubble around your landing spot damaging enemies and destroying
+    projectiles. Upon creation drain ultimate energy.\nUltimate Charge Price: 15'
+  canBeUsed: 0
+  damageRadius: 15
+  damage: 100
+  cooldown: 2.5
+  effectsDuration: 0.5
+  ultimateChargePrice: 15
+  effects: {fileID: 4730943381938729681, guid: c72134245f7f40b4fadc2466609cb817, type: 3}

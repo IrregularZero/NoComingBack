@@ -77,7 +77,7 @@ public class HandCompatibleItem : Item
     {
         if (invSys == null)
         {
-            if (GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventorySystem>() != null)
+            if (GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventorySystem>() is not null)
             {
                 invSys = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventorySystem>();
             }

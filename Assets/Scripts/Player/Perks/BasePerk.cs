@@ -13,7 +13,7 @@ public abstract class BasePerk : MonoBehaviour
     [SerializeField]
     protected string description;
 
-    protected bool active;
+    protected bool active = false;
 
     #region Propterties
     public Sprite Logo 

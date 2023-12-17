@@ -55,6 +55,29 @@ public class PlayerMotor : MonoBehaviour
     private float maxTiltAngle = 90;
     private float tiltAngle;
 
+    #region Properties
+    public bool IsKnockingDown 
+    {
+        get
+        {
+            return isKnockingDown;
+        } 
+    }
+    public bool IsSliding
+    {
+        get
+        {
+            return isSliding;
+        } 
+    }
+    public bool IsPowerSliding
+    {
+        get
+        {
+            return isPowerSliding;
+        } 
+    }
+    #endregion
 
     // Start is called before the first frame update
     void Start()
