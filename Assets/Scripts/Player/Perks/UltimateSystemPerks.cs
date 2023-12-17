@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class UltimateSystemPerks : BasePerk
 {
-    private bool active = false;
-
     [SerializeField]
     private bool passiveEnergyIncrementAffected = false;
     [SerializeField]

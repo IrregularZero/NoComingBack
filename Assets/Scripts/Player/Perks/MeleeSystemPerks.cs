@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MeleeSystemPerks : BasePerk
 {
-    private bool active = false;
-
     [SerializeField]
     private bool meleeDamageAffected = false;
     [SerializeField]

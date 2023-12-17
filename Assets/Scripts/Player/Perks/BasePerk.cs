@@ -12,6 +12,8 @@ public abstract class BasePerk : MonoBehaviour
     [SerializeField]
     protected string description;
 
+    protected bool active;
+
     #region Propterties
     public Sprite Logo 
     {
@@ -58,6 +60,13 @@ public abstract class BasePerk : MonoBehaviour
             {
                 Debug.Log("Descrtiption: given value is null, empty, or white space");
             }
+        }
+    }
+    public bool Active
+    {
+        get
+        {
+            return active;
         }
     }
     #endregion

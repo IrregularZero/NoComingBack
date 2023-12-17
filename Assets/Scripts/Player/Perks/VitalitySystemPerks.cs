@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class VitalitySystemPerks : BasePerk
 {
-    private bool active = false;
-
     [SerializeField]
     private bool damageMultiplierAffected = false;
     [SerializeField]
