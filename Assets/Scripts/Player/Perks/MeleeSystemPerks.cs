@@ -103,6 +103,8 @@ public class MeleeSystemPerks : BasePerk
     private void Start()
     {
         embededMelee = GameObject.FindGameObjectWithTag("EmbededMelee").GetComponent<Melee>();
+
+        type = "MeleeSystemPerk";
     }
 
     public override void EnableEffect()

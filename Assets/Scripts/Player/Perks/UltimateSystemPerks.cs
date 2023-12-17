@@ -103,6 +103,7 @@ public class UltimateSystemPerks : BasePerk
     private void Start()
     {
         ultimateSystem = GameObject.FindGameObjectWithTag("Player").GetComponent<UltimateSystem>();
+        type = "UltimateSystemPerk";
     }
 
     public override void EnableEffect()

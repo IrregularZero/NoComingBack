@@ -9,6 +9,7 @@ public abstract class BasePerk : MonoBehaviour
     protected Sprite logo;
     [SerializeField]
     protected string title;
+    protected string type;
     [SerializeField]
     protected string description;
 
@@ -42,6 +43,13 @@ public abstract class BasePerk : MonoBehaviour
             {
                 Debug.Log("Title: given value is null, empty, or white space");
             }
+        }
+    }
+    public string Type 
+    {
+        get
+        {
+            return type;
         }
     }
     public string Description 

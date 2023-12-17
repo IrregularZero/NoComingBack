@@ -103,6 +103,7 @@ public class VitalitySystemPerks : BasePerk
     private void Start()
     {
         vitalitySystem = GameObject.FindGameObjectWithTag("Player").GetComponent<VitalitySystem>();
+        type = "VitalitySystemPerk";
     }
 
     public override void EnableEffect()
