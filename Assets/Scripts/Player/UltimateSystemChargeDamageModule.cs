@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UltimateChargeShield : MonoBehaviour
+public class UltimateSystemChargeDamageModule : MonoBehaviour
 {
     [SerializeField]
     private float hitCost;
+    [SerializeField]
+    private float damage;
 
     private UltimateSystem playerUltimateSystem;
 
@@ -14,28 +16,28 @@ public class UltimateChargeShield : MonoBehaviour
         playerUltimateSystem = GameObject.FindGameObjectWithTag("Player").GetComponent<UltimateSystem>();
 
 
-        gameObject.GetComponent<SphereCollider>().enabled = false;
+        gameObject.GetComponent<MeshCollider>().enabled = false;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
     private void Update()
     {
         if (playerUltimateSystem.Energy < hitCost)
         {
-            gameObject.GetComponent<SphereCollider>().enabled = false;
+            gameObject.GetComponent<MeshCollider>().enabled = false;
             gameObject.GetComponent<MeshRenderer>().enabled = false;
         }
         else
         {
-            gameObject.GetComponent<SphereCollider>().enabled = true;
+            gameObject.GetComponent<MeshCollider>().enabled = true;
             gameObject.GetComponent<MeshRenderer>().enabled = true;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "EnemyProjectiles")
+        if (other.tag == "Enemy")
         {
-            Destroy(other.gameObject);
+            other.gameObject.GetComponent<NPCVitality>().TakeDamage(damage, "Perk");
             playerUltimateSystem.Energy -= hitCost;
         }
     }
