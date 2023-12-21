@@ -18,6 +18,9 @@ public class TheDoorBehaviour : Interactible
     private bool roomEntrance = false;
     [SerializeField]
     private bool entrance = true;
+    [SerializeField]
+    private Transform PerkPlacement;
+    private bool perkCanBeTaken = false;
 
     protected Animator animator;
     private ChapterGameController_l1 gameController;
@@ -105,6 +108,22 @@ public class TheDoorBehaviour : Interactible
                 }
             }
         }
+        /*
+        if (perkCanBeTaken)
+        {
+            try
+            {
+                for (int i = 0; i < length; i++)
+                {
+
+                }
+            }
+            catch (System.Exception)
+            {
+                Destroy(PerkPlacement);
+            }
+        }
+        */
     }
 
     protected override void Interact()
@@ -121,6 +140,11 @@ public class TheDoorBehaviour : Interactible
             else
             {
                 Debug.Log($"Completed {transform.parent.parent.name}");
+                for (int i = 0; i < 3; i++)
+                {
+                    GameObject perk = GameObject.FindGameObjectWithTag("PerkContainer").GetComponent<PerkContainer_script>().ReturnPerkInRange(0, 25);
+                    Instantiate(perk, PerkPlacement.GetChild(i));
+                }
             }
         }
         else

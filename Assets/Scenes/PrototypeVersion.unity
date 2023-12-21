@@ -8050,6 +8050,7 @@ MonoBehaviour:
   maxDistanceToThePlayer: 20
   roomEntrance: 0
   entrance: 1
+  PerkPlacement: {fileID: 0}
 --- !u!1 &687853572
 GameObject:
   m_ObjectHideFlags: 0
@@ -13954,7 +13955,7 @@ Transform:
   m_Children:
   - {fileID: 330585546}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &950340028
 PrefabInstance:
@@ -20266,7 +20267,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1132718309
 PrefabInstance:
@@ -27443,6 +27444,106 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537586500}
   m_CullTransparentMesh: 1
+--- !u!1 &1546713566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1546713568}
+  - component: {fileID: 1546713567}
+  m_Layer: 0
+  m_Name: PerkContainer
+  m_TagString: PerkContainer
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1546713567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546713566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96961152c53f0764f8211b8935ab01eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  perkMonolith1: {fileID: 1470818100243865281, guid: d75efd68a93bc4c4293283d909663e6f,
+    type: 3}
+  perkMonolith2: {fileID: 1470818100243865281, guid: 80c59e8ff8f4d1a41bf66af46acf7d1d,
+    type: 3}
+  perkMonolith3: {fileID: 1470818100243865281, guid: 6c0a112d8ae573b4683ef56ac68dd143,
+    type: 3}
+  perkMonolith4: {fileID: 3475175861217265899, guid: 3df2ab1463342f34bb92f861a0e52345,
+    type: 3}
+  perkMonolith5: {fileID: 2071820970109752344, guid: dddb067d7d135964189f6b309bad0a4b,
+    type: 3}
+  perkMonolith6: {fileID: 2071820970109752344, guid: c2722b266d7b13c43a38d27bc5cf27b4,
+    type: 3}
+  perkMonolith7: {fileID: 2071820970109752344, guid: fd6362f09675af0419147c807a56649e,
+    type: 3}
+  perkMonolith8: {fileID: 2071820970109752344, guid: 497841fe34c34a94982c77434b4790ba,
+    type: 3}
+  perkMonolith9: {fileID: 2071820970109752344, guid: 2535d2ea7aaa0da49808bf490e411c32,
+    type: 3}
+  perkMonolith10: {fileID: 2150247480008650268, guid: bd4d20cdc6571c345877b08b545ac994,
+    type: 3}
+  perkMonolith11: {fileID: 2071820970109752344, guid: 180c48e1791b59247ba9a9607063af1a,
+    type: 3}
+  perkMonolith12: {fileID: 6761956124123242941, guid: 801864de913a47944bc184bf7ac5b559,
+    type: 3}
+  perkMonolith13: {fileID: 2150247480008650268, guid: 23aab8532a084af4e8c7e4f79a18deeb,
+    type: 3}
+  perkMonolith14: {fileID: 5146325908067233079, guid: f1b10f0d753d6304bbbb99628e0d50ac,
+    type: 3}
+  perkMonolith15: {fileID: 5146325908067233079, guid: e9e9df793e1932c4aabdcf5dc7982517,
+    type: 3}
+  perkMonolith16: {fileID: 5146325908067233079, guid: fb924a89be89e4e44a0cc34d72040e65,
+    type: 3}
+  perkMonolith17: {fileID: 7286752210625190910, guid: 71921136331fa0b4e8065b2860f8bd7b,
+    type: 3}
+  perkMonolith18: {fileID: 2150247480008650268, guid: f0fc0208146b6ae4ba4506c4fc9db36c,
+    type: 3}
+  perkMonolith19: {fileID: 2150247480008650268, guid: 8ad99c6266e5b204c9e0d82aac175e3f,
+    type: 3}
+  perkMonolith20: {fileID: 2150247480008650268, guid: 9b7c836f3d6d8884c9610d46743ac669,
+    type: 3}
+  perkMonolith21: {fileID: 2150247480008650268, guid: 020335094e66eeb4695447f2daa44a38,
+    type: 3}
+  perkMonolith22: {fileID: 98494549146561069, guid: 4db6fb4272e103141979fc03208b2e0f,
+    type: 3}
+  perkMonolith23: {fileID: 4257092409447097588, guid: 59ede16de294ce14d828d05879ddaf33,
+    type: 3}
+  perkMonolith24: {fileID: 117006846259371231, guid: c8563a9b4e4404943b1bc0df311540ff,
+    type: 3}
+  perkMonolith25: {fileID: 117006846259371231, guid: 82431ba44fbacdb41af39c9ec37650f5,
+    type: 3}
+  perkMonolith26: {fileID: 0}
+  perkMonolith27: {fileID: 0}
+  perkMonolith28: {fileID: 0}
+  perkMonolith29: {fileID: 0}
+  perkMonolith30: {fileID: 0}
+  amountOfPreks: 25
+--- !u!4 &1546713568
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546713566}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1603656653
 GameObject:
   m_ObjectHideFlags: 0
@@ -27747,7 +27848,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1634511482
 GameObject:
@@ -28217,7 +28318,7 @@ Transform:
   - {fileID: 1109874291}
   - {fileID: 1188344470}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1954289234
 GameObject:
@@ -28645,7 +28746,7 @@ RectTransform:
   - {fileID: 1079547698}
   - {fileID: 262210502}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: -180.955, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
