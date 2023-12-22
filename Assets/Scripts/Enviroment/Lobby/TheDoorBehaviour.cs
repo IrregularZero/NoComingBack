@@ -108,22 +108,25 @@ public class TheDoorBehaviour : Interactible
                 }
             }
         }
-        /*
         if (perkCanBeTaken)
         {
             try
             {
-                for (int i = 0; i < length; i++)
+                for (int i = 0; i < 3; i++)
                 {
-
+                    if (PerkPlacement.GetChild(i).GetChild(0) is null)
+                    {
+                        Destroy(PerkPlacement.gameObject);
+                        perkCanBeTaken = false;
+                    }
                 }
             }
             catch (System.Exception)
             {
-                Destroy(PerkPlacement);
+                Destroy(PerkPlacement.gameObject);
+                perkCanBeTaken = false;
             }
         }
-        */
     }
 
     protected override void Interact()
@@ -144,6 +147,7 @@ public class TheDoorBehaviour : Interactible
                 {
                     GameObject perk = GameObject.FindGameObjectWithTag("PerkContainer").GetComponent<PerkContainer_script>().ReturnPerkInRange(0, 25);
                     Instantiate(perk, PerkPlacement.GetChild(i));
+                    perkCanBeTaken = true;
                 }
             }
         }
