@@ -10910,9 +10910,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3262c4a6bb44dd841976cf2ea26a22a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 10
   timeBetweenShots: 0.1
-  spread: 0.05
+  spread: 0.075
   maxMagazine: 50
   magazine: 50
   ammoInStorage: 250
@@ -10927,7 +10927,7 @@ MonoBehaviour:
   ammoMeter: {fileID: 5943385811880897425}
   specialProjectile: {fileID: 8428272523112837262, guid: f0100bc9479f7d44784e8447b29072ac,
     type: 3}
-  specialProjectileDamage: 100
+  specialProjectileDamage: 200
   forceForSpecialProjectile: 1000
   ammoPerSecond: 1.5
   recoveringMagazineMeter: {fileID: 7798329031865672496}

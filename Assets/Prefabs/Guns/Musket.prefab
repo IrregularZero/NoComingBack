@@ -5649,17 +5649,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33e31b8913c428d4aa3f2932ce07d016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 20
   timeBetweenShots: 0.5
-  spread: 0.1
+  spread: 0.01
   maxMagazine: 24
   magazine: 24
   ammoInStorage: 120
   reloadSpeed: 3
   critChance: 10
   critMult: 1.5
-  overviewDuration: 0
-  barell: {fileID: 2799883248567980044}
   shootingSystem: {fileID: 3050373389047702835}
   impactParctileSystem: {fileID: 5545747436698105749, guid: d3303784d08c01c4097f6aa0bebd708e,
     type: 3}
@@ -5668,7 +5666,7 @@ MonoBehaviour:
   ammoMeter: {fileID: 1302883289763005502}
   maxFireChain: 3
   maxTimeBetweenShotsInChain: 0.07
-  specialSpread: 0.25
+  specialSpread: 0.2
   specialAmmocost: 6
   specialEffectiveRange: 10
 --- !u!95 &1302883288857953156
