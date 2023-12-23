@@ -163,9 +163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b147a977d64564447a294db2dee2c6e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reloadTime: 10
+  reloadTime: 5
   damage: 500
-  speed: 50
+  speed: 75
   projectileColor: {r: 0, g: 0, b: 0, a: 1}
   projectile: {fileID: 6482015894507940949, guid: b186308b2be0f314abee67ac1009bc12,
     type: 3}

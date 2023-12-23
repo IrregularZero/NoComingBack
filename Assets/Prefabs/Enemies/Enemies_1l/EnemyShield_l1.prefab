@@ -264,7 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 100
-  damageMultiplier: 0.25
+  damageMultiplier: 0.01
   healingBonus: 0
   useUI: 0
   frontHealthBar: {fileID: 3807187284551714792}
@@ -272,6 +272,7 @@ MonoBehaviour:
   DeathScreen: {fileID: 0}
   healthChangeEffects: {fileID: 0}
   alphaDecrement: 0.45
+  timeToRestart: 2.2
   useAnimations: 0
   maxDamagedAnimDuration: 0
   staggered: 0

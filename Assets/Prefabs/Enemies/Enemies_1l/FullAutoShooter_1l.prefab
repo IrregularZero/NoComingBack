@@ -160,7 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reloadTime: 10
   damage: 75
-  speed: 12.5
+  speed: 18.5
   projectileColor: {r: 0.7075471, g: 0, b: 0.0655, a: 1}
   projectile: {fileID: 6482015894507940949, guid: b186308b2be0f314abee67ac1009bc12,
     type: 3}
