@@ -2,7 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class MainMenu_btn_scr : MonoBehaviour
+public class MainMenu_btn_scr : MonoBehaviour
 {
-    public abstract void ButtonPress();
+    protected bool answerChanged = false;
+    protected bool answerFromConfBlock = false;
+
+    public virtual void ButtonPress()
+    {
+        throw new System.NotImplementedException();
+    }
+    public virtual void recieveAnswerFromConfBlock(bool answer)
+    {
+        answerFromConfBlock = answer;
+        answerChanged = true;
+    }
 }
