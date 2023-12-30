@@ -1082,6 +1082,45 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Universal"",
+            ""id"": ""fd1d9bc0-5f8f-4ac2-bf00-9bfa57ad18d0"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""9c023b83-f476-4b33-9762-ed116b1c2e02"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""c06d31ab-c000-4149-829b-a7192fb10b78"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""901c0b6e-4248-4dff-9367-7415281b9121"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -1130,6 +1169,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_ItemManipulation_Use_InInventory = m_ItemManipulation.FindAction("Use_InInventory", throwIfNotFound: true);
         m_ItemManipulation_Remove_InInventory = m_ItemManipulation.FindAction("Remove_InInventory", throwIfNotFound: true);
         m_ItemManipulation_Swap_InInventory = m_ItemManipulation.FindAction("Swap_InInventory", throwIfNotFound: true);
+        // Universal
+        m_Universal = asset.FindActionMap("Universal", throwIfNotFound: true);
+        m_Universal_Pause = m_Universal.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1573,6 +1615,39 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         }
     }
     public ItemManipulationActions @ItemManipulation => new ItemManipulationActions(this);
+
+    // Universal
+    private readonly InputActionMap m_Universal;
+    private IUniversalActions m_UniversalActionsCallbackInterface;
+    private readonly InputAction m_Universal_Pause;
+    public struct UniversalActions
+    {
+        private @PlayerInputs m_Wrapper;
+        public UniversalActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_Universal_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_Universal; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UniversalActions set) { return set.Get(); }
+        public void SetCallbacks(IUniversalActions instance)
+        {
+            if (m_Wrapper.m_UniversalActionsCallbackInterface != null)
+            {
+                @Pause.started -= m_Wrapper.m_UniversalActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_UniversalActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_UniversalActionsCallbackInterface.OnPause;
+            }
+            m_Wrapper.m_UniversalActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+            }
+        }
+    }
+    public UniversalActions @Universal => new UniversalActions(this);
     public interface IOnFootActions
     {
         void OnLook(InputAction.CallbackContext context);
@@ -1620,5 +1695,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnUse_InInventory(InputAction.CallbackContext context);
         void OnRemove_InInventory(InputAction.CallbackContext context);
         void OnSwap_InInventory(InputAction.CallbackContext context);
+    }
+    public interface IUniversalActions
+    {
+        void OnPause(InputAction.CallbackContext context);
     }
 }

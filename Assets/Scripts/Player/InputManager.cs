@@ -13,6 +13,8 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private InventorySystem inventorySystem;
     private bool inventoryEnabled = true;
+    private GameObject pauseScreen;
+    private bool onPause = false;
     private PerkHoldingSystem perkHoldingSystem;
     private MeleeSystem meleeSystem;
     private UltimateSystem ultimateSystem;
@@ -50,6 +52,7 @@ public class InputManager : MonoBehaviour
         player = GetComponent<PlayerMotor>();
         ultimate = GetComponent<PlayerUltimateMotor>();
         look = GetComponent<PlayerLook>();
+        pauseScreen = GameObject.FindGameObjectWithTag("PauseMenu");
         perkHoldingSystem = GameObject.FindGameObjectWithTag("PerkHolder").GetComponent<PerkHoldingSystem>();
         interactionSystem = GetComponent<PlayerInteractionSystem>();
         meleeSystem = GetComponent<MeleeSystem>();
@@ -73,6 +76,9 @@ public class InputManager : MonoBehaviour
         inputs.ItemManipulation.Swap_InInventory.started += ctx => inventorySystem.SwapSequence();
         inputs.ItemManipulation.Swap_InInventory.canceled += ctx => inventorySystem.SwapSequence();
         inputs.ItemManipulation.Inventory.performed += ctx => EnableInventoryMode();
+
+        // Pause controls
+        inputs.Universal.Pause.performed += ctx => SwitchPauseState();
 
         // Perk holding system
         inputs.OnFoot.PerkScreen.started += ctx => perkHoldingSystem.EnablePerkScreen();
@@ -177,6 +183,37 @@ public class InputManager : MonoBehaviour
         
     }
 
+    public void SwitchPauseState()
+    {
+        if (onPause)
+        {
+            onPause = false;
+            pauseScreen.transform.GetChild(0).gameObject.SetActive(false);
+
+            inputs.OnFoot.Enable();
+            inputs.UltimateMode.Disable();
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            onPause = true;
+            pauseScreen.transform.GetChild(0).gameObject.SetActive(true);
+
+            inputs.OnFoot.Disable();
+            inputs.UltimateMode.Disable();
+            player.enabled = true;
+            ultimate.enabled = false;
+            ultimateSystem.UltimateModeEnabled = false;
+            inputs.OnFoot.Movement.Enable();
+            inputs.OnFoot.Look.Enable();
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    }
+
     public void ChangeUltimateModeStatus()
     {
         if (ultimateSystem.Energy >= ultimateSystem.MaxEnergy && inputs.OnFoot.enabled) // Enable Ult mode
@@ -225,7 +262,7 @@ public class InputManager : MonoBehaviour
     }
     private void LateUpdate()
     {
-        if (!inventoryEnabled)
+        if (!inventoryEnabled && !onPause)
         {
             if (inputs.OnFoot.enabled)
                 look.processLook(inputs.OnFoot.Look.ReadValue<Vector2>());
