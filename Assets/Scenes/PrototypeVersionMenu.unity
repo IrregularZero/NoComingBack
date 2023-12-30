@@ -1020,6 +1020,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveSlotIndex: 4
+  message: Starting here?
+  positive: Yes
+  negative: No
 --- !u!1 &350334883
 GameObject:
   m_ObjectHideFlags: 0
@@ -4730,6 +4733,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveSlotIndex: 1
+  message: Starting here?
+  positive: Yes
+  negative: No
 --- !u!1 &1624900470
 GameObject:
   m_ObjectHideFlags: 0
@@ -5282,6 +5288,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveSlotIndex: 3
+  message: Starting here?
+  positive: Yes
+  negative: No
 --- !u!1 &1803444889
 GameObject:
   m_ObjectHideFlags: 0
@@ -5684,6 +5693,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveSlotIndex: 2
+  message: Starting here?
+  positive: Yes
+  negative: No
 --- !u!1 &1952686425
 GameObject:
   m_ObjectHideFlags: 0
