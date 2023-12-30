@@ -716,7 +716,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1990464877}
+  m_TargetGraphic: {fileID: 202005336}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -2911,6 +2911,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6cc41c0f36e4c4eb8e2420cfeec8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  message: Are you sure?
+  positive: Please!
+  negative: Oh, hell nah
 --- !u!224 &893881887 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6224115108278284810, guid: ff40d9d8e88903a4ba9c39f8af48b1b3,
@@ -5693,7 +5696,7 @@ GameObject:
   - component: {fileID: 1952686427}
   m_Layer: 5
   m_Name: ConfirmationBlock
-  m_TagString: Untagged
+  m_TagString: ConfirmationBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5794,7 +5797,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

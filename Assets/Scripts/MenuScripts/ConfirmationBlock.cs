@@ -33,6 +33,8 @@ public class ConfirmationBlock : MonoBehaviour
         
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(1).gameObject.SetActive(true);
+        this.positive_btn_txt.transform.parent.gameObject.SetActive(true);
+        this.negative_btn_txt.transform.parent.gameObject.SetActive(true);
     }
     public void ReturnResut()
     {
@@ -43,13 +45,13 @@ public class ConfirmationBlock : MonoBehaviour
 
     private IEnumerator DeathSequence()
     {
-        animator.SetBool("Disabled", true);
+        animator.SetBool("Disabling", true);
 
         yield return new WaitForSeconds(outroLength);
 
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(false);
-        animator.SetBool("Disabled", false);
+        animator.SetBool("Disabling", false);
     }
 
 }
