@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

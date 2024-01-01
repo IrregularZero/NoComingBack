@@ -22123,7 +22123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1315609541
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22969,6 +22969,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExitToMainMenu_btn
       objectReference: {fileID: 0}
+    - target: {fileID: 6997447643086980940, guid: 04ec4447288b5ce46aaacd7165f3ec94,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997447643086980940, guid: 04ec4447288b5ce46aaacd7165f3ec94,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997447643086980940, guid: 04ec4447288b5ce46aaacd7165f3ec94,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1387241169}
+    - target: {fileID: 6997447643086980940, guid: 04ec4447288b5ce46aaacd7165f3ec94,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997447643086980940, guid: 04ec4447288b5ce46aaacd7165f3ec94,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997447643086980940, guid: 04ec4447288b5ce46aaacd7165f3ec94,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ExitToMainMenu_btn_src, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997447643086980940, guid: 04ec4447288b5ce46aaacd7165f3ec94,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8565395712448810304, guid: 04ec4447288b5ce46aaacd7165f3ec94,
         type: 3}
       propertyPath: m_text
@@ -22982,6 +23017,27 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1387241166}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1387241168 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6440214556908527524, guid: 04ec4447288b5ce46aaacd7165f3ec94,
+    type: 3}
+  m_PrefabInstance: {fileID: 1387241166}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1387241169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387241168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb2e2b7850859f843b184ff376e3400d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: Are you sure you wan't to leave?
+  positive: Yes
+  negative: No
 --- !u!1 &1399908186
 GameObject:
   m_ObjectHideFlags: 0
@@ -29292,6 +29348,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExitToDesktop_btn
       objectReference: {fileID: 0}
+    - target: {fileID: 6997447643086980940, guid: 04ec4447288b5ce46aaacd7165f3ec94,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997447643086980940, guid: 04ec4447288b5ce46aaacd7165f3ec94,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997447643086980940, guid: 04ec4447288b5ce46aaacd7165f3ec94,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1565979988}
+    - target: {fileID: 6997447643086980940, guid: 04ec4447288b5ce46aaacd7165f3ec94,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997447643086980940, guid: 04ec4447288b5ce46aaacd7165f3ec94,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997447643086980940, guid: 04ec4447288b5ce46aaacd7165f3ec94,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Exit_btn_scr, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997447643086980940, guid: 04ec4447288b5ce46aaacd7165f3ec94,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8565395712448810304, guid: 04ec4447288b5ce46aaacd7165f3ec94,
         type: 3}
       propertyPath: m_text
@@ -29305,6 +29396,27 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1565979985}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1565979987 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6440214556908527524, guid: 04ec4447288b5ce46aaacd7165f3ec94,
+    type: 3}
+  m_PrefabInstance: {fileID: 1565979985}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1565979988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565979987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f6cc41c0f36e4c4eb8e2420cfeec8b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: Are you sure?
+  positive: Please!
+  negative: Oh, hell nah
 --- !u!1 &1603656653
 GameObject:
   m_ObjectHideFlags: 0
