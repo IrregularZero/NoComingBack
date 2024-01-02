@@ -325,5 +325,6 @@ public class InventorySystem : MonoBehaviour
         infoPanel.transform.GetChild(2).gameObject.SetActive(true);
         infoPanel.transform.GetChild(2).GetComponent<Image>().sprite = items[selectedSlot].GetComponent<Item>().ItemIcon;
         infoPanel.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = items[selectedSlot].GetComponent<Item>().Desription;
+        infoPanel.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = infoPanel.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text.Replace("\\n", "\n");
     }
 }

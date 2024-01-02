@@ -72,10 +72,13 @@ public class HandCompatibleItem : Item
     {
         backgroundColor = new Color(0.596f, 0f, 0.662f, 1f);
         type = "Weapon";
+
+        GunSystem gunSystem = handCompatibleItemPrefab.GetComponent<GunSystem>();
+        description += $"\nStats:\nDamage: {gunSystem.Damage}\nAccuracy: {gunSystem.Spread}\nMax magazine: {gunSystem.MaxMagazine}\nCrit. chance: {gunSystem.CritChance}\nCrit. mult.: {gunSystem.CritMultiplier}";
     }
     private void Update()
     {
-        if (invSys == null)
+        if (invSys is null)
         {
             if (GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventorySystem>() is not null)
             {
